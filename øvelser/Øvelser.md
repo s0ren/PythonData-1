@@ -21,9 +21,23 @@ TOC
       - [Exercise 6 (triple square)](#exercise-6-triple-square)
         - [Part 1](#part-1)
         - [Part 2](#part-2)
+      - [Exercise 7 (areas of shapes)](#exercise-7-areas-of-shapes)
   - [Datastrukturer](#datastrukturer)
+      - [Exercise 8 (solve quadratic)](#exercise-8-solve-quadratic)
+      - [Exercise 9 (merge)](#exercise-9-merge)
+      - [Exercise 10 (detect ranges)](#exercise-10-detect-ranges)
+      - [Exercise 11 (interleave)](#exercise-11-interleave)
+      - [Exercise 12 (distinct characters)](#exercise-12-distinct-characters)
+      - [Exercise 13 (reverse dictionary)](#exercise-13-reverse-dictionary)
+      - [Exercise 14 (find matching)](#exercise-14-find-matching)
+      - [Exercise 15 (two dice comprehension)](#exercise-15-two-dice-comprehension)
+      - [Exercise 16 (transform)](#exercise-16-transform)
+      - [Exercise 17 (positive list)](#exercise-17-positive-list)
   - [String handling](#string-handling)
+      - [Exercise 18 (acronyms)](#exercise-18-acronyms)
+      - [Exercise 19 (sum equation)](#exercise-19-sum-equation)
   - [Moduler](#moduler)
+      - [Exercise 20 (usemodule)](#exercise-20-usemodule)
 - [\[Part02\]](#part02)
   - [Læs (og skriv, i) filer](#læs-og-skriv-i-filer)
   - [RegEx](#regex)
@@ -213,17 +227,245 @@ Note that the test cases check that both functions `triple` and `square` are cal
 
 ---
 
+#### <div class="alert alert-info">Exercise 7 (areas of shapes)</div>
+
+Create a program that can compute the areas of three shapes, triangles, rectangles and circles, when their dimensions are given.
+
+An endless loop should ask for which shape you want the area be calculated. n empty string as input will exit the loop.
+If the user gives a string that is none of the given shapes, the message “unknown shape!” should be printed.
+Then it will ask for dimensions for that particular shape. When all the necessary dimensions are given, it prints the area, and starts the loop all over again. Use format specifier `f` for the area.
+
+What happens if you give incorrect dimensions, like giving string "aa" as radius? You don't have to check for errors in the input.
+
+Example interaction:
+
+```python
+Choose a shape (triangle, rectangle, circle): triangle
+Give base of the triangle: 20
+Give height of the triangle: 5
+The area is 50.000000
+Choose a shape (triangle, rectangle, circle): rectangel
+Unknown shape!
+Choose a shape (triangle, rectangle, circle): rectangle
+Give width of the rectangle: 20
+Give height of the rectangle: 4
+The area is 80.000000
+Choose a shape (triangle, rectangle, circle): circle
+Give radius of the circle: 10
+The area is 314.159265
+Choose a shape (triangle, rectangle, circle): 
+```
+
+---
+
 ## Datastrukturer
 
 * Lister
 * Tupler
+
+#### <div class="alert alert-info">Exercise 8 (solve quadratic)</div>
+
+In mathematics, the quadratic equation $ax^2+bx+c=0$ can be solved with the formula 
+
+$$x=\frac{-b\pm \sqrt{b^2 -4ac}}{2a}$$
+
+In code it might be usefull to declare a variable for a part of the formula, named `d`, defined by $\sqrt{b^2 -4ac}$. the formula then can be written as:
+
+$$x=\frac{-b\pm d}{2a}$$
+
+We need both the positive and the negative version og the square root, becaurce all squareroots have to solutions, since both $ 2^2 = 4 $ and $(-2)^2 = 4 $ thus $ \sqrt{4} $ has both $ 2 $ and $ -2 $ as solutions.
+
+Remember the order of precedence are important, especially when you implement mathematical expressions.
+
+Write a function `solve_quadratic`, that returns both solutions of a generic quadratic as a pair (2-tuple) when the coefficients are given as parameters. It should work like this:
+
+```python
+print(solve_quadratic(1,-3,2))
+(2.0,1.0)
+print(solve_quadratic(1,2,1))
+(-1.0,-1.0)
+```
+
+You may want to use the `math.sqrt` function from the `math` module in your solution. Test that your function works in the main function!
+
+---
+
+#### <div class="alert alert-info">Exercise 9 (merge)</div>
+
+Suppose we have two lists `L1` and `L2` that contain integers which are sorted in ascending order.  
+Create a function `merge` that gets these lists as parameters and returns a new sorted list `L` that has all the elements of `L1` and `L2`. So, `len(L)` should equal to `len(L1)+len(L2)`.  
+Do this using the fact that both lists are already sorted. You can’t use the `sorted` function or the `sort` method in implementing the `merge` method. You can however use these `sorted` in the main function for creating inputs to the `merge` function.
+
+Test with a couple of examples in the `main` function that your solution works correctly.
+
+Note: __In Python argument lists are passed by reference to the function, they are not copied! Make sure you don't modify the original lists of the caller.__
+
+---
+
+#### <div class="alert alert-info">Exercise 10 (detect ranges)</div>
+
+Create a function named `detect_ranges` that gets a list of integers as a parameter.  
+
+The function should then  
+- sort this list, and 
+- transform the list into another list where pairs are used for all the detected intervals. So `3,4,5,6` is replaced by the pair `(3,7)`. 
+- Numbers that are not part of any interval result just single numbers.  
+
+The resulting list consists of these numbers and pairs, separated by commas.
+
+An example of how this function works:
+
+```python
+print(detect_ranges([2,5,4,8,12,6,7,10,13]))
+[2,(4,9),10,(12,14)]
+```
+
+Note that the second element of the pair does not belong to the range. __This is consistent with the way Python's `range` function works.__ You may assume that no element in the input list appears multiple times.
+
+---
+
+#### <div class="alert alert-info">Exercise 11 (interleave)</div>
+
+Write function `interleave` that gets arbitrary number of lists as parameters. You may assume that all the lists have equal length. The function should return one list containing all the elements from the input lists interleaved.
+Test your function from the `main` function of the program.
+
+Example:
+`interleave([1,2,3], [20,30,40], ['a', 'b', 'c'])`
+should return
+`[1, 20, 'a', 2, 30, 'b', 3, 40, 'c']`.
+Use the `zip` function to implement `interleave`. Remember the `extend` method of list objects.
+
+---
+* Sets
+
+#### <div class="alert alert-info">Exercise 12 (distinct characters)</div>
+
+Write function `distinct_characters` that gets a list of strings as a parameter. It should return a dictionary whose keys are the strings of the input list and the corresponding values are the numbers of distinct characters in the key.
+
+Use the `set` container to temporarily store the distinct characters in a string.
+
+Example of usage:
+`distinct_characters(["check", "look", "try", "pop"])`
+should return
+`{ "check" : 4, "look" : 3, "try" : 3, "pop" : 2}`.
+
+---
+
 * Dictionarys
+
+#### <div class="alert alert-info">Exercise 13 (reverse dictionary)</div>
+
+Let `d` be a dictionary that has English words as keys and a list of Finnish words as values. So, the
+dictionary can be used to find out the Finnish equivalents of an English word in the following way:
+
+```python
+d["move"]
+["liikuttaa"]
+d["hide"]
+["piilottaa", "salata"]
+```
+
+Make a function `reverse_dictionary` that creates a Finnish to English dictionary based on a English to Finnish dictionary given as a parameter. The values of the created dictionary should be lists of words. It should work like this:
+
+```python
+d={'move': ['liikuttaa'], 'hide': ['piilottaa', 'salata'], 'six': ['kuusi'], 'fir': ['kuusi']}
+reverse_dictionary(d)
+{'liikuttaa': ['move'], 'piilottaa': ['hide'], 'salata': ['hide'], 'kuusi': ['six', 'fir']}
+```
+
+Be careful with synonyms and homonyms!
+
+---
+
+#### <div class="alert alert-info">Exercise 14 (find matching)</div>
+
+Write function `find_matching` that gets a list of strings and a search string as parameters. The function should return the indices to those elements in the input list that contain the search string. Use the function `enumerate`.
+
+An example:
+`find_matching(["sensitive", "engine", "rubbish", "comment"], "en")`
+should return the list
+`[0, 1, 3]`.
+
+---
+
 * Comprehensions
+
+#### <div class="alert alert-info">Exercise 15 (two dice comprehension)</div>
+
+Redo the earlier exercise which printed all the pairs of two dice results that sum to 5. But this time use a list comprehension. Print one pair per line.
+
+---
+
+#### <div class="alert alert-info">Exercise 16 (transform)</div>
+
+Write a function `transform` that gets two strings as parameters and returns a list of integers. 
+The function should 
+- split the strings into words, and 
+- convert these words to integers. 
+
+This should give two lists of integers. Then the function should 
+- return a list whose elements are multiplication of two integers in the respective positions in the lists.  
+
+For example
+`transform("1 5 3", "2 6 -1")`
+should return the list of integers
+`[2, 30, -3]`.
+
+You __have__ to use `split`, `map`, and `zip` functions/methods. You may assume that the two input strings are in correct format.
+
+---
+
+#### <div class="alert alert-info">Exercise 17 (positive list)</div>
+
+Write a function `positive_list` that gets a list of numbers as a parameter, and returns a list with the negative numbers and zero filtered out using the `filter` function.
+
+The function call `positive_list([2,-2,0,1,-7])` should return the list `[2,1]`. Test your function in the `main` function.
+
+---
+
 * sequence processing
 
 ## String handling
 
+#### <div class="alert alert-info">Exercise 18 (acronyms)</div>
+
+Write function `acronyms` which takes a string as a parameter and returns a list of acronyms. A word is an acronym if it has length at least two, and all its characters are in uppercase. Before acronym detection, delete punctuation with the `strip` method.
+
+Test this function in the `main` function with the following call:
+
+```python
+print(acronyms("""For the purposes of the EU General Data Protection Regulation (GDPR), the controller of your personal information is International Business Machines Corporation (IBM Corp.), 1 New Orchard Road, Armonk, New York, United States, unless indicated otherwise. Where IBM Corp. or a subsidiary it controls (not established in the European Economic Area (EEA)) is required to appoint a legal representative in the EEA, the representative for all such cases is IBM United Kingdom Limited, PO Box 41, North Harbour, Portsmouth, Hampshire, United Kingdom PO6 3AU."""))
+```
+
+This should return
+```['EU', 'GDPR', 'IBM', 'IBM', 'EEA', 'EEA', 'IBM', 'PO', 'PO6', '3AU']```
+
+---
+
+#### <div class="alert alert-info">Exercise 19 (sum equation)</div>
+
+Write a function `sum_equation` which takes a list of positive integers as parameters and returns a string with an equation of the sum of the elements.
+
+Example:
+`sum_equation([1,5,7])`
+returns
+`"1 + 5 + 7 = 13"`
+Observe, the spaces should be exactly as shown above. For an empty list the function should return the string "0 = 0".
+
+---
+
 ## Moduler
+
+#### <div class="alert alert-info">Exercise 20 (usemodule)</div>
+
+Create your own module as file `triangle.py` in the `src` folder. The module should contain two functions:
+
+* `hypothenuse` which returns the length of the hypothenuse when given the lengths of two other sides of a right-angled triangle
+* `area` which returns the area of the right-angled triangle, when two sides, perpendicular to each other, are given as parameters.
+
+Make sure both the functions and the module have descriptive docstrings. Add also the `__version__` and `__author__` attributes to the module. Call both your functions from the main function (which is in file `usemodule.py`).
+
+---
 
 # [Part02]
 
