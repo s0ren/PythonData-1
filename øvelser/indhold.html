@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>indhold.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h2 id="indhold"><strong>Indhold:</strong></h2>
+<ul>
+<li>
+<p>Part 1</p>
+<ul>
+<li>Basic concepts
+<ul>
+<li>data typer</li>
+<li>loops</li>
+<li>datastrukturer
+<ul>
+<li>lister, tupler, dictionarys</li>
+<li>comprehensions</li>
+<li>sequence processing</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>String handling</li>
+<li>Modules</li>
+</ul>
+<ol>
+<li>Basale koncepter
+<ul>
+<li>Grundlæggende input og output</li>
+<li>Indrykning
+<ul>
+<li><em>Øvelse 1 (hej verden)</em></li>
+<li><em>Øvelse 2 (kompliment)</em></li>
+<li><em>Øvelse 3 (multiplikation)</em></li>
+</ul>
+</li>
+<li>Variabler og datatyper
+<ul>
+<li>Oprettelse af strenge</li>
+<li>Sammenkædning af strenge</li>
+<li>Formateret udskrivning</li>
+</ul>
+</li>
+<li>Udtryk (Expressions)</li>
+<li>Erklæringer</li>
+<li>Løkker til gentagne opgaver
+<ul>
+<li><em>Exercise 4 (multiplication table)</em></li>
+</ul>
+<ul>
+<li>Decision making with the if statement</li>
+<li>Breaking and continuing loop
+<ul>
+<li><em>Exercise 5 (two dice)</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Functions
+<ul>
+<li>Visibility of variables
+<ul>
+<li><em>Exercise 6 (triple square)</em></li>
+<li><em>Exercise 7 (areas of shapes)</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Data structures
+<ul>
+<li>Sequences
+<ul>
+<li><em>Exercise 8 (solve quadratic)</em></li>
+</ul>
+</li>
+<li>Modifying lists</li>
+<li>Generating numerical sequences</li>
+<li>Sorting sequences
+<ul>
+<li><em>Exercise 9 (merge)</em></li>
+<li><em>Exercise 10 (detect ranges)</em></li>
+</ul>
+</li>
+<li>Zipping sequences
+<ul>
+<li><em>Exercise 11 (interleave)</em></li>
+</ul>
+</li>
+<li>Enumerating sequences</li>
+<li>Dictionaries</li>
+<li>Sets
+<ul>
+<li><em>Exercise 12 (distinct characters)</em></li>
+</ul>
+</li>
+<li>Miscellaneous stuff
+<ul>
+<li><em>Exercise 13 (reverse dictionary)</em></li>
+<li><em>Exercise 14 (find matching)</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Compact way of creating data structures
+<ul>
+<li><em>Exercise 15 (two dice comprehension)</em></li>
+</ul>
+</li>
+<li>Processing sequences
+<ul>
+<li>Map and lambda functions
+<ul>
+<li><em>Exercise 16 (transform)</em></li>
+</ul>
+</li>
+<li>Filter function
+<ul>
+<li><em>Exercise 17 (positive list)</em></li>
+</ul>
+</li>
+<li>The reduce function</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>String handling
+<ul>
+<li>Classification of strings</li>
+<li>String transformations</li>
+<li>Searching for substrings</li>
+<li>Trimming and adjusting</li>
+<li>Joining and splitting
+<ul>
+<li><em>Exercise 18 (acronyms)</em></li>
+<li><em>Exercise 19 (sum equation)</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Modules
+<ul>
+<li>Using modules</li>
+<li>Breaking the namespace</li>
+<li>Module lookup</li>
+<li>Module hierarchy</li>
+<li>Importing from packages</li>
+<li>Correspondence between folder and module hierarchies</li>
+<li>Contents of a module
+<ul>
+<li><em>Exercise 20 (usemodule)</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Summary</li>
+</ol>
+</li>
+</ul>
+<p>.</p>
+<ul>
+<li>Part 2
+<ol>
+<li>
+<p>Regular expressions</p>
+<ul>
+<li><em>Exercise 01 integers_in_brackets                (e01_integers_in_brackets)</em></li>
+</ul>
+</li>
+<li>
+<p>Basic file processing</p>
+<ol>
+<li>Standard file objects</li>
+<li>sys module
+<ul>
+<li><em>Exercise 03 red_green_blue                      (e03_red_green_blue)</em></li>
+<li><em>Exercise 04 word_frequencies                    (e04_word_frequencies)</em></li>
+<li><em>Exercise 05 summary                             (e05_summary)</em></li>
+<li><em>Exercise 06 file_count                          (e06_file_count)</em></li>
+<li><em>Exercise 07 file_extensions                     (e07_file_extensions)</em></li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>Objects and classes</p>
+<ul>
+<li><em>Exercise 08 prepend                             (e08_prepend)</em></li>
+<li><em>Exercise 09 rational                            (e09_rational)</em></li>
+</ul>
+</li>
+<li>
+<p>Exceptions</p>
+<ul>
+<li><em>Exercise 10 extract_numbers                     (e10_extract_numbers)</em></li>
+</ul>
+</li>
+<li>
+<p><em>NumPy</em> Sequences, iterables, generators: revisited</p>
+<ol>
+<li>Creation of arrays
+<ol>
+<li>Arrays with random elements</li>
+</ol>
+</li>
+<li>Array types and attributes</li>
+<li>Indexing, slicing and reshaping
+<ul>
+<li><em>Exercise 11 rows_and_columns                    (e11_rows_and_columns)</em></li>
+</ul>
+</li>
+<li>Array concatenation, splitting and stacking
+<ul>
+<li><em>Exercise 12 row_and_column_vectors              (e12_row_and_column_vectors)</em></li>
+<li><em>Exercise 13 diamond                             (e13_diamond)</em></li>
+</ul>
+</li>
+<li>Fast computation using universal functions</li>
+<li>Aggregations: max, min, sum, mean, standard deviation…
+<ul>
+<li><em>Exercise 14 vector_lengths                      (e14_vector_lengths)</em></li>
+<li><em>Exercise 15 vector_angles                       (e15_vector_angles)</em></li>
+</ul>
+</li>
+<li>Broadcasting</li>
+</ol>
+<ul>
+<li><em>Exercise 16 multiplication_table_revisited      (e16_multiplication_table_revisited)</em></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p>.</p>
+<ul>
+<li>Part 3
+<ul>
+<li>MatPlotLib
+<ol>
+<li>Simple figure
+<ul>
+<li><em>Exercise 9 (multiple graphs)</em></li>
+</ul>
+</li>
+<li>Subfigures
+<ul>
+<li><em>Exercise 10 (subfigures)</em></li>
+</ul>
+</li>
+<li>Other data visualization libraries for Python</li>
+</ol>
+</li>
+<li>Billedprocessering
+<ul>
+<li><em>Exercise 11 (to grayscale)</em></li>
+<li><em>Exercise 12 (radial fade)</em></li>
+</ul>
+<ol>
+<li>Finding clusters in an image</li>
+<li>Additional libraries</li>
+</ol>
+</li>
+<li>Pandas 1
+<ol>
+<li>Creation and indexing of series
+<ul>
+<li><em>Exercise 13 (read series)</em></li>
+<li><em>Exercise 14 (operations on series)</em></li>
+<li><em>Exercise 15 (inverse series)</em></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<p>.</p>
+<ul>
+<li>Part 4
+<ul>
+<li>Pandas 2
+<ol>
+<li>Creation of dataframes
+<ol>
+<li>Creating DataFrames from a NumPy array</li>
+<li>Creating DataFrames from columns</li>
+<li>Creating DataFrames from rows
+<ul>
+<li><em>Exercise 1 (cities)</em></li>
+<li><em>Exercise 2 (powers of series)</em></li>
+<li><em>Exercise 3 (municipal information)</em></li>
+</ul>
+</li>
+<li>Accessing columns and rows of a dataframe
+<ul>
+<li><em>Exercise 4 (municipalities of finland)</em></li>
+<li><em>Exercise 5 (swedish and foreigners)</em></li>
+<li><em>Exercise 6 (growing municipalities)</em></li>
+</ul>
+</li>
+<li>Alternative indexing and data selection
+<ul>
+<li><em>Exercise 7 (subsetting with loc)</em></li>
+<li><em>Exercise 8 (subsetting by positions)</em></li>
+</ul>
+</li>
+<li>Summary statistics
+<ul>
+<li><em>Exercise 9 (snow depth)</em></li>
+<li><em>Exercise 10 (average temperature)</em></li>
+<li><em>Exercise 11 (below zero)</em></li>
+</ul>
+</li>
+<li>Missing data
+<ul>
+<li><em>Exercise 12 (cyclists)</em></li>
+<li><em>Exercise 13 (missing value types)</em></li>
+<li><em>Exercise 14 (special missing values)</em></li>
+<li><em>Exercise 15 (last week)</em></li>
+</ul>
+</li>
+<li>Converting columns from one type to another</li>
+<li>String processing
+<ul>
+<li><em>Exercise 16 (split date)</em></li>
+<li><em>Exercise 17 (cleaning data)</em></li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Part 5
+<ul>
+<li>Pandas 3
+<ol>
+<li>Catenating datasets
+<ul>
+<li><em>Exercise 1 (split date continues)</em></li>
+</ul>
+</li>
+<li>Merging dataframes
+<ul>
+<li><em>Exercise 2 (cycling weather)</em></li>
+<li><em>Exercise 3 (top bands)</em></li>
+</ul>
+</li>
+<li>Aggregates and groupings
+<ol>
+<li>Other ways to operate on groups</li>
+</ol>
+<ul>
+<li>Exercise 4 (cyclists per day)</li>
+<li>Exercise 5 (best record company)</li>
+<li>Exercise 6 (suicide fractions)</li>
+<li>Exercise 7 (suicide weather)</li>
+</ul>
+</li>
+<li>Time series
+<ul>
+<li>Exercise 8 (bicycle timeseries)</li>
+<li>Exercise 9 (commute)</li>
+</ul>
+</li>
+<li><em>ML</em> ...</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Part 6
+<ol>
+<li>ML: Naive Bayes classification</li>
+<li>ML: Clustering</li>
+<li>ML: Principal component analysis</li>
+</ol>
+</li>
+<li>Part 7
+<ol>
+<li>Projekt</li>
+</ol>
+</li>
+<li>Part 8</li>
+<li>
+<ol start="2">
+<li>Mere projekt</li>
+</ol>
+</li>
+</ul>
+
+</body>
+</html>
