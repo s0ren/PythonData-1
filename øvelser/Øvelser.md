@@ -39,10 +39,21 @@ TOC
   - [Moduler](#moduler)
       - [Exercise 20 (usemodule)](#exercise-20-usemodule)
 - [\[Part02\]](#part02)
+  - [RegEx 0](#regex-0)
+      - [Exercise 1 (integers in brackets)](#exercise-1-integers-in-brackets)
+      - [Exercise 2 (file listing)](#exercise-2-file-listing)
+      - [Exercise 3 (red green blue)](#exercise-3-red-green-blue)
+      - [Exercise 4 (word frequencies)](#exercise-4-word-frequencies)
+      - [Exercise 5 (summary)](#exercise-5-summary)
+      - [Exercise 6 (file count)](#exercise-6-file-count)
+      - [Exercise 7 (file extensions)](#exercise-7-file-extensions)
   - [Læs (og skriv, i) filer](#læs-og-skriv-i-filer)
   - [RegEx](#regex)
   - [Objekter](#objekter)
+      - [Exercise 8 (prepend)](#exercise-8-prepend)
+      - [Exercise 9 (rational)](#exercise-9-rational)
   - [Undtagelser (Exceptions)](#undtagelser-exceptions)
+      - [Exercise 10 (extract numbers)](#exercise-10-extract-numbers)
 - [Numpy](#numpy)
       - [Exercise 11 (rows and columns)](#exercise-11-rows-and-columns)
       - [Exercise 12 (row and column vectors)](#exercise-12-row-and-column-vectors)
@@ -469,13 +480,215 @@ Make sure both the functions and the module have descriptive docstrings. Add als
 
 # [Part02]
 
+## RegEx 0
+
+#### <div class="alert alert-info">Exercise 1 (integers in brackets)</div>
+
+Write function `integers_in_brackets` that finds from a given string all integers that are enclosed in brackets.
+
+Example run:
+`integers_in_brackets("  afd [asd] [12 ] [a34]  [ -43 ]tt [+12]xxx")`
+returns
+`[12, -43, 12]`.
+So there can be whitespace between the number and the brackets, but no other character besides those that make up the integer.
+
+Test your function from the `main` function.
+
+---
+
+#### <div class="alert alert-info">Exercise 2 (file listing)</div>
+
+The file `src/listing.txt` contains a list of files with one line per file. Each line contains seven fields: access rights, number of references, owner's name, name of owning group, file size, date, filename. These fields are separated with one or more spaces. Note that there may be spaces also within these seven fields.
+
+Write function `file_listing` that loads the file `src/listing.txt`. It should return a list of tuples (size, month, day, hour, minute, filename). Use regular expressions to do this (either `match`, `search`, `findall`, or `finditer` method).
+
+An example: for line
+```
+-rw-r--r-- 1 jttoivon hyad-all   25399 Nov  2 21:25 exception_hierarchy.pdf
+```
+the function should create the tuple `(25399, "Nov", 2, 21, 25, "exception_hierarchy.pdf")`.
+
+---
+
+#### <div class="alert alert-info">Exercise 3 (red green blue)</div>
+
+The file `src/rgb.txt` contains names of colors and their numerical representations in RGB format. The RBG format allows a color to be represented as a mixture of red, green, and blue components. Each component can have an integer value in the range [0,255]. Each line in the file contains four fields: red, green, blue, and colorname.
+Each field is separated by some amount of whitespace (tab or space in this case).
+The text file is formatted to make it print nicely, but that makes it harder to process by a computer. Note that some color names can also contain a space character.
+ 
+Write function `red_green_blue` that reads the file `rgb.txt` from the folder `src`.  Remove the irrelevant first line of the file. The function should return a list of strings. Clean-up the file so that the strings in the returned list have four fields separated by a single tab character (`\t`). Use regular expressions to do this.
+
+The first string in the returned list should be:
+```
+'255\t250\t250\tsnow'
+```
+
+---
+
+#### <div class="alert alert-info">Exercise 4 (word frequencies)</div>
+
+Create function `word_frequencies` that gets a filename as a parameter and returns a dict with the word frequencies. In the dictionary the keys are the words and the corresponding values are the number of times that word occurred in the file specified by the function parameter. Read all the lines from the file and split the lines into words using the `split()` method. Further, remove punctuation from the ends of words using the `strip("""!"#$%&'()*,-./:;?@[]_""")` method call.
+
+Test this function in the main function using the file `alice.txt`. In the output, there should be a word and its count per line separated by a tab:
+
+```
+The     64
+Project 83
+Gutenberg	26
+EBook   3
+of      303
+```
+
+---
+
+#### <div class="alert alert-info">Exercise 5 (summary)</div>
+
+This exercise can give two points at maximum!
+
+Part 1.
+
+Create a function called `summary` that gets a filename as a parameter. The input
+file should contain a floating point number on each line of the file. Make your function read these
+numbers and then return a triple containing the sum, average, and standard deviation of these numbers for the file.
+As a reminder, the formula for corrected sample standard deviation is
+$\sqrt{\frac{\sum_{i=1}^n (x_i - \overline x)^2}{n-1}}$, where $\overline x$ is the average.
+
+The `main` function should call the function summary for each filename in the list `sys.argv[1:]` of command line parameters. (Skip `sys.argv[0]` since it contains the name of the current program.)
+
+Example of usage from the command line:
+`python3 src/summary.py src/example.txt src/example2.txt`
+
+Print floating point numbers using six decimals precision. The output should look like this:
+```
+File: src/example.txt Sum: 51.400000 Average: 10.280000 Stddev: 8.904606
+File: src/example2.txt Sum: 5446.200000 Average: 1815.400000 Stddev: 3124.294045
+```
+
+Part 2.
+
+If some line doesn’t represent a number, you can just ignore that line. You can achieve this with the *try-except* block. An example of recovering from an exceptional situation:
+```python
+try:
+    x = float(line)           # The float constructor raises ValueError exception if conversion is no possible
+except ValueError:
+    # Statements in here are executed when the above conversion fails
+```
+We will cover more about exceptions later in the course.
+
+---
+
+#### <div class="alert alert-info">Exercise 6 (file count)</div>
+
+This exercise can give two points at maximum!
+
+Part 1.
+
+Create a function `file_count` that gets a filename as parameter and returns a triple of numbers. The function should read the file, count the number of lines, words, and characters in the file, and return a triple with these count in this order. You get division into words by splitting at whitespace. You don't have to remove punctuation.
+
+Part 2.
+
+Create a main function that in a loop calls `file_count` using each filename in the list of command line parameters `sys.argv[1:]` as a parameter, in turn.
+For call `python3 src/file_count file1 file2 ...`
+the output should be
+```
+?      ?       ?       file1
+?      ?       ?       file2
+...
+```
+The fields are separated by tabs (`\t`). The fields are in order: linecount, wordcount, charactercount, filename.
+
+---
+
+#### <div class="alert alert-info">Exercise 7 (file extensions)</div>
+
+This exercise can give two points at maximum!
+
+Part 1.
+
+Write function `file_extensions` that gets as a parameter a filename.
+It should read through the lines from this file. Each line contains a filename.
+Find the extension for each filename. The function should return a pair, where the
+first element is a list containing all filenames with no extension (with the preceding period (`.`) removed).
+The second element of the pair is a dictionary with extensions as keys and corresponding values are lists with filenames having that extension.
+
+Sounds a bit complicated, but hopefully the next example will clarify this.
+If the file contains the following lines
+```
+file1.txt
+mydocument.pdf
+file2.txt
+archive.tar.gz
+test
+```
+then the return value should be the pair:
+`(["test"], { "txt" : ["file1.txt", "file2.txt"], "pdf" : ["mydocument.pdf"], "gz" : ["archive.tar.gz"] } )`
+
+Part 2.
+
+Write a `main` method that calls the `file_extensions` function with "src/filenames.txt" as the argument. Then print the results so that for each extension there is a line consisting of the extension and the number of files with that extension. The first line of the output should give the number of files without extensions.
+
+With the example in part 1, the output should be
+```
+1 files with no extension
+gz 1
+pdf 1
+txt 2
+```
+Had there been no filenames without extension then the first line would have been `0 files with no extension`. In the printout list the extensions in alphabetical order.
+
+---
+
 ## Læs (og skriv, i) filer
 
 ## RegEx
 
+
+
 ## Objekter
 
+#### <div class="alert alert-info">Exercise 8 (prepend)</div>
+
+Create a class called `Prepend`. We create an instance of the class by giving a string as a parameter
+to the initializer. The initializer stores the parameter in an instance attribute `start`. The class
+also has a method `write(s)` which prints the string `s` prepended with the `start` string.
+An example of usage:
+```python
+p = Prepend("+++ ")
+p.write("Hello");
+```
+Will print
+```
++++ Hello
+```
+
+Try out using the class from the `main` function.
+
+---
+
+#### <div class="alert alert-info">Exercise 9 (rational)</div>
+
+
+Create a class `Rational` whose instances are rational numbers. A new rational number can be
+created with the call to the class. For example, the call `r=Rational(1,4)` creates a rational
+number “one quarter”. Make the instances support the following operations:
+`+` `-` `*` `/` `<` `>` `==`
+with their natural behaviour. Make the rationals also printable so that from the printout we can
+clearly see that they are rational numbers.
+
+---
+
 ## Undtagelser (Exceptions)
+
+#### <div class="alert alert-info">Exercise 10 (extract numbers)</div>
+
+Write a function `extract_numbers` that gets a string as a parameter. It should return a list of numbers that can be both ints and floats. Split the string to words at whitespace using the `split()` method. Then iterate through each word, and initially try to convert to an int. If unsuccesful, then try to convert to a float. If not a number then skip the word.
+
+Example run:
+`print(extract_numbers("abd 123 1.2 test 13.2 -1"))`
+will return
+`[123, 1.2, 13.2, -1]`
+
+---
 
 # Numpy 
 [numpy.ipynb]
