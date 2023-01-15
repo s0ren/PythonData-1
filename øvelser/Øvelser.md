@@ -1,20 +1,26 @@
 
-- <https://perso.limsi.fr/pointal/_media/python:cours:mementopython3-english.pdf>
-
-- <https://websitesetup.org/wp-content/uploads/2020/04/Python-Cheat-Sheet.png>
-
-https://assets.datacamp.com/blog_assets/Numpy_Python_Cheat_Sheet.pdf
-https://github.com/pandas-dev/pandas/blob/main/doc/cheatsheet/Pandas_Cheat_Sheet.pdf
-http://datacamp-community-prod.s3.amazonaws.com/e1a8f39d-71ad-4d13-9a6b-618fe1b8c9e9
+- [Laurent Pointal's fantastisk kompakte cheatsheet](#%20oplæg%20uge.md<https://perso.limsi.fr/pointal/_media/python:cours:mementopython3-english.pdf>)
+- [Verdens længste cheatsheet](<https://websitesetup.org/wp-content/uploads/2020/04/Python-Cheat-Sheet.png>)
+- <https://assets.datacamp.com/blog_assets/Numpy_Python_Cheat_Sheet.pdf>
+- <https://github.com/pandas-dev/pandas/blob/main/doc/cheatsheet/Pandas_Cheat_Sheet.pdf>
+- <http://datacamp-community-prod.s3.amazonaws.com/e1a8f39d-71ad-4d13-9a6b-618fe1b8c9e9>
 
 TOC
 
 - [\[Part 01\]](#part-01)
 - [Basics](#basics)
       - [Øvelse 1 (hej verden)](#øvelse-1-hej-verden)
+      - [Øvelse 2 (kompliment)](#øvelse-2-kompliment)
   - [variabler](#variabler)
+      - [Øvelse 3 (multiplikation)](#øvelse-3-multiplikation)
   - [Datatyper](#datatyper)
   - [Forgreninger](#forgreninger)
+      - [Exercise 4 (multiplication table)](#exercise-4-multiplication-table)
+      - [Exercise 5 (two dice)](#exercise-5-two-dice)
+  - [Functions](#functions)
+      - [Exercise 6 (triple square)](#exercise-6-triple-square)
+        - [Part 1](#part-1)
+        - [Part 2](#part-2)
   - [Datastrukturer](#datastrukturer)
   - [String handling](#string-handling)
   - [Moduler](#moduler)
@@ -45,11 +51,11 @@ TOC
       - [Exercise 10 (subfigures)](#exercise-10-subfigures)
 - [Image processing](#image-processing)
       - [Exercise 11 (to grayscale)](#exercise-11-to-grayscale)
-        - [Part 1.](#part-1)
-        - [Part 2.](#part-2)
+        - [Part 1.](#part-1-1)
+        - [Part 2.](#part-2-1)
       - [Exercise 12 (radial fade)](#exercise-12-radial-fade)
         - [Part1.](#part1)
-        - [Part 2.](#part-2-1)
+        - [Part 2.](#part-2-2)
 - [Pandas](#pandas)
       - [Exercise 13 (read series)](#exercise-13-read-series)
       - [Exercise 14 (operations on series)](#exercise-14-operations-on-series)
@@ -95,7 +101,43 @@ Sørg for at bruge korrekt indrykning. Du kan køre det med kommando `python src
 
 ---
 
+
+#### <div class="alert alert-info">Øvelse 2 (kompliment)</div>
+Udfyld stub-løsningen for at få programmet til at fungere som følger:  
+Programmet skal bede brugeren om et input, og udskrive et svar som eksemplerne herunder viser.
+
+```
+What country are you from? Sweden
+I have heard that Sweden is a beautiful country.
+
+What country are you from? Chile  
+I have heard that Chile is a beautiful country.
+```
+
+
 ## variabler
+
+#### <div class="alert alert-info">Øvelse 3 (multiplikation)</div> 
+
+Lav et program, der giver følgende output.  
+Du skal bruge et for-loop i din løsning.
+
+```python
+4 multiplied by 0 is 0
+4 multiplied by 1 is 4
+4 multiplied by 2 is 8
+4 multiplied by 3 is 12
+4 multiplied by 4 is 16
+4 multiplied by 5 is 20
+4 multiplied by 6 is 24
+4 multiplied by 7 is 28
+4 multiplied by 8 is 32
+4 multiplied by 9 is 36
+4 multiplied by 10 is 40
+```
+
+---
+
 
 ## Datatyper
 
@@ -104,12 +146,79 @@ Sørg for at bruge korrekt indrykning. Du kan køre det med kommando `python src
 * loops, 
 * betingede valg (if/else)
 
+#### <div class="alert alert-info">Exercise 4 (multiplication table)</div>
+
+In the `main` function print a multiplication table, which is shown below:
+```
+   1   2   3   4   5   6   7   8   9  10
+   2   4   6   8  10  12  14  16  18  20
+   3   6   9  12  15  18  21  24  27  30
+   4   8  12  16  20  24  28  32  36  40
+   5  10  15  20  25  30  35  40  45  50
+   6  12  18  24  30  36  42  48  54  60
+   7  14  21  28  35  42  49  56  63  70
+   8  16  24  32  40  48  56  64  72  80
+   9  18  27  36  45  54  63  72  81  90
+  10  20  30  40  50  60  70  80  90 100
+```
+For example at row 4 and column 9 we have 4*9=36.
+
+Use two nested for loops to achive this. Note that you can use the following form to stop the `print` function from automatically starting a new line:
+
+
+```python
+print("text", end="")
+print("more text")
+```
+
+    textmore text
+
+
+Print the numbers in a field with width four, so that the numbers are nicely aligned. For instructions on how adjust the field width refer to [pyformat.info](https://pyformat.info/#number_padding).
+
+---
+
+#### <div class="alert alert-info">Exercise 5 (two dice)</div>
+
+Let us consider throwing two dice. (A dice can give a value between 1 and 6.) Use two nested `for`-loops in the `main` function to iterate through all possible combinations the pair of dice can give. 
+There are 36 possible combinations. 
+Print all those combinations as (ordered) pairs,  that sum to 5. 
+For example, your printout should include the pair `(2,3)`. Print one pair per line.
+
+---
+
+## Functions
+
+#### <div class="alert alert-info">Exercise 6 (triple square)</div>
+
+Write two functions: `triple` and `square`. Function `triple` multiplies its parameter by three. Function `square` raises its parameter to the power of two. For example, we have equalities `triple(5)==15`
+and `square(5)==25`.
+
+##### Part 1
+
+In the `main` function write a `for` loop that iterates through values 1 to 10, and for each value prints its triple and its square. The output should be as follows:
+
+```python
+triple(1)==3 square(1)==1
+triple(2)==6 square(2)==4
+...
+```
+
+##### Part 2
+
+Now modify this `for` loop so that it stops iteration when the square of a value is larger than the
+triple of the value, without printing anything in the last iteration.
+
+Note that the test cases check that both functions `triple` and `square` are called exactly once per iteration.
+
+---
+
 ## Datastrukturer
 
 * Lister
 * Tupler
 * Dictionarys
-* Cemprehensions
+* Comprehensions
 * sequence processing
 
 ## String handling
