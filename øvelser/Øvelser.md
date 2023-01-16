@@ -1,3 +1,6 @@
+# Øvelser
+
+## et par links...
 
 - [Laurent Pointal's fantastisk kompakte cheatsheet](#%20oplæg%20uge.md<https://perso.limsi.fr/pointal/_media/python:cours:mementopython3-english.pdf>)
 - [Verdens længste cheatsheet](<https://websitesetup.org/wp-content/uploads/2020/04/Python-Cheat-Sheet.png>)
@@ -7,6 +10,8 @@
 
 TOC
 
+- [Øvelser](#øvelser)
+  - [et par links...](#et-par-links)
 - [\[Part 01\]](#part-01)
 - [Basics](#basics)
       - [Øvelse 1 (hej verden)](#øvelse-1-hej-verden)

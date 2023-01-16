@@ -1,0 +1,1359 @@
+<!DOCTYPE html><html><head>
+      <title>&#xD8;velser</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\soren\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.6.7\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p,html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  300px/2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="-%C3%B8velser-">&#xD8;velser</h1>
+
+<h2 class="mume-header" id="-et-par-links-">et par links...</h2>
+
+<ul>
+<li><a href="#%20opl%C3%A6g%20uge.md%3Chttps://perso.limsi.fr/pointal/_media/python:cours:mementopython3-english.pdf%3E">Laurent Pointal&apos;s fantastisk kompakte cheatsheet</a></li>
+<li><a href="https://websitesetup.org/wp-content/uploads/2020/04/Python-Cheat-Sheet.png">Verdens l&#xE6;ngste cheatsheet</a></li>
+<li><a href="https://assets.datacamp.com/blog_assets/Numpy_Python_Cheat_Sheet.pdf">https://assets.datacamp.com/blog_assets/Numpy_Python_Cheat_Sheet.pdf</a></li>
+<li><a href="https://github.com/pandas-dev/pandas/blob/main/doc/cheatsheet/Pandas_Cheat_Sheet.pdf">https://github.com/pandas-dev/pandas/blob/main/doc/cheatsheet/Pandas_Cheat_Sheet.pdf</a></li>
+<li><a href="http://datacamp-community-prod.s3.amazonaws.com/e1a8f39d-71ad-4d13-9a6b-618fe1b8c9e9">http://datacamp-community-prod.s3.amazonaws.com/e1a8f39d-71ad-4d13-9a6b-618fe1b8c9e9</a></li>
+</ul>
+<p>TOC</p>
+<ul>
+<li><a href="#%C3%B8velser">&#xD8;velser</a>
+<ul>
+<li><a href="#et-par-links">et par links...</a></li>
+</ul>
+</li>
+<li><a href="#part-01"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mi>a</mi><mi>r</mi><mi>t</mi><mn>01</mn></mrow><annotation encoding="application/x-tex">Part 01</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">t</span><span class="mord">01</span></span></span></span></span></a></li>
+<li><a href="#basics">Basics</a><br>
+- <a href="#%C3%B8velse-1-hej-verden">&#xD8;velse 1 (hej verden)</a><br>
+- <a href="#%C3%B8velse-2-kompliment">&#xD8;velse 2 (kompliment)</a>
+<ul>
+<li><a href="#variabler">variabler</a>
+<ul>
+<li><a href="#%C3%B8velse-3-multiplikation">&#xD8;velse 3 (multiplikation)</a></li>
+</ul>
+</li>
+<li><a href="#datatyper">Datatyper</a></li>
+<li><a href="#forgreninger">Forgreninger</a>
+<ul>
+<li><a href="#exercise-4-multiplication-table">Exercise 4 (multiplication table)</a></li>
+<li><a href="#exercise-5-two-dice">Exercise 5 (two dice)</a></li>
+</ul>
+</li>
+<li><a href="#functions">Functions</a>
+<ul>
+<li><a href="#exercise-6-triple-square">Exercise 6 (triple square)</a>
+<ul>
+<li><a href="#part-1">Part 1</a></li>
+<li><a href="#part-2">Part 2</a></li>
+</ul>
+</li>
+<li><a href="#exercise-7-areas-of-shapes">Exercise 7 (areas of shapes)</a></li>
+</ul>
+</li>
+<li><a href="#datastrukturer">Datastrukturer</a>
+<ul>
+<li><a href="#exercise-8-solve-quadratic">Exercise 8 (solve quadratic)</a></li>
+<li><a href="#exercise-9-merge">Exercise 9 (merge)</a></li>
+<li><a href="#exercise-10-detect-ranges">Exercise 10 (detect ranges)</a></li>
+<li><a href="#exercise-11-interleave">Exercise 11 (interleave)</a></li>
+<li><a href="#exercise-12-distinct-characters">Exercise 12 (distinct characters)</a></li>
+<li><a href="#exercise-13-reverse-dictionary">Exercise 13 (reverse dictionary)</a></li>
+<li><a href="#exercise-14-find-matching">Exercise 14 (find matching)</a></li>
+<li><a href="#exercise-15-two-dice-comprehension">Exercise 15 (two dice comprehension)</a></li>
+<li><a href="#exercise-16-transform">Exercise 16 (transform)</a></li>
+<li><a href="#exercise-17-positive-list">Exercise 17 (positive list)</a></li>
+</ul>
+</li>
+<li><a href="#string-handling">String handling</a>
+<ul>
+<li><a href="#exercise-18-acronyms">Exercise 18 (acronyms)</a></li>
+<li><a href="#exercise-19-sum-equation">Exercise 19 (sum equation)</a></li>
+</ul>
+</li>
+<li><a href="#moduler">Moduler</a>
+<ul>
+<li><a href="#exercise-20-usemodule">Exercise 20 (usemodule)</a></li>
+</ul>
+</li>
+<li><a href="#regex">RegEx</a></li>
+</ul>
+</li>
+<li><a href="#part02"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mi>a</mi><mi>r</mi><mi>t</mi><mn>02</mn></mrow><annotation encoding="application/x-tex">Part02</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">t</span><span class="mord">02</span></span></span></span></span></a><br>
+- <a href="#exercise-21-integers-in-brackets">Exercise 21 (integers in brackets)</a><br>
+- <a href="#exercise-22-file-listing">Exercise 22 (file listing)</a><br>
+- <a href="#exercise-23-red-green-blue">Exercise 23 (red green blue)</a><br>
+- <a href="#exercise-24-word-frequencies">Exercise 24 (word frequencies)</a><br>
+- <a href="#exercise-25-summary">Exercise 25 (summary)</a><br>
+- <a href="#exercise-26-file-count">Exercise 26 (file count)</a><br>
+- <a href="#exercise-27-file-extensions">Exercise 27 (file extensions)</a>
+<ul>
+<li><a href="#l%C3%A6s-og-skriv-i-filer">L&#xE6;s (og skriv, i) filer</a></li>
+<li><a href="#regex-1">RegEx</a></li>
+<li><a href="#objekter">Objekter</a>
+<ul>
+<li><a href="#exercise-28-prepend">Exercise 28 (prepend)</a></li>
+<li><a href="#exercise-29-rational">Exercise 29 (rational)</a></li>
+</ul>
+</li>
+<li><a href="#undtagelser-exceptions">Undtagelser (Exceptions)</a>
+<ul>
+<li><a href="#exercise-30-extract-numbers">Exercise 30 (extract numbers)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#numpy">Numpy</a><br>
+- <a href="#exercise-31-rows-and-columns">Exercise 31 (rows and columns)</a><br>
+- <a href="#exercise-32-row-and-column-vectors">Exercise 32 (row and column vectors)</a><br>
+- <a href="#exercise-33-diamond">Exercise 33 (diamond)</a><br>
+- <a href="#exercise-34-vector-lengths">Exercise 34 (vector lengths)</a><br>
+- <a href="#exercise-35-vector-angles">Exercise 35 (vector angles)</a>
+<ul>
+<li><a href="#test-your-solution-in-the-main-program">Test your solution in the main program.</a></li>
+</ul>
+</li>
+<li><a href="#part03"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mi>a</mi><mi>r</mi><mi>t</mi><mn>03</mn></mrow><annotation encoding="application/x-tex">Part03</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">t</span><span class="mord">03</span></span></span></span></span></a></li>
+<li><a href="#numpy-continues-numpy2ipynb">NumPy (continues) <span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi mathvariant="normal">&#x2018;</mi><mi>n</mi><mi>u</mi><mi>m</mi><mi>p</mi><mi>y</mi><mn>2.</mn><mi>i</mi><mi>p</mi><mi>y</mi><mi>n</mi><mi>b</mi><mi mathvariant="normal">&#x2018;</mi></mrow><annotation encoding="application/x-tex">`numpy2.ipynb`</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord">&#x2018;</span><span class="mord mathnormal">n</span><span class="mord mathnormal">u</span><span class="mord mathnormal">m</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord">2.</span><span class="mord mathnormal">i</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mord mathnormal">nb</span><span class="mord">&#x2018;</span></span></span></span></span></a><br>
+- <a href="#exercise-37-column-comparison">Exercise 37 (column comparison)</a><br>
+- <a href="#exercise-38-first-half-second-half">Exercise 38 (first half second half)</a><br>
+- <a href="#exercise-39-most-frequent-first">Exercise 39 (most frequent first)</a><br>
+- <a href="#exercise-40-matrix-power">Exercise 40 (matrix power)</a><br>
+- <a href="#exercise-41-correlation">Exercise 41 (correlation)</a><br>
+- <a href="#exercise-42-meeting-lines">Exercise 42 (meeting lines)</a><br>
+- <a href="#exercise-43-meeting-planes">Exercise 43 (meeting planes)</a><br>
+- <a href="#exercise-44-almost-meeting-lines">Exercise 44 (almost meeting lines)</a></li>
+<li><a href="#matplotlib">MatPlotLib</a><br>
+- <a href="#exercise-45-multiple-graphs">Exercise 45 (multiple graphs)</a><br>
+- <a href="#exercise-46-subfigures">Exercise 46 (subfigures)</a></li>
+<li><a href="#image-processing">Image processing</a><br>
+- <a href="#exercise-47-to-grayscale">Exercise 47 (to grayscale)</a><br>
+- <a href="#part-1-1">Part 1.</a><br>
+- <a href="#part-2-1">Part 2.</a><br>
+- <a href="#exercise-48-radial-fade">Exercise 48 (radial fade)</a><br>
+- <a href="#part1">Part1.</a><br>
+- <a href="#part-2-2">Part 2.</a></li>
+<li><a href="#pandas">Pandas</a><br>
+- <a href="#exercise-49-read-series">Exercise 49 (read series)</a><br>
+- <a href="#exercise-50-operations-on-series">Exercise 50 (operations on series)</a><br>
+- <a href="#exercise-51-inverse-series">Exercise 51 (inverse series)</a>
+<ul>
+<li><a href="#what-happens-if-some-value-appears-multiple-times-in-the-original-series-what-happens-if-you-use-this-value-to-index-the-resulting-series">What happens if some value appears multiple times in the original Series? What happens if you use this value to index the resulting Series?</a></li>
+</ul>
+</li>
+<li><a href="#-part-3-"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>P</mi><mi>A</mi><mi>R</mi><mi>T</mi><mn>3</mn></mrow><annotation encoding="application/x-tex">PART 3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.13889em;">RT</span><span class="mord">3</span></span></span></span></span></a><br>
+- <a href="#exercise-52-cities">Exercise 52 (cities)</a><br>
+- <a href="#exercise-53-powers-of-series">Exercise 53 (powers of series)</a><br>
+- <a href="#exercise-54-municipal-information">Exercise 54 (municipal information)</a>
+<ul>
+<li><a href="#note-sometimes-file-ending-tsv-tab-separated-values-is-used-instead-of-csv-if-the-separator-is-a-tab">Note, sometimes file ending <code>tsv</code> (tab separated values) is used instead of <code>csv</code> if the separator is a tab.</a>
+<ul>
+<li><a href="#exercise-55-municipalities-of-finland">Exercise 55 (municipalities of finland)</a></li>
+</ul>
+</li>
+<li><a href="#test-your-function-from-the-main-function">Test your function from the <code>main</code> function.</a>
+<ul>
+<li><a href="#exercise-56-swedish-and-foreigners">Exercise 56 (swedish and foreigners)</a></li>
+<li><a href="#exercise-57-growing-municipalities">Exercise 57 (growing municipalities)</a></li>
+<li><a href="#exercise-58-subsetting-with-loc">Exercise 58 (subsetting with loc)</a></li>
+<li><a href="#exercise-59-subsetting-by-positions">Exercise 59 (subsetting by positions)</a></li>
+<li><a href="#exercise-60-snow-depth">Exercise 60 (snow depth)</a></li>
+<li><a href="#exercise-61-average-temperature">Exercise 61 (average temperature)</a></li>
+<li><a href="#exercise-62-below-zero">Exercise 62 (below zero)</a></li>
+<li><a href="#exercise-63-cyclists">Exercise 63 (cyclists)</a></li>
+<li><a href="#exercise-64-missing-value-types">Exercise 64 (missing value types)</a></li>
+<li><a href="#exercise-65-special-missing-values">Exercise 65 (special missing values)</a></li>
+<li><a href="#exercise-66-last-week">Exercise 66 (last week)</a></li>
+<li><a href="#exercise-67-split-date">Exercise 67 (split date)</a></li>
+</ul>
+</li>
+<li><a href="#wed-1-1-2014-0--test-your-solution-from-the-main-function"><code>Wed 1 1 2014 0</code> . Test your solution from the <code>main</code> function.</a>
+<ul>
+<li><a href="#exercise-68-cleaning-data">Exercise 68 (cleaning data)</a></li>
+<li><a href="#exercise-69-cycling-weather">Exercise 69 (cycling weather)</a></li>
+<li><a href="#exercise-70-top-bands">Exercise 70 (top bands)</a></li>
+<li><a href="#exercise-71-cyclists-per-day">Exercise 71 (cyclists per day)</a></li>
+<li><a href="#exercise-72-best-record-company">Exercise 72 (best record company)</a></li>
+<li><a href="#exercise-73-suicide-fractions">Exercise 73 (suicide fractions)</a></li>
+<li><a href="#exercise-74-suicide-weather">Exercise 74 (suicide weather)</a></li>
+<li><a href="#exercise-75-bicycle-timeseries">Exercise 75 (bicycle timeseries)</a></li>
+<li><a href="#exercise-76-commute">Exercise 76 (commute)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 class="mume-header" id="-part-01-">[Part 01]</h1>
+
+<h1 class="mume-header" id="-basics-">Basics</h1>
+
+<h4 class="mume-header" id="-%C3%B8velse-1-hej-verden-">&#xD8;velse 1 (hej verden)</h4>
+
+<p>&#xD8;velsen har en skabelon-fil eller en &quot;stub&quot;. Den ligger i mappen <code>exercises/part01/e01_hello_world</code><br>
+Udfyld det manglende stykke i l&#xF8;snings-stub-filen <code>hello_world.py</code> i undermappen <code>src</code> og f&#xE5; den til at udskrive f&#xF8;lgende:</p>
+<p><code>Hello, world!</code></p>
+<p>S&#xF8;rg for at bruge korrekt indrykning. Du kan k&#xF8;re det med kommando <code>python src/hello_world.py</code>. Hvis output ser godt ud, kan du teste det med kommando <code>python -m tmc</code>. <s>Hvis testene virker, skal du indsende din l&#xF8;sning til serveren med kommando  <code>tmc submit</code></s>.</p>
+<hr>
+<h4 class="mume-header" id="-%C3%B8velse-2-kompliment-">&#xD8;velse 2 (kompliment)</h4>
+
+<p>Udfyld stub-l&#xF8;sningen for at f&#xE5; programmet til at fungere som f&#xF8;lger:<br>
+Programmet skal bede brugeren om et input, og udskrive et svar som eksemplerne herunder viser.</p>
+<pre data-role="codeBlock" data-info class="language-"><code>What country are you from? Sweden
+I have heard that Sweden is a beautiful country.
+
+What country are you from? Chile  
+I have heard that Chile is a beautiful country.
+</code></pre><h2 class="mume-header" id="-variabler-">variabler</h2>
+
+<h4 class="mume-header" id="-%C3%B8velse-3-multiplikation--">&#xD8;velse 3 (multiplikation)</h4>
+
+<p>Lav et program, der giver f&#xF8;lgende output.<br>
+Du skal bruge et for-loop i din l&#xF8;sning.</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token number">4</span> multiplied by <span class="token number">0</span> <span class="token keyword keyword-is">is</span> <span class="token number">0</span>
+<span class="token number">4</span> multiplied by <span class="token number">1</span> <span class="token keyword keyword-is">is</span> <span class="token number">4</span>
+<span class="token number">4</span> multiplied by <span class="token number">2</span> <span class="token keyword keyword-is">is</span> <span class="token number">8</span>
+<span class="token number">4</span> multiplied by <span class="token number">3</span> <span class="token keyword keyword-is">is</span> <span class="token number">12</span>
+<span class="token number">4</span> multiplied by <span class="token number">4</span> <span class="token keyword keyword-is">is</span> <span class="token number">16</span>
+<span class="token number">4</span> multiplied by <span class="token number">5</span> <span class="token keyword keyword-is">is</span> <span class="token number">20</span>
+<span class="token number">4</span> multiplied by <span class="token number">6</span> <span class="token keyword keyword-is">is</span> <span class="token number">24</span>
+<span class="token number">4</span> multiplied by <span class="token number">7</span> <span class="token keyword keyword-is">is</span> <span class="token number">28</span>
+<span class="token number">4</span> multiplied by <span class="token number">8</span> <span class="token keyword keyword-is">is</span> <span class="token number">32</span>
+<span class="token number">4</span> multiplied by <span class="token number">9</span> <span class="token keyword keyword-is">is</span> <span class="token number">36</span>
+<span class="token number">4</span> multiplied by <span class="token number">10</span> <span class="token keyword keyword-is">is</span> <span class="token number">40</span>
+</pre><hr>
+<h2 class="mume-header" id="-datatyper-">Datatyper</h2>
+
+<h2 class="mume-header" id="-forgreninger--">Forgreninger</h2>
+
+<ul>
+<li>loops,</li>
+<li>betingede valg (if/else)</li>
+</ul>
+<h4 class="mume-header" id="-exercise-4-multiplication-table-">Exercise 4 (multiplication table)</h4>
+
+<p>In the <code>main</code> function print a multiplication table, which is shown below:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>   1   2   3   4   5   6   7   8   9  10
+   2   4   6   8  10  12  14  16  18  20
+   3   6   9  12  15  18  21  24  27  30
+   4   8  12  16  20  24  28  32  36  40
+   5  10  15  20  25  30  35  40  45  50
+   6  12  18  24  30  36  42  48  54  60
+   7  14  21  28  35  42  49  56  63  70
+   8  16  24  32  40  48  56  64  72  80
+   9  18  27  36  45  54  63  72  81  90
+  10  20  30  40  50  60  70  80  90 100
+</code></pre><p>For example at row 4 and column 9 we have 4*9=36.</p>
+<p>Use two nested for loops to achive this. Note that you can use the following form to stop the <code>print</code> function from automatically starting a new line:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">&quot;text&quot;</span><span class="token punctuation">,</span> end<span class="token operator">=</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">&quot;more text&quot;</span><span class="token punctuation">)</span>
+</pre><pre class="language-text">textmore text
+</pre>
+<p>Print the numbers in a field with width four, so that the numbers are nicely aligned. For instructions on how adjust the field width refer to <a href="https://pyformat.info/#number_padding">pyformat.info</a>.</p>
+<hr>
+<h4 class="mume-header" id="-exercise-5-two-dice-">Exercise 5 (two dice)</h4>
+
+<p>Let us consider throwing two dice. (A dice can give a value between 1 and 6.) Use two nested <code>for</code>-loops in the <code>main</code> function to iterate through all possible combinations the pair of dice can give.<br>
+There are 36 possible combinations.<br>
+Print all those combinations as (ordered) pairs,  that sum to 5.<br>
+For example, your printout should include the pair <code>(2,3)</code>. Print one pair per line.</p>
+<hr>
+<h2 class="mume-header" id="-functions-">Functions</h2>
+
+<h4 class="mume-header" id="-exercise-6-triple-square-">Exercise 6 (triple square)</h4>
+
+<p>Write two functions: <code>triple</code> and <code>square</code>. Function <code>triple</code> multiplies its parameter by three. Function <code>square</code> raises its parameter to the power of two. For example, we have equalities <code>triple(5)==15</code><br>
+and <code>square(5)==25</code>.</p>
+<h5 class="mume-header" id="-part-1-">Part 1</h5>
+
+<p>In the <code>main</code> function write a <code>for</code> loop that iterates through values 1 to 10, and for each value prints its triple and its square. The output should be as follows:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">triple<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">3</span> square<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">1</span>
+triple<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">6</span> square<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">4</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</pre><h5 class="mume-header" id="-part-2-">Part 2</h5>
+
+<p>Now modify this <code>for</code> loop so that it stops iteration when the square of a value is larger than the<br>
+triple of the value, without printing anything in the last iteration.</p>
+<p>Note that the test cases check that both functions <code>triple</code> and <code>square</code> are called exactly once per iteration.</p>
+<hr>
+<h4 class="mume-header" id="-exercise-7-areas-of-shapes-">Exercise 7 (areas of shapes)</h4>
+
+<p>Create a program that can compute the areas of three shapes, triangles, rectangles and circles, when their dimensions are given.</p>
+<p>An endless loop should ask for which shape you want the area be calculated. n empty string as input will exit the loop.<br>
+If the user gives a string that is none of the given shapes, the message &#x201C;unknown shape!&#x201D; should be printed.<br>
+Then it will ask for dimensions for that particular shape. When all the necessary dimensions are given, it prints the area, and starts the loop all over again. Use format specifier <code>f</code> for the area.</p>
+<p>What happens if you give incorrect dimensions, like giving string &quot;aa&quot; as radius? You don&apos;t have to check for errors in the input.</p>
+<p>Example interaction:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">Choose a shape <span class="token punctuation">(</span>triangle<span class="token punctuation">,</span> rectangle<span class="token punctuation">,</span> circle<span class="token punctuation">)</span><span class="token punctuation">:</span> triangle
+Give base of the triangle<span class="token punctuation">:</span> <span class="token number">20</span>
+Give height of the triangle<span class="token punctuation">:</span> <span class="token number">5</span>
+The area <span class="token keyword keyword-is">is</span> <span class="token number">50.000000</span>
+Choose a shape <span class="token punctuation">(</span>triangle<span class="token punctuation">,</span> rectangle<span class="token punctuation">,</span> circle<span class="token punctuation">)</span><span class="token punctuation">:</span> rectangel
+Unknown shape!
+Choose a shape <span class="token punctuation">(</span>triangle<span class="token punctuation">,</span> rectangle<span class="token punctuation">,</span> circle<span class="token punctuation">)</span><span class="token punctuation">:</span> rectangle
+Give width of the rectangle<span class="token punctuation">:</span> <span class="token number">20</span>
+Give height of the rectangle<span class="token punctuation">:</span> <span class="token number">4</span>
+The area <span class="token keyword keyword-is">is</span> <span class="token number">80.000000</span>
+Choose a shape <span class="token punctuation">(</span>triangle<span class="token punctuation">,</span> rectangle<span class="token punctuation">,</span> circle<span class="token punctuation">)</span><span class="token punctuation">:</span> circle
+Give radius of the circle<span class="token punctuation">:</span> <span class="token number">10</span>
+The area <span class="token keyword keyword-is">is</span> <span class="token number">314.159265</span>
+Choose a shape <span class="token punctuation">(</span>triangle<span class="token punctuation">,</span> rectangle<span class="token punctuation">,</span> circle<span class="token punctuation">)</span><span class="token punctuation">:</span> 
+</pre><hr>
+<h2 class="mume-header" id="-datastrukturer-">Datastrukturer</h2>
+
+<ul>
+<li>Lister</li>
+<li>Tupler</li>
+</ul>
+<h4 class="mume-header" id="-exercise-8-solve-quadratic-">Exercise 8 (solve quadratic)</h4>
+
+<p>In mathematics, the quadratic equation <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>c</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">ax^2+bx+c=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">a</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span> can be solved with the formula</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>x</mi><mo>=</mo><mfrac><mrow><mo>&#x2212;</mo><mi>b</mi><mo>&#xB1;</mo><msqrt><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>&#x2212;</mo><mn>4</mn><mi>a</mi><mi>c</mi></mrow></msqrt></mrow><mrow><mn>2</mn><mi>a</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">x=\frac{-b\pm \sqrt{b^2 -4ac}}{2a}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.2764em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5904em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathnormal">a</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">&#x2212;</span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xB1;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9134em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">4</span><span class="mord mathnormal">a</span><span class="mord mathnormal">c</span></span></span><span style="top:-2.8734em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.1266em;"><span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>In code it might be usefull to declare a variable for a part of the formula, named <code>d</code>, defined by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>&#x2212;</mo><mn>4</mn><mi>a</mi><mi>c</mi></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{b^2 -4ac}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.1266em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9134em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2212;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">4</span><span class="mord mathnormal">a</span><span class="mord mathnormal">c</span></span></span><span style="top:-2.8734em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.1266em;"><span></span></span></span></span></span></span></span></span>. the formula then can be written as:</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>x</mi><mo>=</mo><mfrac><mrow><mo>&#x2212;</mo><mi>b</mi><mo>&#xB1;</mo><mi>d</mi></mrow><mrow><mn>2</mn><mi>a</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">x=\frac{-b\pm d}{2a}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.0574em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span><span class="mord mathnormal">a</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">&#x2212;</span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#xB1;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">d</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<p>We need both the positive and the negative version og the square root, becaurce all squareroots have to solutions, since both <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>2</mn></msup><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">2^2 = 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mo>&#x2212;</mo><mn>2</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">(-2)^2 = 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">&#x2212;</span><span class="mord">2</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span></span></span></span> thus <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mn>4</mn></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{4}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.04em;vertical-align:-0.1328em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9072em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord">4</span></span></span><span style="top:-2.8672em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.08em" viewBox="0 0 400000 1080" preserveAspectRatio="xMinYMin slice"><path d="M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.1328em;"><span></span></span></span></span></span></span></span></span> has both <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">2</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2212;</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">-2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em;"></span><span class="mord">&#x2212;</span><span class="mord">2</span></span></span></span> as solutions.</p>
+<p>Remember the order of precedence are important, especially when you implement mathematical expressions.</p>
+<p>Write a function <code>solve_quadratic</code>, that returns both solutions of a generic quadratic as a pair (2-tuple) when the coefficients are given as parameters. It should work like this:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>solve_quadratic<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token number">2.0</span><span class="token punctuation">,</span><span class="token number">1.0</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>solve_quadratic<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1.0</span><span class="token punctuation">)</span>
+</pre><p>You may want to use the <code>math.sqrt</code> function from the <code>math</code> module in your solution. Test that your function works in the main function!</p>
+<hr>
+<h4 class="mume-header" id="-exercise-9-merge-">Exercise 9 (merge)</h4>
+
+<p>Suppose we have two lists <code>L1</code> and <code>L2</code> that contain integers which are sorted in ascending order.<br>
+Create a function <code>merge</code> that gets these lists as parameters and returns a new sorted list <code>L</code> that has all the elements of <code>L1</code> and <code>L2</code>. So, <code>len(L)</code> should equal to <code>len(L1)+len(L2)</code>.<br>
+Do this using the fact that both lists are already sorted. You can&#x2019;t use the <code>sorted</code> function or the <code>sort</code> method in implementing the <code>merge</code> method. You can however use these <code>sorted</code> in the main function for creating inputs to the <code>merge</code> function.</p>
+<p>Test with a couple of examples in the <code>main</code> function that your solution works correctly.</p>
+<p>Note: <strong>In Python argument lists are passed by reference to the function, they are not copied! Make sure you don&apos;t modify the original lists of the caller.</strong></p>
+<hr>
+<h4 class="mume-header" id="-exercise-10-detect-ranges-">Exercise 10 (detect ranges)</h4>
+
+<p>Create a function named <code>detect_ranges</code> that gets a list of integers as a parameter.</p>
+<p>The function should then</p>
+<ul>
+<li>sort this list, and</li>
+<li>transform the list into another list where pairs are used for all the detected intervals. So <code>3,4,5,6</code> is replaced by the pair <code>(3,7)</code>.</li>
+<li>Numbers that are not part of any interval result just single numbers.</li>
+</ul>
+<p>The resulting list consists of these numbers and pairs, separated by commas.</p>
+<p>An example of how this function works:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>detect_ranges<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">13</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">,</span><span class="token number">14</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+</pre><p>Note that the second element of the pair does not belong to the range. <strong>This is consistent with the way Python&apos;s <code>range</code> function works.</strong> You may assume that no element in the input list appears multiple times.</p>
+<hr>
+<h4 class="mume-header" id="-exercise-11-interleave-">Exercise 11 (interleave)</h4>
+
+<p>Write function <code>interleave</code> that gets arbitrary number of lists as parameters. You may assume that all the lists have equal length. The function should return one list containing all the elements from the input lists interleaved.<br>
+Test your function from the <code>main</code> function of the program.</p>
+<p>Example:<br>
+<code>interleave([1,2,3], [20,30,40], [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;])</code><br>
+should return<br>
+<code>[1, 20, &apos;a&apos;, 2, 30, &apos;b&apos;, 3, 40, &apos;c&apos;]</code>.<br>
+Use the <code>zip</code> function to implement <code>interleave</code>. Remember the <code>extend</code> method of list objects.</p>
+<hr>
+<ul>
+<li>Sets</li>
+</ul>
+<h4 class="mume-header" id="-exercise-12-distinct-characters-">Exercise 12 (distinct characters)</h4>
+
+<p>Write function <code>distinct_characters</code> that gets a list of strings as a parameter. It should return a dictionary whose keys are the strings of the input list and the corresponding values are the numbers of distinct characters in the key.</p>
+<p>Use the <code>set</code> container to temporarily store the distinct characters in a string.</p>
+<p>Example of usage:<br>
+<code>distinct_characters([&quot;check&quot;, &quot;look&quot;, &quot;try&quot;, &quot;pop&quot;])</code><br>
+should return<br>
+<code>{ &quot;check&quot; : 4, &quot;look&quot; : 3, &quot;try&quot; : 3, &quot;pop&quot; : 2}</code>.</p>
+<hr>
+<ul>
+<li>Dictionarys</li>
+</ul>
+<h4 class="mume-header" id="-exercise-13-reverse-dictionary-">Exercise 13 (reverse dictionary)</h4>
+
+<p>Let <code>d</code> be a dictionary that has English words as keys and a list of Finnish words as values. So, the<br>
+dictionary can be used to find out the Finnish equivalents of an English word in the following way:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">d<span class="token punctuation">[</span><span class="token string">&quot;move&quot;</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token string">&quot;liikuttaa&quot;</span><span class="token punctuation">]</span>
+d<span class="token punctuation">[</span><span class="token string">&quot;hide&quot;</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span><span class="token string">&quot;piilottaa&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;salata&quot;</span><span class="token punctuation">]</span>
+</pre><p>Make a function <code>reverse_dictionary</code> that creates a Finnish to English dictionary based on a English to Finnish dictionary given as a parameter. The values of the created dictionary should be lists of words. It should work like this:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">d<span class="token operator">=</span><span class="token punctuation">{</span><span class="token string">&apos;move&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;liikuttaa&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">&apos;hide&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;piilottaa&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;salata&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">&apos;six&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;kuusi&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">&apos;fir&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;kuusi&apos;</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+reverse_dictionary<span class="token punctuation">(</span>d<span class="token punctuation">)</span>
+<span class="token punctuation">{</span><span class="token string">&apos;liikuttaa&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;move&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">&apos;piilottaa&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;hide&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">&apos;salata&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;hide&apos;</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">&apos;kuusi&apos;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&apos;six&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;fir&apos;</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+</pre><p>Be careful with synonyms and homonyms!</p>
+<hr>
+<h4 class="mume-header" id="-exercise-14-find-matching-">Exercise 14 (find matching)</h4>
+
+<p>Write function <code>find_matching</code> that gets a list of strings and a search string as parameters. The function should return the indices to those elements in the input list that contain the search string. Use the function <code>enumerate</code>.</p>
+<p>An example:<br>
+<code>find_matching([&quot;sensitive&quot;, &quot;engine&quot;, &quot;rubbish&quot;, &quot;comment&quot;], &quot;en&quot;)</code><br>
+should return the list<br>
+<code>[0, 1, 3]</code>.</p>
+<hr>
+<ul>
+<li>Comprehensions</li>
+</ul>
+<h4 class="mume-header" id="-exercise-15-two-dice-comprehension-">Exercise 15 (two dice comprehension)</h4>
+
+<p>Redo the earlier exercise which printed all the pairs of two dice results that sum to 5. But this time use a list comprehension. Print one pair per line.</p>
+<hr>
+<h4 class="mume-header" id="-exercise-16-transform-">Exercise 16 (transform)</h4>
+
+<p>Write a function <code>transform</code> that gets two strings as parameters and returns a list of integers.<br>
+The function should</p>
+<ul>
+<li>split the strings into words, and</li>
+<li>convert these words to integers.</li>
+</ul>
+<p>This should give two lists of integers. Then the function should</p>
+<ul>
+<li>return a list whose elements are multiplication of two integers in the respective positions in the lists.</li>
+</ul>
+<p>For example<br>
+<code>transform(&quot;1 5 3&quot;, &quot;2 6 -1&quot;)</code><br>
+should return the list of integers<br>
+<code>[2, 30, -3]</code>.</p>
+<p>You <strong>have</strong> to use <code>split</code>, <code>map</code>, and <code>zip</code> functions/methods. You may assume that the two input strings are in correct format.</p>
+<hr>
+<h4 class="mume-header" id="-exercise-17-positive-list-">Exercise 17 (positive list)</h4>
+
+<p>Write a function <code>positive_list</code> that gets a list of numbers as a parameter, and returns a list with the negative numbers and zero filtered out using the <code>filter</code> function.</p>
+<p>The function call <code>positive_list([2,-2,0,1,-7])</code> should return the list <code>[2,1]</code>. Test your function in the <code>main</code> function.</p>
+<hr>
+<ul>
+<li>sequence processing</li>
+</ul>
+<h2 class="mume-header" id="-string-handling-">String handling</h2>
+
+<h4 class="mume-header" id="-exercise-18-acronyms-">Exercise 18 (acronyms)</h4>
+
+<p>Write function <code>acronyms</code> which takes a string as a parameter and returns a list of acronyms. A word is an acronym if it has length at least two, and all its characters are in uppercase. Before acronym detection, delete punctuation with the <code>strip</code> method.</p>
+<p>Test this function in the <code>main</code> function with the following call:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>acronyms<span class="token punctuation">(</span><span class="token triple-quoted-string string">&quot;&quot;&quot;For the purposes of the EU General Data Protection Regulation (GDPR), the controller of your personal information is International Business Machines Corporation (IBM Corp.), 1 New Orchard Road, Armonk, New York, United States, unless indicated otherwise. Where IBM Corp. or a subsidiary it controls (not established in the European Economic Area (EEA)) is required to appoint a legal representative in the EEA, the representative for all such cases is IBM United Kingdom Limited, PO Box 41, North Harbour, Portsmouth, Hampshire, United Kingdom PO6 3AU.&quot;&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</pre><p>This should return<br>
+<code>[&apos;EU&apos;, &apos;GDPR&apos;, &apos;IBM&apos;, &apos;IBM&apos;, &apos;EEA&apos;, &apos;EEA&apos;, &apos;IBM&apos;, &apos;PO&apos;, &apos;PO6&apos;, &apos;3AU&apos;]</code></p>
+<hr>
+<h4>Exercise 19 (sum equation)</h4>
+<p>Write a function <code>sum_equation</code> which takes a list of positive integers as parameters and returns a string with an equation of the sum of the elements.</p>
+<p>Example:<br>
+<code>sum_equation([1,5,7])</code><br>
+returns<br>
+<code>&quot;1 + 5 + 7 = 13&quot;</code><br>
+Observe, the spaces should be exactly as shown above. For an empty list the function should return the string &quot;0 = 0&quot;.</p>
+<hr>
+<h2>Moduler</h2>
+<h4>Exercise 20 (usemodule)</h4>
+<p>Create your own module as file <code>triangle.py</code> in the <code>src</code> folder. The module should contain two functions:</p>
+<ul>
+<li><code>hypothenuse</code> which returns the length of the hypothenuse when given the lengths of two other sides of a right-angled triangle</li>
+<li><code>area</code> which returns the area of the right-angled triangle, when two sides, perpendicular to each other, are given as parameters.</li>
+</ul>
+<p>Make sure both the functions and the module have descriptive docstrings. Add also the <code>__version__</code> and <code>__author__</code> attributes to the module. Call both your functions from the main function (which is in file <code>usemodule.py</code>).</p>
+<hr>
+<h2>RegEx</h2>
+<h1>[Part02]</h1>
+<h4>Exercise 21 (integers in brackets)</h4>
+<p>Write function <code>integers_in_brackets</code> that finds from a given string all integers that are enclosed in brackets.</p>
+<p>Example run:<br>
+<code>integers_in_brackets(&quot; afd [asd] [12 ] [a34] [ -43 ]tt [+12]xxx&quot;)</code><br>
+returns<br>
+<code>[12, -43, 12]</code>.<br>
+So there can be whitespace between the number and the brackets, but no other character besides those that make up the integer.</p>
+<p>Test your function from the <code>main</code> function.</p>
+<hr>
+<h4>Exercise 22 (file listing)</h4>
+<p>The file <code>src/listing.txt</code> contains a list of files with one line per file. Each line contains seven fields: access rights, number of references, owner&apos;s name, name of owning group, file size, date, filename. These fields are separated with one or more spaces. Note that there may be spaces also within these seven fields.</p>
+<p>Write function <code>file_listing</code> that loads the file <code>src/listing.txt</code>. It should return a list of tuples (size, month, day, hour, minute, filename). Use regular expressions to do this (either <code>match</code>, <code>search</code>, <code>findall</code>, or <code>finditer</code> method).</p>
+<p>An example: for line</p>
+<pre data-role="codeBlock" data-info class="language-"><code>-rw-r--r-- 1 jttoivon hyad-all   25399 Nov  2 21:25 exception_hierarchy.pdf
+</code></pre><p>the function should create the tuple <code>(25399, &quot;Nov&quot;, 2, 21, 25, &quot;exception_hierarchy.pdf&quot;)</code>.</p>
+<hr>
+<h4>Exercise 23 (red green blue)</h4>
+<p>The file <code>src/rgb.txt</code> contains names of colors and their numerical representations in RGB format. The RBG format allows a color to be represented as a mixture of red, green, and blue components. Each component can have an integer value in the range [0,255]. Each line in the file contains four fields: red, green, blue, and colorname.<br>
+Each field is separated by some amount of whitespace (tab or space in this case).<br>
+The text file is formatted to make it print nicely, but that makes it harder to process by a computer. Note that some color names can also contain a space character.</p>
+<p>Write function <code>red_green_blue</code> that reads the file <code>rgb.txt</code> from the folder <code>src</code>.  Remove the irrelevant first line of the file. The function should return a list of strings. Clean-up the file so that the strings in the returned list have four fields separated by a single tab character (<code>\t</code>). Use regular expressions to do this.</p>
+<p>The first string in the returned list should be:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>&apos;255\t250\t250\tsnow&apos;
+</code></pre><hr>
+<h4>Exercise 24 (word frequencies)</h4>
+<p>Create function <code>word_frequencies</code> that gets a filename as a parameter and returns a dict with the word frequencies. In the dictionary the keys are the words and the corresponding values are the number of times that word occurred in the file specified by the function parameter. Read all the lines from the file and split the lines into words using the <code>split()</code> method. Further, remove punctuation from the ends of words using the <code>strip(&quot;&quot;&quot;!&quot;#$%&amp;&apos;()*,-./:;?@[]_&quot;&quot;&quot;)</code> method call.</p>
+<p>Test this function in the main function using the file <code>alice.txt</code>. In the output, there should be a word and its count per line separated by a tab:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>The     64
+Project 83
+Gutenberg	26
+EBook   3
+of      303
+</code></pre><hr>
+<h4>Exercise 25 (summary)</h4>
+<p>This exercise can give two points at maximum!</p>
+<p>Part 1.</p>
+<p>Create a function called <code>summary</code> that gets a filename as a parameter. The input<br>
+file should contain a floating point number on each line of the file. Make your function read these<br>
+numbers and then return a triple containing the sum, average, and standard deviation of these numbers for the file.<br>
+As a reminder, the formula for corrected sample standard deviation is<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mfrac><mrow><msubsup><mo>&#x2211;</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>&#x2212;</mo><mover accent="true"><mi>x</mi><mo stretchy="true">&#x203E;</mo></mover><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><mrow><mi>n</mi><mo>&#x2212;</mo><mn>1</mn></mrow></mfrac></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{\frac{\sum_{i=1}^n (x_i - \overline x)^2}{n-1}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.84em;vertical-align:-0.5267em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3133em;"><span class="svg-align" style="top:-3.8em;"><span class="pstrut" style="height:3.8em;"></span><span class="mord" style="padding-left:1em;"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.06em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">&#x2212;</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.535em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span class="mop op-symbol small-op mtight" style="position:relative;top:0em;">&#x2211;</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7047em;"><span style="top:-2.1786em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-2.8971em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.3214em;"><span></span></span></span></span></span></span><span class="mopen mtight">(</span><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span><span class="mbin mtight">&#x2212;</span><span class="mord overline mtight"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6756em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mtight"><span class="mord mathnormal mtight">x</span></span></span><span style="top:-3.5776em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line mtight" style="border-bottom-width:0.049em;"></span></span></span></span></span></span><span class="mclose mtight"><span class="mclose mtight">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7463em;"><span style="top:-2.786em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.4033em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span><span style="top:-3.2733em;"><span class="pstrut" style="height:3.8em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.88em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.88em" viewBox="0 0 400000 1944" preserveAspectRatio="xMinYMin slice"><path d="M983 90
+l0 -0
+c4,-6.7,10,-10,18,-10 H400000v40
+H1013.1s-83.4,268,-264.1,840c-180.7,572,-277,876.3,-289,913c-4.7,4.7,-12.7,7,-24,7
+s-12,0,-12,0c-1.3,-3.3,-3.7,-11.7,-7,-25c-35.3,-125.3,-106.7,-373.3,-214,-744
+c-10,12,-21,25,-33,39s-32,39,-32,39c-6,-5.3,-15,-14,-27,-26s25,-30,25,-30
+c26.7,-32.7,52,-63,76,-91s52,-60,52,-60s208,722,208,722
+c56,-175.3,126.3,-397.3,211,-666c84.7,-268.7,153.8,-488.2,207.5,-658.5
+c53.7,-170.3,84.5,-266.8,92.5,-289.5z
+M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.5267em;"><span></span></span></span></span></span></span></span></span>, where <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">&#x203E;</mo></mover></mrow><annotation encoding="application/x-tex">\overline x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6306em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6306em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">x</span></span></span><span style="top:-3.5506em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span></span> is the average.</p>
+<p>The <code>main</code> function should call the function summary for each filename in the list <code>sys.argv[1:]</code> of command line parameters. (Skip <code>sys.argv[0]</code> since it contains the name of the current program.)</p>
+<p>Example of usage from the command line:<br>
+<code>python3 src/summary.py src/example.txt src/example2.txt</code></p>
+<p>Print floating point numbers using six decimals precision. The output should look like this:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>File: src/example.txt Sum: 51.400000 Average: 10.280000 Stddev: 8.904606
+File: src/example2.txt Sum: 5446.200000 Average: 1815.400000 Stddev: 3124.294045
+</code></pre><p>Part 2.</p>
+<p>If some line doesn&#x2019;t represent a number, you can just ignore that line. You can achieve this with the <em>try-except</em> block. An example of recovering from an exceptional situation:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-try">try</span><span class="token punctuation">:</span>
+    x <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span>line<span class="token punctuation">)</span>           <span class="token comment"># The float constructor raises ValueError exception if conversion is no possible</span>
+<span class="token keyword keyword-except">except</span> ValueError<span class="token punctuation">:</span>
+    <span class="token comment"># Statements in here are executed when the above conversion fails</span>
+</pre><p>We will cover more about exceptions later in the course.</p>
+<hr>
+<h4>Exercise 26 (file count)</h4>
+<p>This exercise can give two points at maximum!</p>
+<p>Part 1.</p>
+<p>Create a function <code>file_count</code> that gets a filename as parameter and returns a triple of numbers. The function should read the file, count the number of lines, words, and characters in the file, and return a triple with these count in this order. You get division into words by splitting at whitespace. You don&apos;t have to remove punctuation.</p>
+<p>Part 2.</p>
+<p>Create a main function that in a loop calls <code>file_count</code> using each filename in the list of command line parameters <code>sys.argv[1:]</code> as a parameter, in turn.<br>
+For call <code>python3 src/file_count file1 file2 ...</code><br>
+the output should be</p>
+<pre data-role="codeBlock" data-info class="language-"><code>?      ?       ?       file1
+?      ?       ?       file2
+...
+</code></pre><p>The fields are separated by tabs (<code>\t</code>). The fields are in order: linecount, wordcount, charactercount, filename.</p>
+<hr>
+<h4>Exercise 27 (file extensions)</h4>
+<p>This exercise can give two points at maximum!</p>
+<p>Part 1.</p>
+<p>Write function <code>file_extensions</code> that gets as a parameter a filename.<br>
+It should read through the lines from this file. Each line contains a filename.<br>
+Find the extension for each filename. The function should return a pair, where the<br>
+first element is a list containing all filenames with no extension (with the preceding period (<code>.</code>) removed).<br>
+The second element of the pair is a dictionary with extensions as keys and corresponding values are lists with filenames having that extension.</p>
+<p>Sounds a bit complicated, but hopefully the next example will clarify this.<br>
+If the file contains the following lines</p>
+<pre data-role="codeBlock" data-info class="language-"><code>file1.txt
+mydocument.pdf
+file2.txt
+archive.tar.gz
+test
+</code></pre><p>then the return value should be the pair:<br>
+<code>([&quot;test&quot;], { &quot;txt&quot; : [&quot;file1.txt&quot;, &quot;file2.txt&quot;], &quot;pdf&quot; : [&quot;mydocument.pdf&quot;], &quot;gz&quot; : [&quot;archive.tar.gz&quot;] } )</code></p>
+<p>Part 2.</p>
+<p>Write a <code>main</code> method that calls the <code>file_extensions</code> function with &quot;src/filenames.txt&quot; as the argument. Then print the results so that for each extension there is a line consisting of the extension and the number of files with that extension. The first line of the output should give the number of files without extensions.</p>
+<p>With the example in part 1, the output should be</p>
+<pre data-role="codeBlock" data-info class="language-"><code>1 files with no extension
+gz 1
+pdf 1
+txt 2
+</code></pre><p>Had there been no filenames without extension then the first line would have been <code>0 files with no extension</code>. In the printout list the extensions in alphabetical order.</p>
+<hr>
+<h2>L&#xE6;s (og skriv, i) filer</h2>
+<h2>RegEx</h2>
+<h2>Objekter</h2>
+<h4>Exercise 28 (prepend)</h4>
+<p>Create a class called <code>Prepend</code>. We create an instance of the class by giving a string as a parameter<br>
+to the initializer. The initializer stores the parameter in an instance attribute <code>start</code>. The class<br>
+also has a method <code>write(s)</code> which prints the string <code>s</code> prepended with the <code>start</code> string.<br>
+An example of usage:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">p <span class="token operator">=</span> Prepend<span class="token punctuation">(</span><span class="token string">&quot;+++ &quot;</span><span class="token punctuation">)</span>
+p<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">&quot;Hello&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><p>Will print</p>
+<pre data-role="codeBlock" data-info class="language-"><code>+++ Hello
+</code></pre><p>Try out using the class from the <code>main</code> function.</p>
+<hr>
+<h4>Exercise 29 (rational)</h4>
+<p>Create a class <code>Rational</code> whose instances are rational numbers. A new rational number can be<br>
+created with the call to the class. For example, the call <code>r=Rational(1,4)</code> creates a rational<br>
+number &#x201C;one quarter&#x201D;. Make the instances support the following operations:<br>
+<code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>&lt;</code> <code>&gt;</code> <code>==</code><br>
+with their natural behaviour. Make the rationals also printable so that from the printout we can<br>
+clearly see that they are rational numbers.</p>
+<hr>
+<h2>Undtagelser (Exceptions)</h2>
+<h4>Exercise 30 (extract numbers)</h4>
+<p>Write a function <code>extract_numbers</code> that gets a string as a parameter. It should return a list of numbers that can be both ints and floats. Split the string to words at whitespace using the <code>split()</code> method. Then iterate through each word, and initially try to convert to an int. If unsuccesful, then try to convert to a float. If not a number then skip the word.</p>
+<p>Example run:<br>
+<code>print(extract_numbers(&quot;abd 123 1.2 test 13.2 -1&quot;))</code><br>
+will return<br>
+<code>[123, 1.2, 13.2, -1]</code></p>
+<hr>
+<h1>Numpy</h1>
+<p>[numpy.ipynb]</p>
+<h4>Exercise 31 (rows and columns)</h4>
+<p>Write two functions, <code>get_rows</code> and <code>get_columns</code>, that get a two dimensional array as parameter.<br>
+They should return the list of rows and columns of the array, respectively. The rows and columns should be one dimensional arrays. You may use the <em>transpose</em> operation, which flips rows to columns, in your solution. The transpose is done by the <code>T</code> method:</p>
+<hr>
+<h4>Exercise 32 (row and column vectors)</h4>
+<p>Create function <code>get_row_vectors</code> that returns a list of rows from the input array of shape <code>(n,m)</code>, but this time the rows must have shape <code>(1,m)</code>. Similarly, create function <code>get_columns_vectors</code> that returns a list of columns (each having shape <code>(n,1)</code>) of the input matrix .</p>
+<p>Example: for a 2x3 input matrix</p>
+<pre data-role="codeBlock" data-info class="language-"><code> [[5 0 3]
+  [3 7 9]]
+</code></pre><p>the result should be</p>
+<pre data-role="codeBlock" data-info class="language-"><code>Row vectors: 
+[array([[5, 0, 3]]), array([[3, 7, 9]])]
+Column vectors: 
+[array([[5],
+        [3]]), 
+ array([[0],
+        [7]]), 
+ array([[3],
+        [9]])]
+</code></pre><p>The above output is basically just the returned lists printed with <code>print</code>. Only some<br>
+whitespace is adjusted to make it look nicer. Output is not tested.</p>
+<hr>
+<h4>Exercise 33 (diamond)</h4>
+<p>Create a function <code>diamond</code> that returns a two dimensional integer array where the <code>1</code>s form a diamond shape. Rest of the numbers are <code>0</code>. The function should get a parameter that tells the length of a side of the diamond. Do this using the <code>eye</code> and <code>concatenate</code> functions of NumPy and array slicing.</p>
+<p>Example of usage:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>print(diamond(3))
+[[0 0 1 0 0]
+ [0 1 0 1 0]
+ [1 0 0 0 1]
+ [0 1 0 1 0]
+ [0 0 1 0 0]]
+print(diamond(1))
+[[1]]
+</code></pre><hr>
+<h4>Exercise 34 (vector lengths)</h4>
+<p>Write function <code>vector_lengths</code> that gets a two dimensional array of shape (n,m) as a parameter. Each row in this array corresponds to a vector. The function should return an array of shape (n,), that has the length of each vector in the input. The length is defined by the usual<br>
+<a href="https://en.wikipedia.org/wiki/Norm_(mathematics)#Euclidean_norm">Euclidean norm</a>. Don&apos;t use loops at all in your solution. Instead use vectorized operations. You must use at least the <code>np.sum</code> and the <code>np.sqrt</code> functions. You can&apos;t use the function <code>scipy.linalg.norm</code>. Test your function in the main function.</p>
+<h4>Exercise 35 (vector angles)</h4>
+<p>Let x and y be m-dimensional vectors. The angle <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>&#x3B1;</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">&#x3B1;</span></span></span></span> between two vectors is defined by the equation<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mrow><mi>cos</mi><mo>&#x2061;</mo></mrow><mrow><mi>x</mi><mi>y</mi></mrow></msub><mo stretchy="false">(</mo><mi>&#x3B1;</mi><mo stretchy="false">)</mo><mo>:</mo><mo>=</mo><mfrac><mrow><mo stretchy="false">&#x27E8;</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">&#x27E9;</mo></mrow><mrow><mi mathvariant="normal">&#x2223;</mi><mi mathvariant="normal">&#x2223;</mi><mi>x</mi><mi mathvariant="normal">&#x2223;</mi><mi mathvariant="normal">&#x2223;</mi><mi mathvariant="normal">&#x2223;</mi><mi mathvariant="normal">&#x2223;</mi><mi>y</mi><mi mathvariant="normal">&#x2223;</mi><mi mathvariant="normal">&#x2223;</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\cos_{xy}(\alpha):=\frac{\langle x,y\rangle}{||x|| ||y||}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mop"><span class="mop">cos</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.0037em;">&#x3B1;</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.53em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">&#x2223;&#x2223;</span><span class="mord mathnormal mtight">x</span><span class="mord mtight">&#x2223;&#x2223;&#x2223;&#x2223;</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span><span class="mord mtight">&#x2223;&#x2223;</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">&#x27E8;</span><span class="mord mathnormal mtight">x</span><span class="mpunct mtight">,</span><span class="mord mathnormal mtight" style="margin-right:0.03588em;">y</span><span class="mclose mtight">&#x27E9;</span></span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>,<br>
+where the angle brackets denote the <a href="https://en.wikipedia.org/wiki/Inner_product_space#Euclidean_space">inner product</a>, and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">&#x2223;</mi><mi mathvariant="normal">&#x2223;</mi><mi>x</mi><mi mathvariant="normal">&#x2223;</mi><mi mathvariant="normal">&#x2223;</mi><mo>:</mo><mo>=</mo><msqrt><mrow><mo stretchy="false">&#x27E8;</mo><mi>x</mi><mo separator="true">,</mo><mi>x</mi><mo stretchy="false">&#x27E9;</mo></mrow></msqrt></mrow><annotation encoding="application/x-tex">||x||:=\sqrt{\langle x,x \rangle}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">&#x2223;&#x2223;</span><span class="mord mathnormal">x</span><span class="mord">&#x2223;&#x2223;</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.305em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.935em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mopen">&#x27E8;</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mclose">&#x27E9;</span></span></span><span style="top:-2.895em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.305em;"><span></span></span></span></span></span></span></span></span>.</p>
+<p>Write function <code>vector_angles</code> that gets two arrays X and Y with same shape (n,m) as parameters. Each row in the arrays corresponds to a vector. The function should return vector of shape (n,) with the corresponding angles between vectors of <code>X</code> and <code>Y</code> in degrees, not in radians. Again, don&apos;t use loops, but use vectorized operations.</p>
+<p>Note: function <code>np.arccos</code> is only defined on the domain [-1.0,1.0]. If you try to compute <code>np.arccos(1.000000001)</code>, it will fail. These kind of errors can occur due to use of finite precision in numerical computations. Force the argument to be in the correct range (<code>clip</code> method).</p>
+<h2>Test your solution in the main program.</h2>
+<h1>[Part03]</h1>
+<h1>NumPy (continues) [<code>numpy2.ipynb</code>]</h1>
+<h4>Exercise 37 (column comparison)</h4>
+<p>Write function <code>column_comparison</code> that gets a two dimensional array as parameter. The function should return a new array containing those rows from the input that have the value in the second column larger than in the second last column. You may assume that the input contains at least two columns. Don&apos;t use loops, but instead vectorized operations. Try out your function in the main function.</p>
+<p>For array</p>
+<pre data-role="codeBlock" data-info class="language-"><code> [[8 9 3 8 8]
+ [0 5 3 9 9]
+ [5 7 6 0 4]
+ [7 8 1 6 2]
+ [2 1 3 5 8]]
+</code></pre><p>the result would be</p>
+<pre data-role="codeBlock" data-info class="language-"><code> [[8 9 3 8 8]
+ [5 7 6 0 4]
+ [7 8 1 6 2]]
+</code></pre><hr>
+<h4>Exercise 38 (first half second half)</h4>
+<p>Write function <code>first_half_second_half</code> that gets a two dimensional array of shape <code>(n,2*m)</code> as a parameter. The input array has <code>2*m</code> columns. The output from the function should be a matrix with those rows from the input that have the sum of the first <code>m</code> elements larger than the sum of the last <code>m</code> elements on the row. Your solution should call the <code>np.sum</code> function or the corresponding method exactly twice.</p>
+<p>Example of usage:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">a <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+              <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+first_half_second_half<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+array<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</pre><hr>
+<h4>Exercise 39 (most frequent first)</h4>
+<p><strong><span style="color:red">Note:</span></strong> This exercise is fairly difficult. Feel free to skip if you get stuck.</p>
+<p>Write function <code>most_frequent_first</code> that gets a two dimensional array and an index <code>c</code> of a column as parameters. The function should then return the array whose rows are sorted based on column <code>c</code>, in the following way. Rows are ordered so that those rows with the most frequent element in column <code>c</code> come first, then come the rows with the second most frequent element in column <code>c</code>, and so on. Therefore, the values outside column <code>c</code> don&apos;t affect the ordering in any way.</p>
+<p>Example of usage:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>a:
+ [[5 0 3 3 7 9 3 5 2 4]
+ [7 6 8 8 1 6 7 7 8 1]
+ [5 9 8 9 4 3 0 3 5 0]
+ [2 3 8 1 3 3 3 7 0 1]
+ [9 9 0 4 7 3 2 7 2 0]
+ [0 4 5 5 6 8 4 1 4 9]
+ [8 1 1 7 9 9 3 6 7 2]
+ [0 3 5 9 4 4 6 4 4 3]
+ [4 4 8 4 3 7 5 5 0 1]
+ [5 9 3 0 5 0 1 2 4 2]]
+print(most_frequent_first(a, -1))
+ [[4 4 8 4 3 7 5 5 0 1]
+ [2 3 8 1 3 3 3 7 0 1]
+ [7 6 8 8 1 6 7 7 8 1]
+ [5 9 3 0 5 0 1 2 4 2]
+ [8 1 1 7 9 9 3 6 7 2]
+ [9 9 0 4 7 3 2 7 2 0]
+ [5 9 8 9 4 3 0 3 5 0]
+ [0 3 5 9 4 4 6 4 4 3]
+ [0 4 5 5 6 8 4 1 4 9]
+ [5 0 3 3 7 9 3 5 2 4]]
+</code></pre><p>If we look at the last column, we see that the number 1 appears three times, then both numbers 2 and 0 appear twice, and lastly numbers 3, 9, and 4 appear only once. Note that, for example, among those rows that contain in column <code>c</code> a number that appear twice in column <code>c</code> the order can be arbitrary.</p>
+<p>Hint: the function <code>np.unique</code> may be useful.</p>
+<hr>
+<h4>Exercise 40 (matrix power)</h4>
+<p>Repeat the functionality of the NumPy function <code>numpy.linalg.matrix_power</code>, which raises a square matrix of shape (m,m) to the <code>n</code>th power. Here the multiplication is the matrix multiplication. Square matrix <code>a</code> raised to power <code>n</code> is therefore <code>a @ a @ ... @ a</code> where <code>a</code> is repeated <code>n</code> times. When n is zero then <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mn>0</mn></msup></mrow><annotation encoding="application/x-tex">a^0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span></span></span></span></span></span></span></span> is equal to <code>np.eye(m)</code>.</p>
+<p>Write function <code>matrix_power</code> that gets as first argument a square matrix <code>a</code> and as second argument a non-negative integer <code>n</code>. The function should return the matrix <code>a</code> multiplied by itself <code>n-1</code> times.<br>
+Use Python&apos;s <code>reduce</code> function and a generator expression.</p>
+<p>Extend the <code>matrix_power</code> function.<br>
+For negative powers, we define <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mrow><mo>&#x2212;</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">a^{-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">&#x2212;</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span> to be equal to the multiplicative inverse of <code>a</code>. You can use NumPy&apos;s function <code>numpy.linalg.inv</code> for this. And you may assume that the input matrix is invertible.</p>
+<hr>
+<h4>Exercise 41 (correlation)</h4>
+<p>This exercise can give two points at maximum!</p>
+<p>Load the iris dataset using the provided function <code>load()</code> in the stub solution. The four columns of the returned array correspond to</p>
+<ul>
+<li>sepal length (cm)</li>
+<li>sepal width (cm)</li>
+<li>petal length (cm)</li>
+<li>petal width (cm)</li>
+</ul>
+<p>Part 1. What is the Pearson correlation between the variables <code>sepal length</code> and <code>petal length</code>. Compute this using the <code>scipy.stats.pearsonr</code> function. It returns a tuple whose first element is the correlation. Write a function <code>lengths</code> that loads the data and returns the correlation.</p>
+<p>Part 2. What are the correlations between all the variables. Write a function <code>correlations</code> that returns an array of shape (4,4) containing the correlations. Use the function <code>np.corrcoef</code>. Which pair of variables is the most highly correlated?</p>
+<p>Note the input formats of both functions <code>pearsonr</code> and <code>corrcoef</code>.</p>
+<hr>
+<h4>Exercise 42 (meeting lines)</h4>
+<p>Write function <code>meeting_lines</code> that gets the coefficients of two lines as parameters and returns the point where the two lines meet. The equations for the lines are <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><msub><mi>a</mi><mn>1</mn></msub><mi>x</mi><mo>+</mo><msub><mi>b</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">y=a_1x + b_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><msub><mi>a</mi><mn>2</mn></msub><mi>x</mi><mo>+</mo><msub><mi>b</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">y=a_2x + b_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>. Use the <code>np.linalg.solve</code> function. Create a main function to test your solution.</p>
+<p>Example of usage:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>x, y = meeting_lines(a1, b1, a2, b2)
+</code></pre><hr>
+<h4>Exercise 43 (meeting planes)</h4>
+<p>Write function <code>meeting_planes</code> that gets the coefficients of three planes as parameters and returns the point where the planes meet. The equations for the planes are:<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><msub><mi>a</mi><mn>1</mn></msub><mi>y</mi><mo>+</mo><msub><mi>b</mi><mn>1</mn></msub><mi>x</mi><mo>+</mo><msub><mi>c</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">z =a_1y + b_1x+ c_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><msub><mi>a</mi><mn>2</mn></msub><mi>y</mi><mo>+</mo><msub><mi>b</mi><mn>2</mn></msub><mi>x</mi><mo>+</mo><msub><mi>c</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">z =a_2y + b_2x+ c_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>, and<br>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi><mo>=</mo><msub><mi>a</mi><mn>3</mn></msub><mi>y</mi><mo>+</mo><msub><mi>b</mi><mn>3</mn></msub><mi>x</mi><mo>+</mo><msub><mi>c</mi><mn>3</mn></msub></mrow><annotation encoding="application/x-tex">z =a_3y + b_3x+ c_3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>.</p>
+<p>Example of usage:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>x, y, z = meeting_planes(a1, b1, c1,  a2, b2, c2,  a3, b3, c3)
+</code></pre><hr>
+<h4>Exercise 44 (almost meeting lines)</h4>
+<p>In the earlier &quot;meeting lines&quot; exercise there is a problem if the lines don&apos;t meet at all. Extend that solution so that it tells the meeting point if it exists, and otherwise finds the point that is closest to the both lines.<br>
+You can use the <code>numpy.linalg.lstsq</code> for this.</p>
+<p>Example of usage:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>(x, y), exact = almost_meeting_lines(1, 2, -1, 0)
+print(x, y, exact)
+-1.000000 1.000000 True
+</code></pre><hr>
+<h1>MatPlotLib</h1>
+<h4>Exercise 45 (multiple graphs)</h4>
+<p>In the above plot the x coordinates were implicitly set to the indices of the array <code>a</code>, that is, <code>arange(10)</code>. Find out from the documentation of <code>plt.plot</code> how to specify the x coordinates explicitly. Find out also how to draw multiple graphs in one axes.</p>
+<p>Make your <code>main</code> function plot the following two graphs in one axes. The first graphs has x coordinates 2,4,6,7 and y coordinates 4,3,5,1. The second graph has x coordinates 1,2,3,4 and y coordinates 4,2,3,1.</p>
+<p>Add also a title and some labels for x axis and y axis. Note that in the non-interactive mode you have to call <code>plt.show()</code> for the figure to show.</p>
+<p>The plot should look like the one below.</p>
+<p><img src="multiplot.png" alt="multiplot"></p>
+<hr>
+<h4>Exercise 46 (subfigures)</h4>
+<p>Write function <code>subfigures</code> that creates a figure that has two subfigures (two <em>axes</em> in matplotlib parlance). The function gets a two dimensional array <code>a</code> as a parameter. In the left subfigure draw using the <code>plot</code> <em>method</em> a graph, whose x coordinates are in the first column of <code>a</code> and the y coordinates are in the second column of <code>a</code>. In the right subfigure draw using the <code>scatter</code> <em>method</em> a set of points whose x coords are again in the first column of <code>a</code> and whose y coordinates are in the second column of <code>a</code>. Additionally, the points should get their color from the third column of <code>a</code>, and size of the point from the fourth column of <code>a</code>. For this, use the <code>c</code> and <code>s</code> named parameters of <code>scatter</code>, respectively</p>
+<p>Test your function <code>subfigure</code> from the <code>main</code> function.</p>
+<hr>
+<h1>Image processing</h1>
+<h4>Exercise 47 (to grayscale)</h4>
+<p>This exercise can give two points at maximum!</p>
+<h5>Part 1.</h5>
+<p>Write a function <code>to_grayscale</code> that takes an RGB image (three dimensional array) and returns a two dimensional gray-scale image. The conversion to gray-scale should take a weighted sum of the red, green, and blue values, and use that as the value of gray. The first axis is the x, the second is y, and the third is the color components (red, green, blue).<br>
+Use the weights 0.2126, 0.7152, and 0.0722 for red, green, and blue, respectively. These weights are so because the human eye is most sensitive to green color and least sensitive to blue color.</p>
+<p>In the main function you can, for example, use the provided image <code>src/painting.png</code>. Display the grayscale image with the <code>plt.imshow</code> function. You may have to call the function <code>plt.gray</code> to set the color palette (colormap) to gray.<br>
+(See <code>help(plt.colormaps)</code> for more information about colormaps.)</p>
+<h5>Part 2.</h5>
+<p>Write functions <code>to_red</code>, <code>to_green</code>, and <code>to_blue</code> that get a three dimensional array as a parameter and return a three dimensional arrays. For instance, the function <code>to_red</code> should zero out the green and blue color components and return the result. In the <code>main</code> function create a figure with three subfigures: the top one should be the red image, the middle one the green image, and the bottom one the blue image.</p>
+<hr>
+<h4>Exercise 48 (radial fade)</h4>
+<p>Make program that does fading of an image as earlier, except now not in horizontal direction but in radial direction. As we move away from the centre of the image, the pixels fade to black.</p>
+<h5>Part1.</h5>
+<p>Write function <code>center</code> that returns coordinate pair (center_y, center_x) of the image center. Note that these coordinates might not be integers. Example of usage:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python"><span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>center<span class="token punctuation">(</span>np<span class="token punctuation">.</span>zeros<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">(</span><span class="token number">4.5</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>
+</pre><p>The function should work both for two and three dimensional images, that is grayscale and color images.</p>
+<p>Write also function <code>radial_distance</code> that returns for image with width <code>w</code> and height <code>h</code> an array with shape (h,w), where the number at index (i,j) gives the euclidean distance from the point (i,j) to the center of the image.</p>
+<h5>Part 2.</h5>
+<p>Create function <code>scale(a, tmin=0.0, tmax=1.0)</code> that returns a copy of the array <code>a</code> with its elements scaled to be in the range <code>[tmin,tmax]</code>.</p>
+<p>Using the functions <code>radial_distance</code> and <code>scale</code> write function <code>radial_mask</code> that takes an image as a parameter and returns an array with same height and width filled with values between 0.0 and 1.0. Do this using the <code>scale</code> function.  To make the resulting array values near the center of array to be close to 1 and closer to the edges of the array are values closer to be 0, subtract the previous array from 1.</p>
+<p>Write also function <code>radial_fade</code> that returns the image multiplied by its radial mask.</p>
+<p>Test your functions in the <code>main</code> function, which should create, using matplotlib, a figure that has three subfigures stacked vertically. On top the original <code>painting.png</code>, in the middle the mask, and on the bottom the faded image.</p>
+<hr>
+<h1>Pandas</h1>
+<h4>Exercise 49 (read series)</h4>
+<p>Write function <code>read_series</code> that reads input lines from the user and return a Series. Each line should contain first the index and then the corresponding value, separated by whitespace. The index and values are strings (in this case <code>dtype</code> is <code>object</code>). An empty line signals the end of Series. Malformed input should cause an exception. An input line is malformed, if it is non-empty and, when split at whitespace, does not result in two parts.</p>
+<p>Test your function from the <code>main</code> function.</p>
+<hr>
+<h4>Exercise 50 (operations on series)</h4>
+<p>Write function <code>create_series</code> that gets two lists of numbers as parameters. Both lists should have length 3.<br>
+The function should first create two Series, <code>s1</code> and <code>s2</code>. The first series should have values from the first parameter list and have corresponding indices <code>a</code>, <code>b</code>, and  <code>c</code>. The second series should get its values from the second parameter list and have again the corresponding indices <code>a</code>, <code>b</code>, and  <code>c</code>. The function should return the pair of these Series.</p>
+<p>Then, write a function <code>modify_series</code> that gets two Series as parameters. It should add to the first Series <code>s1</code> a new value with index <code>d</code>. The new value should be the same as the value in Series <code>s2</code> with index <code>b</code>.<br>
+Then delete the element from <code>s2</code> that has index <code>b</code>. Now the first Series should have four values, while the second list has only two values. Adding a new element to a Series can be achieved by assignment, like with dictionaries. Deletion of an element from a Series can be done with the <code>del</code> statement.</p>
+<p>Test these functions from the main function. Try adding together the Series returned by the <code>modify_series</code> function. The operations on Series use the indices to keep the element-wise operations <em>aligned</em>. If for some index the operation could not be performed, the resulting value will be <code>NaN</code> (Not A Number).</p>
+<hr>
+<h4>Exercise 51 (inverse series)</h4>
+<p>Write function <code>inverse_series</code> that get a Series as a parameter and returns a new series, whose indices and values have swapped roles. Test your function from the <code>main</code> function.</p>
+<h2>What happens if some value appears multiple times in the original Series? What happens if you use this value to index the resulting Series?</h2>
+<h1>[ PART 3 ]</h1>
+<h4>Exercise 52 (cities)</h4>
+<p>Write function <code>cities</code> that returns the following DataFrame of top Finnish cities by population:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>                 Population Total area
+Helsinki         643272     715.48
+Espoo            279044     528.03
+Tampere          231853     689.59
+Vantaa           223027     240.35
+Oulu             201810     3817.52
+</code></pre><hr>
+<h4>Exercise 53 (powers of series)</h4>
+<p>Make function <code>powers_of_series</code> that takes a Series and a positive integer <code>k</code> as parameters and returns a DataFrame. The resulting DataFrame should have the same index as the input Series. The first column of the dataFrame should be the input Series, the second column should contain the Series raised to power of two. The third column should contain the Series raised to the power of three, and so on until (and including) power of <code>k</code>. The columns should have indices from 1 to k.</p>
+<p>The values should be numbers, but the index can have any type.<br>
+Test your function from the <code>main</code> function. Example of usage:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>s = pd.Series([1,2,3,4], index=list(&quot;abcd&quot;))
+print(powers_of_series(s, 3))
+</code></pre><p>Should print:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>   1   2   3
+a  1   1   1
+b  2   4   8
+c  3   9  27
+d  4  16  64
+</code></pre><hr>
+<h4>Exercise 54 (municipal information)</h4>
+<p>In the <code>main</code> function load a data set of municipal information from the <code>src</code> folder (originally from <a href="https://pxnet2.stat.fi/PXWeb/pxweb/en/">Statistics Finland</a>). Use the function <code>pd.read_csv</code>, and note that the separator is a tabulator.</p>
+<p>Print the shape of the DataFrame (number of rows and columns) and the column names in the following format:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>Shape: r,c
+Columns:
+col1 
+col2
+...
+</code></pre><h2>Note, sometimes file ending <code>tsv</code> (tab separated values) is used instead of <code>csv</code> if the separator is a tab.</h2>
+<h4>Exercise 55 (municipalities of finland)</h4>
+<p>Load again the municipal information DataFrame. The rows of the DataFrame correspond to various geographical areas of Finland. The first row is about Finland as a whole, then rows from Akaa to &#xC4;&#xE4;nekoski are municipalities of Finland in alphabetical order. After that some larger regions are listed.</p>
+<p>Write function <code>municipalities_of_finland</code> that returns a DataFrame containing only rows about municipalities.<br>
+Give an appropriate argument for <code>pd.read_csv</code> so that it interprets the column about region name as the (row) index. This way you can index the DataFrame with the names of the regions.</p>
+<h2>Test your function from the <code>main</code> function.</h2>
+<h4>Exercise 56 (swedish and foreigners)</h4>
+<p>Write function <code>swedish_and_foreigners</code> that</p>
+<ul>
+<li>Reads the municipalities data set</li>
+<li>Takes the subset about municipalities (like in previous exercise)</li>
+<li>Further take a subset of rows that have proportion of Swedish speaking people and proportion of foreigners both above 5 % level</li>
+<li>From this data set take only columns about population, the proportions of Swedish speaking people and foreigners, that is three columns.</li>
+</ul>
+<p>The function should return this final DataFrame.</p>
+<p>Do you see some kind of correlation between the columns about Swedish speaking and foreign people? Do you see correlation between the columns about the population and the proportion of Swedish speaking people in this subset?</p>
+<hr>
+<h4>Exercise 57 (growing municipalities)</h4>
+<p>Write function <code>growing_municipalities</code> that gets subset of municipalities (a DataFrame) as a parameter and returns the proportion of municipalities with increasing population in that subset.</p>
+<p>Test your function from the <code>main</code> function using some subset of the municipalities.<br>
+Print the proportion as percentages using 1 decimal precision.</p>
+<p>Example output:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>Proportion of growing municipalities: 12.4%
+</code></pre><hr>
+<h4>Exercise 58 (subsetting with loc)</h4>
+<p>Write function <code>subsetting_with_loc</code> that in one go takes the subset of municipalities from Akaa to &#xC4;&#xE4;nekoski and restricts it to columns: &quot;Population&quot;, &quot;Share of Swedish-speakers of the population, %&quot;, and &quot;Share of foreign citizens of the population, %&quot;.<br>
+The function should return this content as a DataFrame. Use the attribute <code>loc</code>.</p>
+<hr>
+<h4>Exercise 59 (subsetting by positions)</h4>
+<p>Write function <code>subsetting_by_positions</code> that does the following.</p>
+<p>Read the data set of the top forty singles from the beginning of the year 1964 from the <code>src</code> folder. Return the top 10 entries and only the columns <code>Title</code> and <code>Artist</code>. Get these elements by their positions, that is, by using a single call to the <code>iloc</code> attribute. The function should return these as a DataFrame.</p>
+<hr>
+<h4>Exercise 60 (snow depth)</h4>
+<p>Write function <code>snow_depth</code> that reads in the weather DataFrame from the <code>src</code> folder and returns the maximum amount of snow in the year 2017.</p>
+<p>Print the result in the <code>main</code> function in the following form:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>Max snow depth: xx.x
+</code></pre><hr>
+<h4>Exercise 61 (average temperature)</h4>
+<p>Write function <code>average_temperature</code> that reads the weather data set and returns the average temperature in July.</p>
+<p>Print the result in the <code>main</code> function in the following form:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>Average temperature in July: xx.x
+</code></pre><hr>
+<h4>Exercise 62 (below zero)</h4>
+<p>Write function <code>below_zero</code> that returns the number of days when the temperature was below zero.</p>
+<p>Print the result in the main function in the following form:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>Number of days below zero: xx
+</code></pre><hr>
+<h4>Exercise 63 (cyclists)</h4>
+<p>Write function <code>cyclists</code> that does the following.</p>
+<p>Load the Helsinki bicycle data set from the <code>src</code> folder (<a href="https://hri.fi/data/dataset//helsingin-pyorailijamaarat">https://hri.fi/data/dataset//helsingin-pyorailijamaarat</a>). The dataset contains the number of cyclists passing by measuring points per hour. The data is gathered over about four years, and there are 20 measuring points around Helsinki. The dataset contains some empty rows at the end. Get rid of these. Also, get rid of columns that contain only missing values. Return the cleaned dataset.</p>
+<hr>
+<h4>Exercise 64 (missing value types)</h4>
+<p>Make function <code>missing_value_types</code> that returns the following DataFrame. Use the <code>State</code> column as the (row) index. The value types for the two other columns should be <code>float</code> and <code>object</code>, respectively. Replace the dashes with the appropriate missing value symbols.</p>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Year of independence</th>
+<th>President</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>United Kingdom</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Finland</td>
+<td>1917</td>
+<td>Niinist&#xF6;</td>
+</tr>
+<tr>
+<td>USA</td>
+<td>1776</td>
+<td>Trump</td>
+</tr>
+<tr>
+<td>Sweden</td>
+<td>1523</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Germany</td>
+<td>-</td>
+<td>Steinmeier</td>
+</tr>
+<tr>
+<td>Russia</td>
+<td>1992</td>
+<td>Putin</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4>Exercise 65 (special missing values)</h4>
+<p>Write function <code>special_missing_values</code> that does the following.</p>
+<p>Read the data set of the top forty singles from the beginning of the year 1964 from the <code>src</code> folder. Return the rows whose singles&apos; position dropped compared to last week&apos;s position (column LW=Last Week).</p>
+<p>To do this you first have to convert the special values &quot;New&quot; and &quot;Re&quot; (Re-entry) to missing values (<code>None</code>).</p>
+<hr>
+<h4>Exercise 66 (last week)</h4>
+<p>This exercise can give two points at maximum!</p>
+<p>Write function <code>last_week</code> that reads the top40 data set mentioned in the above exercise. The function should then try to reconstruct the top40 list of the previous week based on that week&apos;s list. Try to do this as well as possible. You can fill the values that are impossible to reconstruct by missing value symbols. Your solution should work for a top40 list of any week. So don&apos;t rely on specific features of this top40 list. The column <code>WoC</code> means &quot;Weeks on Chart&quot;, that is, on how many weeks this song has been on the top 40 list.</p>
+<p>Hint. First create the last week&apos;s top40 list of those songs that are also on this week&apos;s list. Then add those entries that were not on this week&apos;s list. Finally sort by position.</p>
+<p>Hint 2. The <code>where</code> method of Series and DataFrame can be useful. It can also be nested.</p>
+<p>Hint 3. Like in NumPy, you can use with Pandas the bitwise operators <code>&amp;</code>, <code>|</code>, and <code>~</code>.<br>
+Remember that he bitwise operators have higher precedence than the comparison operations, so you may<br>
+have to use parentheses around comparisons, if you combined result of comparisons with bitwise operators.</p>
+<p>You get a second point, if you get the columns <code>LW</code> and <code>Peak Pos</code> correct.</p>
+<hr>
+<h4>Exercise 67 (split date)</h4>
+<p>Read again the bicycle data set from <code>src</code> folder,<br>
+and clean it as in the earlier exercise. Then split the <code>P&#xE4;iv&#xE4;m&#xE4;&#xE4;r&#xE4;</code> column into a DataFrame with five columns with column names <code>Weekday</code>, <code>Day</code>, <code>Month</code>, <code>Year</code>, and <code>Hour</code>. Note that you also need to to do some conversions. To get Hours, drop the colon and minutes. Convert field <code>Weekday</code> according the following rule:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>ma -&gt; Mon
+ti -&gt; Tue
+ke -&gt; Wed
+to -&gt; Thu
+pe -&gt; Fri
+la -&gt; Sat
+su -&gt; Sun
+</code></pre><p>Convert the <code>Month</code> column according to the following mapping</p>
+<pre data-role="codeBlock" data-info class="language-"><code>tammi 1
+helmi 2
+maalis 3
+huhti 4
+touko 5
+kes&#xE4; 6
+hein&#xE4; 7
+elo 8
+syys 9
+loka 10
+marras 11
+joulu 12
+</code></pre><p>Create function <code>split_date</code> that does the above and returns a DataFrame with five columns. You may want to use the <code>map</code> method of Series objects.</p>
+<h2>So the first element in the <code>P&#xE4;iv&#xE4;m&#xE4;&#xE4;r&#xE4;</code> column of the original data set should be converted from<br>
+<code>ke 1 tammi 2014 00:00</code><br>
+to<br>
+<code>Wed 1 1 2014 0</code> . Test your solution from the <code>main</code> function.</h2>
+<h4>Exercise 68 (cleaning data)</h4>
+<p>This exercise can give two points at maximum!</p>
+<p>The entries in the following table of US presidents are not uniformly formatted. Make function <code>cleaning_data</code> that reads the table from the tsv file <code>src/presidents.tsv</code> and returns the cleaned version of it. Note, you must do the edits programmatically using the string edit methods, not by creating a new DataFrame by hand. The columns should have <code>dtype</code>s <code>object</code>, <code>integer</code>, <code>float</code>, <code>integer</code>, <code>object</code>. The <code>where</code> method of DataFrames can be helpful, likewise the <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html#string-methods">string methods</a> of Series objects. You get an additional point, if you manage to get the columns President and Vice-president right!</p>
+<table>
+<thead>
+<tr>
+<th>President</th>
+<th>Start</th>
+<th>Last</th>
+<th>Seasons</th>
+<th>Vice-president</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>donald trump</td>
+<td>2017 Jan</td>
+<td>-</td>
+<td>1</td>
+<td>Mike pence</td>
+</tr>
+<tr>
+<td>barack obama</td>
+<td>2009</td>
+<td>2017</td>
+<td>2</td>
+<td>joe Biden</td>
+</tr>
+<tr>
+<td>bush, george</td>
+<td>2001</td>
+<td>2009</td>
+<td>2</td>
+<td>Cheney, dick</td>
+</tr>
+<tr>
+<td>Clinton, Bill</td>
+<td>1993</td>
+<td>2001</td>
+<td>two</td>
+<td>gore, Al</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4>Exercise 69 (cycling weather)</h4>
+<p>Merge the processed cycling data set (from the previous exercise) and weather data set along the columns year, month, and day. Note that the names of these columns might be different in the two tables: use the <code>left_on</code> and <code>right_on</code> parameters. Then drop useless columns &apos;m&apos;, &apos;d&apos;, &apos;Time&apos;, and &apos;Time zone&apos;.</p>
+<p>Write function <code>cycling_weather</code> that reads the data sets and returns the resulting DataFrame.</p>
+<hr>
+<h4>Exercise 70 (top bands)</h4>
+<p>Merge the DataFrames UK top40 and the bands DataFrame that are stored in the <code>src</code> folder.<br>
+Do all this in the parameterless function <code>top_bands</code>, which should return the merged DataFrame.<br>
+Use the <code>left_on</code> and <code>right_on</code> parameters to <code>merge</code>. Test your function from the <code>main</code> function.</p>
+<hr>
+<h4>Exercise 71 (cyclists per day)</h4>
+<p>This exercise can give two points at maximum!</p>
+<p>Part 1.</p>
+<p>Read, clean and parse the bicycle data set as before. Group the rows by year, month, and day. Get the sum for each group.<br>
+Make function <code>cyclists_per_day</code> that does the above. The function should return a DataFrame.<br>
+Make sure that the columns Hour and Weekday are not included in the returned DataFrame.</p>
+<p>Part 2.</p>
+<p>In the <code>main</code> function, using the function <code>cyclists_per_day</code>, get the daily counts.  The index of the DataFrame now consists of tuples (Year, Month, Day). Then restrict this data to August of year 2017, and plot this data. Don&apos;t forget to call the <code>plt.show</code> function of matplotlib. The x-axis should have ticks from 1 to 31, and there should be a curve to each measuring station. Can you spot the weekends?</p>
+<hr>
+<h4>Exercise 72 (best record company)</h4>
+<p>We use again the UK top 40 data set from the first week of 1964 in the <code>src</code> folder. Here we define &quot;goodness&quot; of a record company (<code>Publisher</code>) based on the sum of the weeks on chart (WoC) of its singles. Return a DataFrame of the singles by the best record company (a subset of rows of the original DataFrame). Do this with function <code>best_record_company</code>.</p>
+<hr>
+<h4>Exercise 73 (suicide fractions)</h4>
+<p>Load the suicide data set from <code>src</code> folder. This data was originally downloaded from <a href="https://www.kaggle.com/szamil/who-suicide-statistics">Kaggle</a>. Kaggle contains lots of interesting open data sets.</p>
+<p>Write function <code>suicide_fractions</code> that loads the data set and returns a Series that has the country as the (row) index and as the column the mean fraction of suicides per population in that country. In other words, the value is the average of suicide fractions. The information about year, sex and age is not used.</p>
+<hr>
+<h4>Exercise 74 (suicide weather)</h4>
+<p>Copy the function <code>suicide fractions</code> from the previous exercise.</p>
+<p>Implement function <code>suicide_weather</code> as described below.<br>
+We use the dataset of average temperature (over years 1961-1990) in different countries from <code>src/List_of_countries_by_average_yearly_temperature.html</code> (<a href="https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature">https://en.wikipedia.org/wiki/List_of_countries_by_average_yearly_temperature</a>) .<br>
+You can use the function <code>pd.read_html</code> to get all the tables from a html page. By default <code>pd.read_html</code> does not know which row contains column headers and which column contains row headers. Therefore, you have to give both <code>index_col</code> and <code>header</code> parameters to <code>read_html</code>. Maku sure you use the country as the (row) index for both of the DataFrames. What is the <a href="https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient">Spearman correlation</a> between these variables? Use the <code>corr</code> method of Series object. Note the the two Series need not be sorted as the indices of the rows (country names) are used to align them.</p>
+<p>The return value of the function <code>suicide_weather</code> is a tuple (suicide_rows, temperature_rows, common_rows, spearman_correlation)<br>
+The output from the <code>main</code> function should be of the following form:</p>
+<pre data-role="codeBlock" data-info class="language-"><code>Suicide DataFrame has x rows
+Temperature DataFrame has x rows
+Common DataFrame has x rows
+Spearman correlation: x.x
+</code></pre><p>You might have trouble when trying to convert the temperatures to float. The is because the negative numbers on that html page use a special <em>unicode minus sign</em>, which looks typographically nice, but the float constructor cannot interpret it as a minus sign. You can try out the following example:</p>
+<hr>
+<h4>Exercise 75 (bicycle timeseries)</h4>
+<p>Write function <code>bicycle_timeseries</code> that</p>
+<ul>
+<li>reads the data set</li>
+<li>cleans it</li>
+<li>turns its <code>P&#xE4;iv&#xE4;m&#xE4;&#xE4;r&#xE4;</code> column into (row) DatetimeIndex (that is, to row names) of that DataFrame</li>
+<li>returns the new DataFrame</li>
+</ul>
+<hr>
+<h4>Exercise 76 (commute)</h4>
+<p>In function <code>commute</code> do the following:</p>
+<p>Use the function <code>bicycle_timeseries</code> to get the bicycle data. Restrict to August 2017, group by the weekday, aggregate by summing. Set the <code>Weekday</code> column to numbers from one to seven. Then set the column <code>Weekday</code> as the (row) index. Return the resulting DataFrame from the function.</p>
+<p>In the <code>main</code> function plot the DataFrame. Xticklabels should be the weekdays. Don&apos;t forget to call <code>show</code> function!</p>
+<p>If you want the xticklabels to be <code>[&apos;Mon&apos;, &apos;Tue&apos;, &apos;Wed&apos;, &apos;Thu&apos;, &apos;Fr&apos;, &apos;Sat&apos;, &apos;Sun&apos;]</code> instead of numbers (1,..,7), then it may get a bit messy. There seems to be a problem with non-numeric <code>x</code> values. You could try the following after plotting, but you don&apos;t have to:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python">weekdays<span class="token operator">=</span><span class="token string">&quot;x mon tue wed thu fri sat sun&quot;</span><span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>gca<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>set_xticklabels<span class="token punctuation">(</span>weekdays<span class="token punctuation">)</span>
+</pre><hr>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
