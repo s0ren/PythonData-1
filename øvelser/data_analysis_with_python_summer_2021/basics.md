@@ -1,21 +1,71 @@
-<!--NAVIGATION-->
-
-
-<a href="https://colab.research.google.com/github/saskeli/x/blob/master/basics.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open and Execute in Google Colaboratory"></a>
-
-|                                          -                                          |                                          -                                          |                                          -                                          |
-|-------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-|             [Exercise 1 (hello world)](<#Exercise-1-(hello-world&#41;>)             |              [Exercise 2 (compliment)](<#Exercise-2-(compliment&#41;>)              |          [Exercise 3 (multiplication)](<#Exercise-3-(multiplication&#41;>)          |
-|    [Exercise 4 (multiplication table)](<#Exercise-4-(multiplication-table&#41;>)    |                [Exercise 5 (two dice)](<#Exercise-5-(two-dice&#41;>)                |           [Exercise 6 (triple square)](<#Exercise-6-(triple-square&#41;>)           |
-|         [Exercise 7 (areas of shapes)](<#Exercise-7-(areas-of-shapes&#41;>)         |         [Exercise 8 (solve quadratic)](<#Exercise-8-(solve-quadratic&#41;>)         |                   [Exercise 9 (merge)](<#Exercise-9-(merge&#41;>)                   |
-|          [Exercise 10 (detect ranges)](<#Exercise-10-(detect-ranges&#41;>)          |             [Exercise 11 (interleave)](<#Exercise-11-(interleave&#41;>)             |    [Exercise 12 (distinct characters)](<#Exercise-12-(distinct-characters&#41;>)    |
-|     [Exercise 13 (reverse dictionary)](<#Exercise-13-(reverse-dictionary&#41;>)     |          [Exercise 14 (find matching)](<#Exercise-14-(find-matching&#41;>)          | [Exercise 15 (two dice comprehension)](<#Exercise-15-(two-dice-comprehension&#41;>) |
-|              [Exercise 16 (transform)](<#Exercise-16-(transform&#41;>)              |          [Exercise 17 (positive list)](<#Exercise-17-(positive-list&#41;>)          |               [Exercise 18 (acronyms)](<#Exercise-18-(acronyms&#41;>)               |
-|           [Exercise 19 (sum equation)](<#Exercise-19-(sum-equation&#41;>)           |              [Exercise 20 (usemodule)](<#Exercise-20-(usemodule&#41;>)              |                                                                                     |
-
-
-
 # Python
+
+- [Python](#python)
+  - [Basale koncepter](#basale-koncepter)
+    - [Grundlæggende input og output](#grundlæggende-input-og-output)
+    - [Indrykning](#indrykning)
+      - [Øvelse 1 (hej verden)](#øvelse-1-hej-verden)
+      - [Øvelse 2 (kompliment)](#øvelse-2-kompliment)
+      - [Øvelse 3 (multiplikation)](#øvelse-3-multiplikation)
+    - [Variabler og datatyper](#variabler-og-datatyper)
+      - [Oprettelse af strenge](#oprettelse-af-strenge)
+      - [Sammenkædning af strenge](#sammenkædning-af-strenge)
+      - [Formateret udskrivning](#formateret-udskrivning)
+    - [Udtryk (Expressions)](#udtryk-expressions)
+    - [Erklæringer](#erklæringer)
+    - [Løkker til gentagne opgaver](#løkker-til-gentagne-opgaver)
+      - [Exercise 4 (multiplication table)](#exercise-4-multiplication-table)
+      - [Decision making with the if statement](#decision-making-with-the-if-statement)
+      - [Breaking and continuing loop](#breaking-and-continuing-loop)
+      - [Exercise 5 (two dice)](#exercise-5-two-dice)
+    - [Functions](#functions)
+      - [Visibility of variables](#visibility-of-variables)
+      - [Exercise 6 (triple square)](#exercise-6-triple-square)
+      - [Exercise 7 (areas of shapes)](#exercise-7-areas-of-shapes)
+    - [Data structures](#data-structures)
+      - [Sequences](#sequences)
+      - [Exercise 8 (solve quadratic)](#exercise-8-solve-quadratic)
+      - [Modifying lists](#modifying-lists)
+      - [Generating numerical sequences](#generating-numerical-sequences)
+      - [Sorting sequences](#sorting-sequences)
+      - [Exercise 9 (merge)](#exercise-9-merge)
+      - [Exercise 10 (detect ranges)](#exercise-10-detect-ranges)
+      - [Zipping sequences](#zipping-sequences)
+      - [Exercise 11 (interleave)](#exercise-11-interleave)
+      - [Enumerating sequences](#enumerating-sequences)
+      - [Dictionaries](#dictionaries)
+      - [Sets](#sets)
+      - [Exercise 12 (distinct characters)](#exercise-12-distinct-characters)
+      - [Miscellaneous stuff](#miscellaneous-stuff)
+      - [Exercise 13 (reverse dictionary)](#exercise-13-reverse-dictionary)
+      - [Exercise 14 (find matching)](#exercise-14-find-matching)
+    - [Compact way of creating data structures](#compact-way-of-creating-data-structures)
+      - [Exercise 15 (two dice comprehension)](#exercise-15-two-dice-comprehension)
+    - [Processing sequences](#processing-sequences)
+      - [Map and lambda functions](#map-and-lambda-functions)
+      - [Exercise 16 (transform)](#exercise-16-transform)
+      - [Filter function](#filter-function)
+      - [Exercise 17 (positive list)](#exercise-17-positive-list)
+      - [The reduce function](#the-reduce-function)
+  - [String handling](#string-handling)
+    - [Classification of strings](#classification-of-strings)
+    - [String transformations](#string-transformations)
+    - [Searching for substrings](#searching-for-substrings)
+    - [Trimming and adjusting](#trimming-and-adjusting)
+    - [Joining and splitting](#joining-and-splitting)
+      - [Exercise 18 (acronyms)](#exercise-18-acronyms)
+      - [Exercise 19 (sum equation)](#exercise-19-sum-equation)
+  - [Modules](#modules)
+    - [Using modules](#using-modules)
+    - [Breaking the namespace](#breaking-the-namespace)
+    - [Module lookup](#module-lookup)
+    - [Module hierarchy](#module-hierarchy)
+    - [Importing from packages](#importing-from-packages)
+    - [Correspondence between folder and module hierarchies](#correspondence-between-folder-and-module-hierarchies)
+    - [Contents of a module](#contents-of-a-module)
+      - [Exercise 20 (usemodule)](#exercise-20-usemodule)
+  - [Summary](#summary)
+
 
 ## Basale koncepter
 
@@ -30,7 +80,7 @@ print("Hello world2!")
 ```
 
     Hello world2!
-
+    
 
 På min macbook kan jeg taste følgende i `Terminal`:
 ```
@@ -65,7 +115,7 @@ print("Hello,", "John!", "How are you?")
 ```
 
     Hello, John! How are you?
-
+    
 
 I udskrivningsfunktionen evalueres først numerisk udtryk og konverteres derefter automatisk til strenge. Efterfølgende er strengene forbundet med mellemrum:
 
@@ -75,7 +125,7 @@ print(1, "plus", 2, "equals", 1+2)
 ```
 
     1 plus 2 equals 3
-
+    
 
 Læsning af tekstinput fra brugeren kan opnås med input-funktionen. Inputfunktionen får en strengparameter, som udskrives og beder brugeren om at indtaste input. I eksemplet herunder gemmes den streng, som brugeren har indtastet, i variablen name. Prøv at køre programmet i den interaktive notesbog ved at trykke på kontrol-enter!
 
@@ -87,8 +137,8 @@ name=input("Give me your name: ")
 print("Hello,", name)
 ```
 
-    Hello, per
-
+    Hello, Søren
+    
 
 ### Indrykning
 
@@ -106,7 +156,7 @@ print("Bye!")
     Hello
     Hello
     Bye!
-
+    
 
 (der er selvfølgelig også en `while`.)
 
@@ -168,7 +218,7 @@ print(a)
 ```
 
     1
-
+    
 
 Bemærk, at vi ikke behøvede at erklære variablen `a` på nogen måde. Der blev ikke angivet nogen type til variablen. Python registrerede automatisk, at typen askal være `int` (et helt tal). Vi kan forespørge om typen af ​​en variabel med den indbyggede funktion `type`:
 
@@ -222,7 +272,7 @@ print(s)
     Result of the comparison: False
     Complex multiplication: (-4+0j)
     concatenation
-
+    
 
 Typernes navne fungerer også som konverteringsoperatorer mellem typer:
 
@@ -240,7 +290,7 @@ print(str(234))
     123
     True False
     234
-
+    
 
 En *byte* er en lagringsenhed, der kan repræsentere tal mellem 0 og 255. En byte består af 8 *bits* , som igen, hver især, kan repræsentere enten 0 eller 1. Alle data, der er gemt på diske eller transmitteret over internettet, er sekvenser af bytes.  
 Normalt behøver vi ikke bekymre os om bytes, da vores strenge og andre variabler automatisk konverteres til en bytesekvens, når det er nødvendigt.  
@@ -255,7 +305,7 @@ print(list(b))            # Prints bytes in decimal notation
 
     b'\xc3\xa4'
     [195, 164]
-
+    
 
 
 ```python
@@ -283,7 +333,7 @@ print("One\tTwo\nThree\tFour")
 
     One	Two
     Three	Four
-
+    
 
 En streng, der indeholder linjeskift (`\n`) implicit, kan let angives inden for tredobbelte enkelt (`'`) eller dobbelt (`"`) anførselstegn:
 
@@ -309,7 +359,7 @@ print(" ".join([a, b, b, a]))   # More about the join method later
 
     firstsecond
     first second second first
-
+    
 
 Nogle gange kan udskrivning ved sammenkædning fra tekst-dele være uelegant:
 
@@ -322,13 +372,13 @@ print(1, "plus", 3, "is equal to", 4)
 
     1 plus 3 is equal to 4
     1 plus 3 is equal to 4
-
+    
 
 #### Formateret udskrivning
 
 De flere sammenkædnings- og citattegn bryder tankestrømmen. *Streng-interpolation* giver noget lettere syntaks.
 
-Der er flere måder at udføre stinginterpolation på:
+Der er flere måder at udføre strenginterpolation på:
 
 * Python-formatstrenge
 * `format`-metode
@@ -347,7 +397,7 @@ print(f"{1} plus {3} is equal to {4}")             # f-string
     1 plus 3 is equal to 4
     1 plus 3 is equal to 4
     1 plus 3 is equal to 4
-
+    
 
 Formateringsanvisningen `i`, i format-syntaks bruges til heltal og `f` bruges til kommatal (`float`).  
 Når du bruger f-strenge eller formatmetoden, bruger heltal i `d` stedet. I formatstrenge kan specifikatorer normalt udelades og bruges generelt kun, når specifik formatering er påkrævet. For eksempel i f-strenge f"{4:3d}"ville angive tallet 4 venstre polstret med mellemrum til 3 cifre.
@@ -364,7 +414,7 @@ print(f"{1.6:.1f} {1.7:.2f} {1.8:.3f} {42:d}")                 # f-string
     1.6 1.70 1.800 0042
     1.6 1.70 1.800 42
     1.6 1.70 1.800 42
-
+    
 
 Specifikatoren `s` bruges til strenge. F.eks.:
 
@@ -378,9 +428,9 @@ print(f"{'water'} concatenated with {'melon'} produces {'water' + 'melon'}")
     water concatenated with melon produces watermelon
     water concatenated with melon produces watermelon
     water concatenated with melon produces watermelon
+    
 
-
-Se [her](https://pyformat.info/#number) for flere detaljer om formatspecifikationer og til sammenligning mellem den gamle og nye stil med strenginterpolation.
+Se [<https://pyformat.info/#number>](https://pyformat.info/#number) for flere detaljer om formatspecifikationer og til sammenligning mellem den gamle og nye stil med strenginterpolation.
 
 Forskellige måder til strenginterpolering har forskellige styrker og svagheder. Generelt er det et spørgsmål om personlig præference at vælge, hvilken der skal bruges. På dette kursus vil eksempler og modelløsninger overvejende bruge `f`-strenge og `format`-metoden.
 
@@ -433,10 +483,10 @@ Lad os nu se på `while` løkken. En `while` loop gentager et sæt udsagn, mens 
 
 ```python
 i=1
-while i*i < 1000:
+while i*i < 100:
     print("Square of", i, "is", i*i)
     i = i + 1
-print("Finished printing all the squares below 1000.")
+print("Finished printing all the squares below 100.")
 ```
 
     Square of 1 is 1
@@ -448,30 +498,8 @@ print("Finished printing all the squares below 1000.")
     Square of 7 is 49
     Square of 8 is 64
     Square of 9 is 81
-    Square of 10 is 100
-    Square of 11 is 121
-    Square of 12 is 144
-    Square of 13 is 169
-    Square of 14 is 196
-    Square of 15 is 225
-    Square of 16 is 256
-    Square of 17 is 289
-    Square of 18 is 324
-    Square of 19 is 361
-    Square of 20 is 400
-    Square of 21 is 441
-    Square of 22 is 484
-    Square of 23 is 529
-    Square of 24 is 576
-    Square of 25 is 625
-    Square of 26 is 676
-    Square of 27 is 729
-    Square of 28 is 784
-    Square of 29 is 841
-    Square of 30 is 900
-    Square of 31 is 961
-    Finished printing all the squares below 1000.
-
+    Finished printing all the squares below 100.
+    
 
 Bemærk igen, at kroppen i `while`-sætningen var markeret med indrykning.
 
@@ -486,7 +514,7 @@ print("The sum is", s)
 ```
 
     The sum is 45
-
+    
 
 `for`-løkken udfører udsagnene i blokken så mange gange, som der er elementer i den givne liste. Ved hver iteration, refererer `i`-variablen til den næste værdi fra listen i rækkefølge. I stedet for at angive listen eksplicit som ovenfor, kunne vi have brugt *generatoren*, `range(10)` der returnerer værdier fra sekvensen 0,1, ..., 9, da for -løkken beder om en ny værdi. I den mest generelle form går forsløjfen gennem alle elementerne i en iterable . Udover lister og generatorer er der andre iterables. Vi vil tale om iterables og generatorer senere på ugen.
 The `for` loop executes the statements in the block as many times as there are elements in the given list. At each iteration the variable `i` refers to another value from the list in order. Instead of the giving the list explicitly as above, we could have used the *generator* `range(10)` which returns values from the sequence 0,1,...,9 as the for loop asks for a new value. In the most general form the `for` loop goes through all the elements in an *iterable*.
@@ -521,7 +549,7 @@ print("more text")
 ```
 
     textmore text
-
+    
 
 Print the numbers in a field with width four, so that the numbers are nicely aligned. For instructions on how adjust the field width refer to [pyformat.info](https://pyformat.info/#number_padding).
 <hr/>
@@ -541,8 +569,8 @@ else:
 print("The absolute value of %i is %i" % (x, a))
 ```
 
-    The absolute value of 7 is 7
-
+    The absolute value of 42 is 42
+    
 
 The general from of an if-else statement is
 
@@ -575,21 +603,8 @@ else:
     print("c is zero")
 ```
 
-
-    ---------------------------------------------------------------------------
-
-    ValueError                                Traceback (most recent call last)
-
-    <ipython-input-25-64f8c53bf202> in <module>
-    ----> 1 c=float(input("Give a number: "))
-          2 if c > 0:
-          3     print("c is positive")
-          4 elif c<0:
-          5     print("c is negative")
-
-
-    ValueError: could not convert string to float: 'fire'
-
+    c is positive
+    
 
 #### Breaking and continuing loop
 Breaking the loop, when the wanted element is found, with the `break` statement:
@@ -604,7 +619,7 @@ print("The first negative list element was", x)
 ```
 
     The first negative list element was -1
-
+    
 
 Stopping current iteration and continuing to the next one with the `continue` statement:
 
@@ -629,7 +644,7 @@ for x in l:
     Natural logarithm of 3 is 1.0986
     Square root of 56 is 7.483
     Natural logarithm of 56 is 4.0254
-
+    
 
 #### <div class="alert alert-info">Exercise 5 (two dice)</div>
 
@@ -651,7 +666,7 @@ print(double(4), double(1.2), double("abc")) # It even happens to work for strin
 ```
 
     8 2.4 abcabc
-
+    
 
 The double function takes only one parameter. Notice the *docstring* on the second line. It documents the purpose and usage of the function. Let's try to access it.
 
@@ -667,7 +682,7 @@ help(double)   # Another way to access the docstring
     double(x)
         This function multiplies its argument by two.
     
-
+    
 
 Most of Python's builtin functions, classes, and modules should contain a docstring.
 
@@ -678,17 +693,19 @@ help(print)
 
     Help on built-in function print in module builtins:
     
-    print(...)
-        print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
-        
+    print(*args, sep=' ', end='\n', file=None, flush=False)
         Prints the values to a stream, or to sys.stdout by default.
-        Optional keyword arguments:
-        file:  a file-like object (stream); defaults to the current sys.stdout.
-        sep:   string inserted between values, default a space.
-        end:   string appended after the last value, default a newline.
-        flush: whether to forcibly flush the stream.
+        
+        sep
+          string inserted between values, default a space.
+        end
+          string appended after the last value, default a newline.
+        file
+          a file-like object (stream); defaults to the current sys.stdout.
+        flush
+          whether to forcibly flush the stream.
     
-
+    
 
 Here's another example function:
 
@@ -701,7 +718,7 @@ print(sum_of_squares(3, 4))
 ```
 
     25
-
+    
 
 <div class="alert alert-warning">Note the terminology: in the function definition the names a and b are called <strong>parameters</strong> of the function; in the function call, however, 3 and 4 are called <strong>arguments</strong> to the function.
 </div>
@@ -722,9 +739,11 @@ print(sum_of_squares([-2,4,5]))
 
     4
     45
-
+    
 
 This works perfectly! There is however some extra typing with the brackets around the lists. Let's see if we can do better:
+
+
 
 
 ```python
@@ -740,7 +759,7 @@ print(sum_of_squares(-2,4,5))
 
     4
     45
-
+    
 
 The strange looking argument notation (the star) is called *argument packing*. It packs all the given positional arguments into a tuple `t`. We will encounter tuples again later, but it suffices now to say that tuples are *immutable* lists. With the `for` loop we can iterate through all the elements in the tuple.
 
@@ -749,12 +768,13 @@ Conversely, there is also syntax for *argument unpacking*. It has confusingly ex
 
 ```python
 lst=[1,5,8]
-print("With list unpacked as arguments to the functions:", sum_of_squares(*lst))
+print("With list unpacked as arguments to the functions:", 
+    sum_of_squares(*lst))
 # print(sum_of_squares(lst))    # Does not work correctly
 ```
 
     With list unpacked as arguments to the functions: 90
-
+    
 
 The second call failed because the function tried to raise the list of numbers to the second power. Inside the function body we have `t=([1,5,8])`, where the parentheses denote a tuple with one element, a list.
 
@@ -768,7 +788,7 @@ named(5, c=7, b=8)
 ```
 
     First: 5 Second: 8 Third: 7
-
+    
 
 Note that the named arguments didn't need to be in the same order as in the function definition.
 The named arguments must come after the positional arguments. For example, the following function call is illegal `named(a=5, 7, 8)`.
@@ -789,6 +809,11 @@ Let's go through another example of using parameters with default values:
 
 
 ```python
+
+```
+
+
+```python
 def length(*t, degree=2):
     """Computes the length of the vector given as parameter. By default, it computes
     the Euclidean distance (degree==2)"""
@@ -802,7 +827,7 @@ print(length(-4,3, degree=3))
 
     5.0
     4.497941445275415
-
+    
 
 With the default parameter this is the Euclidean distance, and if $p\ne 2$ it is called [p-norm](https://en.wikipedia.org/wiki/P-norm).
 
@@ -825,7 +850,7 @@ print(i)      # This will print 2
 
     3
     2
-
+    
 
 If you really need to rebind a global variable from a function, use the `global` statement. Example:
 
@@ -842,7 +867,7 @@ print(i)      # This will print 5
 
     5
     5
-
+    
 
 Unlike languages like C or C++, Python allows defining a function inside another function. This *nested* function will have nested scope:
 
@@ -861,7 +886,7 @@ f()
 
     3
     2
-
+    
 
 Try first running the above cell and see the result. Then uncomment the nonlocal stamement and run the cell again. The `global` and `nonlocal` statements are similar. The first will force a variable refer to a global variable, and the second will force a variable to refer to the variable in the nearest outer scope (but not the global scope).
 
@@ -983,15 +1008,21 @@ print([0,1,2,3,4,5,6,7,8,9][::3])
 ```
 
     [0, 3, 6, 9]
-
+    
 
 #### <div class="alert alert-info">Exercise 8 (solve quadratic)</div>
 
-In mathematics, the quadratic equation $ax^2+bx+c=0$ can be solved with the formula 
-$x=\frac{-b\pm \sqrt{b^2 -4ac}}{2a}$. 
+In mathematics, the quadratic equation $ax^2+bx+c=0$ can be solved with the formula  
+$x=\frac{-b\pm \sqrt{b^2 -4ac}}{2a}$
 
-Write a function `solve_quadratic`, that returns both solutions of a generic quadratic as a pair (2-tuple)
-when the coefficients are given as parameters. It should work like this:
+In code it might be usefull to declare a variable for a part of the formula, named `d`, defined by $\sqrt{b^2 -4ac}$. the formula then can be written as:  
+$x=\frac{-b\pm d}{2a}$
+
+We need both the positive and the negative version og the square root, becaurce all squareroots have to solutions, since both $ 2^2 = 4 $ and $(-2)^2 = 4 $ thus $ \sqrt{4} $ has both $ 2 $ and $ -2 $ as solutions.  
+Remember the order of precedence are important, especially when you implement mathematical expressions.
+
+Write a function `solve_quadratic`, that returns both solutions of a generic quadratic as a pair (2-tuple) when the coefficients are given as parameters. It should work like this:
+
 ```python
 print(solve_quadratic(1,-3,2))
 (2.0,1.0)
@@ -1000,7 +1031,9 @@ print(solve_quadratic(1,2,1))
 ```
 
 You may want to use the `math.sqrt` function from the `math` module in your solution. Test that your function works in the main function!
-<hr/>
+
+---
+
 
 #### Modifying lists
 We can assign values to elements of a list by indexing or by slicing. An example:
@@ -1013,7 +1046,7 @@ print(L)
 ```
 
     [11, 13, 10, 32]
-
+    
 
 Or we can assign a list to a slice:
 
@@ -1024,7 +1057,7 @@ print(L)
 ```
 
     [11, 4, 32]
-
+    
 
 We can also modify a list by using *mutating methods* of the `list` class, namely the methods `append`, `extend`, `insert`, `remove`, `pop`, `reverse`, and `sort`. Try Python's help functionality to find more about these methods: e.g. `help(list.extend)` or `help(list)`.
 
@@ -1046,7 +1079,7 @@ print(L)
     1
     2
     range(0, 3)
-
+    
 
 So `L` is not a list, but it is a sequence. We can for instace access its last element with `L[-1]`. If really needed, then it can be converted to a list with the `list` constructor:
 
@@ -1057,7 +1090,7 @@ print(list(L))
 ```
 
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-
+    
 
 <div class="alert alert-warning">Note that using a range consumes less memory than the corresponding list. This is because in a list all the elements are stored in the memory, whereas the range generates the requested elements only when needed. For example, when the for loop asks for the next element from the range at each iteration, only a single element from the range exists in memory at the same time. This makes a big difference when using large ranges, like range(1000000).</div>
 
@@ -1069,7 +1102,7 @@ print(list(range(0, 7, 2)))
 ```
 
     [0, 2, 4, 6]
-
+    
 
 #### Sorting sequences
 
@@ -1088,7 +1121,7 @@ print(L2)
     [1, 3, 5, 7]
     [1, 3, 6, 6, 7]
     [6, 1, 7, 3, 6]
-
+    
 
 The parameter `reverse=True` can be given (both to `sort` and `sorted`) to get descending order of elements:
 
@@ -1099,7 +1132,7 @@ print(sorted(L, reverse=True))
 ```
 
     [7, 5, 3, 1]
-
+    
 
 #### <div class="alert alert-info">Exercise 9 (merge)</div>
 
@@ -1140,9 +1173,9 @@ print(zip(L1, L2))               # Note that zip does not return a list, like ra
 print(list(zip(L1, L2)))         # Convert to a list
 ```
 
-    <zip object at 0x7fb8141907c8>
+    <zip object at 0x000001EC00282480>
     [(1, 'first'), (2, 'second'), (3, 'third')]
-
+    
 
 Here's another example of using the `zip` function.
 
@@ -1166,7 +1199,7 @@ for day, weather, temperature in zip(days,weathers,temperatures):
     On Friday it was rainy and the temperature was 9 degrees celsius.
     On Saturday it was sunny and the temperature was 11 degrees celsius.
     On Sunday it was sunny and the temperature was 11 degrees celsius.
-
+    
 
 If the sequences are not of equal length, then the resulting sequence will be as long as the shortest input sequence is.
 
@@ -1199,7 +1232,7 @@ print(i)
 ```
 
     7
-
+    
 
 The `enumerate(L)` function call can be thought to be equivalent to `zip(range(len(L)), L)`.
 
@@ -1217,7 +1250,7 @@ print(d["key2"])
 
     value1
     value2
-
+    
 
 Keys can have different types even in the same container. So the following code is legal:
 `d={1:"a", "z":1}`. The only restriction is that the keys must be *hashable*. That is, there has to be a mapping from keys to integers. Lists are *not* hashable, but tuples are!
@@ -1240,7 +1273,7 @@ print(d)
 ```
 
     {2: 'value'}
-
+    
 
 
 ```python
@@ -1299,7 +1332,7 @@ print(s)
     {1, 2, 'a'}
     set()
     {7}
-
+    
 
 A more useful example:
 
@@ -1310,7 +1343,7 @@ print(f"There are {len(set(s))} distinct characters in {s}")
 ```
 
     There are 4 distinct characters in mississippi
-
+    
 
 The `set` provides the following non-mutating methods:
 
@@ -1343,7 +1376,7 @@ print("Symmetric difference", s^t)
     Intersection: {2}
     Difference: {1, 7}
     Symmetric difference {1, 7, 8, 9}
-
+    
 
 There are also the following mutating methods:
 ```
@@ -1385,7 +1418,7 @@ print("x" in "text")
     True
     False
     True
-
+    
 
 As a special case, for strings the `in` operator can be used to check whether a string is part of another string:
 
@@ -1397,7 +1430,7 @@ print("issp" in "mississippi")
 
     True
     False
-
+    
 
 Elements of a container can be unpacked into variables:
 
@@ -1413,7 +1446,7 @@ print(key1, key2)
 
     e
     a b
-
+    
 
 In membership testing and unpacking only the keys of a dictionary are used, unless either values or items (like below) are explicitly asked.
 
@@ -1425,7 +1458,7 @@ for key, value in d.items():
 
     For key 'a' value 1 was stored
     For key 'b' value 3 was stored
-
+    
 
 To remove the binding of a variable, use the `del` statement. For example:
 
@@ -1446,7 +1479,7 @@ print(L)
 ```
 
     [13, 40, 100]
-
+    
 
 In similar fashion `del` can be used to delete a slice. Later we will see that `del` can delete attributes from an object.
 
@@ -1494,7 +1527,7 @@ print(L)
 ```
 
     [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
-
+    
 
 Because this kind of pattern is often used, Python offers a short-hand for this. A *list comprehension* is an expression that allows creating complicated lists on one line. The notation is familiar from mathematics:
 
@@ -1509,7 +1542,7 @@ print(L)
 ```
 
     [1, 8, 27, 64, 125, 216, 343, 512, 729, 1000]
-
+    
 
 The generic form of a list comprehension is:
 `[ expression for element in iterable lc-clauses ]`.
@@ -1530,7 +1563,7 @@ print(L)
 ```
 
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17, 18, 19, 22, 23, 24, 25, 26, 27, 28, 29, 33, 34, 35, 36, 37, 38, 39, 44, 45, 46, 47, 48, 49, 55, 56, 57, 58, 59, 66, 67, 68, 69, 77, 78, 79, 88, 89, 99, 111, 112, 113, 114, 115, 116, 117, 118, 119, 122, 123, 124, 125, 126, 127, 128, 129, 133, 134, 135, 136, 137, 138, 139, 144, 145, 146, 147, 148, 149, 155, 156, 157, 158, 159, 166, 167, 168, 169, 177, 178, 179, 188, 189, 199, 222, 223, 224, 225, 226, 227, 228, 229, 233, 234, 235, 236, 237, 238, 239, 244, 245, 246, 247, 248, 249, 255, 256, 257, 258, 259, 266, 267, 268, 269, 277, 278, 279, 288, 289, 299, 333, 334, 335, 336, 337, 338, 339, 344, 345, 346, 347, 348, 349, 355, 356, 357, 358, 359, 366, 367, 368, 369, 377, 378, 379, 388, 389, 399, 444, 445, 446, 447, 448, 449, 455, 456, 457, 458, 459, 466, 467, 468, 469, 477, 478, 479, 488, 489, 499, 555, 556, 557, 558, 559, 566, 567, 568, 569, 577, 578, 579, 588, 589, 599, 666, 667, 668, 669, 677, 678, 679, 688, 689, 699, 777, 778, 779, 788, 789, 799, 888, 889, 899, 999]
-
+    
 
 If one needs only to iterate through the list once, it is more memory efficient to use a *generator expression* instead. The only thing that changes syntactically is that the surrounding brackets are replaced by parentheses:
 
@@ -1546,7 +1579,7 @@ print(sum(G))   # It doesn't restart from the beginning, so all elements are alr
 
     60885
     0
-
+    
 
 <div class="alert alert-warning">Note above that one can only iterate through the generator once.</div>
 
@@ -1559,7 +1592,7 @@ print(d)
 ```
 
     {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
-
+    
 
 And a *set comprehension* creates a set:
 
@@ -1570,7 +1603,7 @@ print(s)
 ```
 
     {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 15, 16, 18, 20, 21, 24, 25, 27, 28, 30, 32, 35, 36, 40, 42, 45, 48, 49, 54, 56, 63, 64, 72, 81}
-
+    
 
 #### <div class="alert alert-info">Exercise 15 (two dice comprehension)</div>
 
@@ -1598,8 +1631,8 @@ L=[12,4,-1]
 print(map(double, L))
 ```
 
-    <map object at 0x7fb81413ef60>
-
+    <map object at 0x000001EC7FE70130>
+    
 
 The map function returns a map object for efficiency reasons. However, since we only want print the contents, we first convert it to a list and then print it:
 
@@ -1609,7 +1642,7 @@ print(list(map(double,L)))
 ```
 
     [24, 8, -2]
-
+    
 
 When one reads numeric data from a file or from the internet, the numbers are usually in string form. Before they can be used in computations, they must first be converted to ints or floats.
 A simple example will showcase this.
@@ -1625,7 +1658,7 @@ print(sum(map(int, L)))  # The int function converts a string to an integer
 
     ['12', '43', '64', '6']
     125
-
+    
 
 Sometimes it feels unnecessary to write a function is you are only going to use it in one  `map` function call. For example the function
 
@@ -1644,7 +1677,7 @@ print(list(map(lambda x : 2*x+x**2, L)))
 ```
 
     [8, 15, 35]
-
+    
 
 #### <div class="alert alert-info">Exercise 16 (transform)</div>
 
@@ -1672,7 +1705,7 @@ print(list(filter(is_odd, L)))
 ```
 
     [1, 5, 9]
-
+    
 
 The even elements of the list were filtered out.
 
@@ -1839,7 +1872,7 @@ print("-"*11)
     |    *    |
     |    *    |
     -----------
-
+    
 
 ### Joining and splitting
 The `join(seq)` method joins the strings of the sequence `seq`. The string itself is used as a delimitter. An example:
@@ -1868,7 +1901,7 @@ print(" ".join(L))  # This is the correct way of building a string out of smalle
 
      0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99
     0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99
-
+    
 
 <div class="alert alert-warning">If you want to build a string out of smaller strings, then
 first put the small strings into a list, and then use the `join` method to catenate the pieces together. It is much more efficient this way. Use the <code>+</code> catenation operator only if you have very few short strings that you want to catenate.</div>
@@ -1883,8 +1916,8 @@ for x in L:
     s += " " + x
 ```
 
-    11.8 µs ± 114 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
-
+    8.12 µs ± 285 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+    
 
 
 ```python
@@ -1892,8 +1925,8 @@ for x in L:
 s = " ".join(L)
 ```
 
-    1.25 µs ± 6.42 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
-
+    858 ns ± 24.3 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+    
 
 `%%timeit` is an IPython [cell magic](https://ipython.readthedocs.io/en/stable/interactive/magics.html) command, that is useful for timing execution in notebooks.
 
@@ -2048,7 +2081,9 @@ or
 from numpy.linalg import linalg as lin
 ```
 
-if we want to use a different name for the module. The following command imports the function `det` (computes the determinant of a matrix) from the module linalg, which is contained in a subpackage linalg, which belongs to package numpy:
+if we want to use a different name for the module. 
+
+The following command imports the function `det` (computes the determinant of a matrix) from the module linalg, which is contained in a subpackage linalg, which belongs to package numpy:
 ```python
 from numpy.linalg.linalg import det
 ```
@@ -2086,6 +2121,30 @@ a/
         e.py
 ```
 ![package.svg](package.svg)
+
+In Python it is possible to put statements on the top-level of our module `mod` so that they don't belong to any function. For instance like this:
+
+```python
+for _ in range(3):
+    print("Hello")
+```
+
+But if somebody imports our module with `import mod`, then all the statements at the top-level will be executed. This may be surprising to the user who imported the module. The user will usually say, explicitly when he/she wants to execute some code from the imported module.
+
+It is better style to put these statements inside some function. If they don't fit in any other function, then you can use, for example, the function named `main`, like this:
+
+```python
+def main():
+    for _ in range(3):
+        print("Hello")
+
+if __name__ == "__main__":    # We call main only when this module is not being imported, but directly executed
+    main()                    # for example with 'python3 mod.py'
+```
+
+You probably have seen this mechanism used in the exercise stubs.
+Note that in Python the `main` has no special meaning, it is just our convention to use it here.
+Now if somebody imports `mod`, the `for` loop won't be automatically executed. If we want, we can call it explicitly with `mod.main()`. 
 
 ### Contents of a module
 
@@ -2130,30 +2189,6 @@ The module attribute `__name__` has value `“__main__”` if we in are the main
 otherwise some other module has imported us and name
 equals `__file__`.
 
-In Python it is possible to put statements on the top-level of our module `mod` so that they don't belong to any function. For instance like this:
-
-```python
-for _ in range(3):
-    print("Hello")
-```
-
-But if somebody imports our module with `import mod`, then all the statements at the top-level will be executed. This may be surprising to the user who imported the module. The user will usually say, explicitly when he/she wants to execute some code from the imported module.
-
-It is better style to put these statements inside some function. If they don't fit in any other function, then you can use, for example, the function named `main`, like this:
-
-```python
-def main():
-    for _ in range(3):
-        print("Hello")
-
-if __name__ == "__main__":    # We call main only when this module is not being imported, but directly executed
-    main()                    # for example with 'python3 mod.py'
-```
-
-You probably have seen this mechanism used in the exercise stubs.
-Note that in Python the `main` has no special meaning, it is just our convention to use it here.
-Now if somebody imports `mod`, the `for` loop won't be automatically executed. If we want, we can call it explicitly with `mod.main()`. 
-
 ```python
 for _ in range(3):
     print("Hello")
@@ -2175,11 +2210,6 @@ Make sure both the functions and the module have descriptive docstrings. Add als
 * More generally, an iterable is an object whose elements can be gone through one by one using a `for` loop. Such as `range(1,7)`
 * Python has dynamic typing: the type of a name is known only when we run the program. The type might not be fixed, that is, if a name is created, for example, in a loop, then its type might change at each iteration.
 * Visibility of a name: a name that refers to a variable can disappear in the middle of a code block, if a `del` statement is issued!
+
 * Python is good at string handling, but remember that if you want to concatenate large number of strings, use the `join` method. Concatenating by the `+` operator multiple times is very inefficient
 * Several useful tools exist to process sequences: `map`, `reduce`, `filter`, `zip`, `enumerate`, and `range`. The unnamed lambda function can be helpful with these tools. Note that these tools (except the `reduce`) don't return lists, but iterables, for efficiency reasons: Most often we don't want to store the result from these tools to a container (such as a list), we may only want to iterate through the result!
-
-<!--NAVIGATION-->
-
-
-<a href="https://colab.research.google.com/github/saskeli/x/blob/master/basics.ipynb"><img align="left" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open and Execute in Google Colaboratory"></a>
-
