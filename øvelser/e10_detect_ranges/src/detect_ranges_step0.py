@@ -8,19 +8,26 @@ def detect_ranges(L):
     end    = None
     p      = 0
     while p < len(L):
+        print(f"p={p}", end=' ')
+        print(f"L[{p}]={L[p]}", end=' ')
         if begin is None:
             begin = L[p]
-        if (p < len(L)-1 and                # list-overflow-guard, med boolean shortcut
-            L[p+1] - L[p] == 1):            # Hvis næste element er præcis 1 større
+            print(f"begin={begin}", end=' ')
+        if L[p+1] - L[p] == 1:            # Hvis næste element er præcis 1 større
             end = L[p+1]                    # er der et interval (som måske er længere...)
+            print(f"end={end}", end=' ')
         elif end is None:                   # så er der en single i begin
-            res.append(begin)                   # tilføj singlen
+        #     res.append(begin)                   # tilføj singlen
             begin = None
+            print(f"begin={begin}", end=' ')
         else:                               # så er intervallet slut
-            res.append( (begin, end+1) )        # tilføj et interval som par
+        #     res.append( (begin, end+1) )        # tilføj et interval som par
             begin = None
             end = None
+            print(f"begin={begin}", end=' ')
+            print(f"begin={end}", end=' ')
         p += 1
+        print()
 
     return res
 
