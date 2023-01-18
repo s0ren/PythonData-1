@@ -14659,7 +14659,13 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Python-(continues)">Python (continues)<a class="anchor-link" href="#Python-(continues)">&#182;</a></h1>
+<h1 id="Python-(continues)">Python (continues)<a class="anchor-link" href="#Python-(continues)">&#182;</a></h1><script>
+    // a hack, to fix that code blocks from markdown are to small
+    console.log("Hello. You'll see this printed in your browser's DevTools / Console. Feel free to delete this line.");
+    //document.querySelector('head').innerHTML += '<style>.slides { zoom: 1.0 !important; }</style>';
+    document.querySelector('head').innerHTML += '<style>.reveal code { font-size: large !important; }</style>';
+</script>
+
 </div>
 </div>
 </div>
