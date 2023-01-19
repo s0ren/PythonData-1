@@ -33,7 +33,8 @@ elev_api_url = "https://api.opentopodata.org/"
 elev_endpoint = "v1/eudem25m"
 
 params = {
-    'locations' : str(rjson['y']) + ',' + str(rjson['x']),
+    #'locations' : '[(' + str(rjson['y']) + ',' + str(rjson['x']) + '),' + '(55.73145776633826,12.35328065110478)]',
+    'locations' : str(rjson['y']) + ',' + str(rjson['x'])
 }
 
 print(params)
