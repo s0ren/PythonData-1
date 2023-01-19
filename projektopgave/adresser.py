@@ -26,3 +26,23 @@ if respons.status_code == 200:
     rjson = respons.json()[0]
     print("Latitude (bredde):", rjson['x'])
     print("Longitude (længde):", rjson['y'])
+
+# curl https://api.opentopodata.org/v1/eudem25m?locations=57.688709,11.976404
+
+elev_api_url = "https://api.opentopodata.org/"
+elev_endpoint = "v1/eudem25m"
+
+params = {
+    'locations' : str(rjson['y']) + ',' + str(rjson['x']),
+}
+
+print(params)
+
+respons = requests.get(elev_api_url+elev_endpoint, params)
+
+print(respons)
+print("Response status:", respons.status_code)
+
+if respons.status_code == 200:
+    print(respons.json())
+    print('elevation:', respons.json()['results'][0]['elevation'])
