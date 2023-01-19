@@ -1,5 +1,5 @@
 ﻿# https://requests.readthedocs.io/en/latest/user/quickstart/
-
+# skal installeres ved at skrive denne kommando i cmd/powershell `pip install requests`
 import requests
 
 # Adresse data
