@@ -77,6 +77,7 @@ def main():
     # https://requests.readthedocs.io/en/latest/user/quickstart/
 
     import requests
+    import time
 
     # curl https://api.opentopodata.org/v1/eudem25m?locations=57.688709,11.976404 
 
@@ -99,10 +100,13 @@ def main():
             rjson = respons.json()['results'][0]
             # print(f"elevation: {rjson['elevation']}")
             point['elevation(eudem25m)'] = rjson['elevation']
+            #point.append(rjson['elevation'])
             print(f"\r{i}", end='')
+            time.sleep(1)
         else:
             print('-')
             print("Response status:", respons.status_code)
+            print(respons.text)
  
     print(points[1].keys())
 
