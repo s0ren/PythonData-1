@@ -7,10 +7,10 @@ def detect_ranges(L):
     begin  = None
     end    = None
     p      = 0
-    while p < len(L) -1:
+    while p < len(L):
         if begin is None:
             begin = L[p]
-        if L[p+1] - L[p] == 1:              # Hvis næste element er præcis 1 større
+        if p < len(L) -1 and L[p+1] - L[p] == 1:              # Hvis næste element er præcis 1 større
             end = L[p+1]                    # er der et interval (som måske er længere...)
         elif end is None:                   # så er der en single i begin
             res.append(begin)                   # tilføj singlen
