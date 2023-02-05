@@ -14659,7 +14659,15 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Python">Python<a class="anchor-link" href="#Python">&#182;</a></h1>
+<h1 id="Python">Python<a class="anchor-link" href="#Python">&#182;</a></h1><script>
+    // a hack, to fix that code blocks from markdown are to small
+    // see https://github.com/jupyter/nbviewer/issues/533#issuecomment-464688139
+    console.log("Hello. You'll see this printed in your browser's DevTools / Console. Feel free to delete this line.");
+    //document.querySelector('head').innerHTML += '<style>.slides { zoom: 1.0 !important; }</style>';
+    document.querySelector('head').innerHTML += '<style>.reveal code { font-size: large !important; }</style>';
+</script>
+<!-- python -m nbconvert .\øvelser\data_analysis_with_python_summer_2021\basics.ipynb --to html -->
+
 </div>
 </div>
 </div>
@@ -14703,10 +14711,10 @@ Hvis du læser dette i <code>JupyterNotebook</code>, Kan du køre programmet ved
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello world2!&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello Søren!&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14726,7 +14734,7 @@ Hvis du læser dette i <code>JupyterNotebook</code>, Kan du køre programmet ved
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Hello world2!
+<pre>Hello Søren!
 </pre>
 </div>
 </div>
@@ -15016,7 +15024,11 @@ Kør koden igen med kontrol-enter.</p>
 <h4 id="%C3%98velse-1-(hej-verden)"><div class="alert alert-info">&#216;velse 1 (hej verden)</div><a class="anchor-link" href="#%C3%98velse-1-(hej-verden)">&#182;</a></h4><p>Øvelsen har en skabelon-fil eller en &quot;stub&quot;. Den ligger i mappen <code>exercises/part01/e01_hello_world</code>
 Udfyld det manglende stykke i løsnings-stub-filen <code>hello_world.py</code> i undermappen <code>src</code> og få den til at udskrive følgende:</p>
 <p><code>Hello, world!</code></p>
-<p>Sørg for at bruge korrekt indrykning. Du kan køre det med kommando <code>python3 src/hello_world.py</code>. Hvis output ser godt ud, kan du teste det med kommando <code>python -m tmc</code>. <del>Hvis testene virker, skal du indsende din løsning til serveren med kommando  <code>tmc submit</code></del>.</p>
+<p>Sørg for at bruge korrekt indrykning.</p>
+<p>Du kan køre det med kommando</p>
+<p><code>python3 src/hello_world.py</code>.</p>
+<p>Hvis output ser godt ud, kan du teste det med kommando</p>
+<p><code>python -m tmc</code>.</p>
 <hr/>
 
 </div>
