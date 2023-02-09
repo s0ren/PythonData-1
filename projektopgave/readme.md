@@ -7,4 +7,6 @@ Jeg vil gerne analysere min løbetur, ud fra data fra mit GPS løbe ur. Et Garmi
 
 Se opgaven i [O-run_analysis.ipynb](O-run_analysis.ipynb)
 
+![](images/image11-autox400.png)
+
 _-vh Søren Magnusson_
