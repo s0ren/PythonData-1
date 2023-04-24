@@ -13,7 +13,7 @@
   }
 </style> 
 ---
-# pandoc -s --mathjax -t revealjs start.md -o start.html --slide-level=2
+# pandoc -s --mathjax -t revealjs start.md -o start.html --slide-level=2 --embed-resources --standalone
 title: Python
 author: Søren Magnusson, TEC
 date: Februar 2023
@@ -50,11 +50,66 @@ __*installering*__
 
 ## python.org
 
-![](2023-02-05-23-26-28.png)
+Download seneste version
+
+![python.org](assets/2023-02-05-23-26-28.png)
+
+---
+
+Check "`Add python.exe to PATH`"  
+Og vælg "`Customize installation`"
+
+![installer 1](assets/2023-04-24-18-04-48.png)
+
+---
+
+Vælg alt  
+og tryk "`Next`"
+
+![installer 2](assets/2023-04-24-18-06-14.png)
+
+
+---
+
+Check "`Install Python 3-11 for all users`"  
+og tryk på "`Install`"-
+
+![installer 3](assets/2023-04-24-18-07-27.png)
+
+---
+
+vent...  
+
+![installer 4](assets/2023-04-24-18-08-31.png)
+
+
+# Editor miljø
+
+Man kan f.eks. vælge et af følgende, men der da også andre:
+
+  1. ![vc logo](assets/2023-04-24-13-44-59-75xauto.png) VisualStudio Code [_Min favorit_]
+  1. ![pyChsrm logo](assets/2023-04-24-13-44-28-75xauto.png) PyCharm
+  1. ![idle logo](assets/2023-04-24-13-46-05-75xauto.png) Idle ("indbygget")
+
+## VS Code extensions
+
+![vs code with python extensions](assets/2023-04-24-17-53-40.png)
+
+## python miljø
+
+* Alle filer med `.py` er python filer
+* Der er syntaks highlight og syntaks check med pylance
+* Python scriptet udføres med at trykke på trekanten/pilen øverst til højre
+* output fra print kommer i konsol panelet
+* Man kan vælge fortolker-opsætning (hvis man har flere), nederst til højre
+
+![](assets/2023-04-24-18-43-44-autox400.png)
+
+# Opgaver
 
 ## Kildekode til opgaver, med git
 
-* bliv meldt ind
+* bliv meldt ind, i lærerens github team
   * Hvad er dit brugernavn på github?
 * lav en `fork` af https://github.com/TEC-Prog-Stud/PythonData-1
 * lav en klon på din computer
