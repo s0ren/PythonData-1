@@ -110,7 +110,7 @@ TOC
       - [Exercise 65 (special missing values)](#exercise-65-special-missing-values)
       - [Exercise 66 (last week)](#exercise-66-last-week)
       - [Exercise 67 (split date)](#exercise-67-split-date)
-  - [`Wed 1 1 2014 0` . Test your solution from the `main` function.](#wed-1-1-2014-0--test-your-solution-from-the-main-function)
+
       - [Exercise 68 (cleaning data)](#exercise-68-cleaning-data)
       - [Exercise 69 (cycling weather)](#exercise-69-cycling-weather)
       - [Exercise 70 (top bands)](#exercise-70-top-bands)
