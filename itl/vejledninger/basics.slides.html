@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
 
-<title>basics</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 
+<title>basics slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
+<!-- General and theme style sheets -->
+<link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/reveal.css">
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+</script>
 
 <style type="text/css">
     pre { line-height: 125%; }
@@ -14455,103 +14469,145 @@ all of MD as it is not optimized for dense, information rich UIs.
 </style>
 
 <style type="text/css">
-/* Force rendering true colors when outputing to pdf */
-* {
-  -webkit-print-color-adjust: exact;
-}
-
-/* Misc */
 a.anchor-link {
-  display: none;
+   display: none;
+}
+.highlight  {
+    margin: 0.4em;
+}
+.jp-Notebook {
+    padding: 0;
+}
+:root {
+    --jp-ui-font-size1: 20px;       /* instead of 14px */
+    --jp-content-font-size1: 20px;  /* instead of 14px */
+    --jp-code-font-size: 19px;      /* instead of 13px */
+    --jp-cell-prompt-width: 110px;  /* instead of 64px */
+}
+@media print {
+  body {
+    margin: 0;
+  }
+}
+</style>
+
+<style type="text/css">
+/* Overrides of notebook CSS for static HTML export */
+.reveal {
+  font-size: 160%;
+}
+.reveal table {
+  font-size: var(--jp-ui-font-size1);
+}
+.reveal pre {
+  width: inherit;
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+}
+.reveal pre code {
+  padding: 0px;
+}
+.reveal section img {
+  border: 0px solid black;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+}
+.reveal .slides {
+  text-align: left;
+}
+.reveal.fade {
+  opacity: 1;
+}
+.reveal .progress {
+  position: static;
 }
 
-/* Input area styling */
-.jp-InputArea {
-  overflow: hidden;
+div.jp-InputArea-editor {
+  padding: 0.06em;
 }
 
-.jp-InputArea-editor {
-  overflow: hidden;
+div.code_cell {
+  background-color: transparent;
 }
 
-.CodeMirror.cm-s-jupyter .highlight pre {
-/* weird, but --jp-code-padding defined to be 5px but 4px horizontal padding is hardcoded for pre.CodeMirror-line */
-  padding: var(--jp-code-padding) 4px;
+div.output_area pre {
+  font-family: monospace, sans-serif;
+  font-size: 80%;
+}
+
+div.jp-OutputPrompt {
+  /* 5px right shift to account for margin in parent container */
+  margin: 5px 5px 0 0;
+}
+
+.reveal div.highlight {
   margin: 0;
-
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  color: inherit;
-
 }
 
-.jp-OutputArea-output pre {
-  line-height: inherit;
-  font-family: inherit;
-}
-
-.jp-RenderedText pre {
-  color: var(--jp-content-font-color1);
+.reveal div.highlight > pre {
+  margin: 0;
+  width: 100%;
   font-size: var(--jp-code-font-size);
 }
 
-/* Using table instead of flexbox so that we can use break-inside property */
-/* CSS rules under this comment should not be required anymore after we move to the JupyterLab 4.0 CSS */
-
-
-.jp-CodeCell.jp-mod-outputsScrolled .jp-OutputArea-prompt {
-  min-width: calc(
-    var(--jp-cell-prompt-width) - var(--jp-private-cell-scrolling-output-offset)
-  );
+.reveal div.jp-OutputArea-output > pre {
+  margin: 0;
+  width: 90%;
+  font-size: var(--jp-code-font-size);
+  box-shadow: none;
 }
 
-.jp-OutputArea-child {
-  display: table;
-  width: 100%;
+/* Reveal navigation controls */
+
+.reveal .controls .navigate-left,
+.reveal .controls .navigate-left.enabled {
+  border-right-color: #727272;
+}
+.reveal .controls .navigate-left.enabled:hover,
+.reveal .controls .navigate-left.enabled.enabled:hover {
+  border-right-color: #dfdfdf;
+}
+.reveal .controls .navigate-right,
+.reveal .controls .navigate-right.enabled {
+  border-left-color: #727272;
+}
+.reveal .controls .navigate-right.enabled:hover,
+.reveal .controls .navigate-right.enabled.enabled:hover {
+  border-left-color: #dfdfdf;
+}
+.reveal .controls .navigate-up,
+.reveal .controls .navigate-up.enabled {
+  border-bottom-color: #727272;
+}
+.reveal .controls .navigate-up.enabled:hover,
+.reveal .controls .navigate-up.enabled.enabled:hover {
+  border-bottom-color: #dfdfdf;
+}
+.reveal .controls .navigate-down,
+.reveal .controls .navigate-down.enabled {
+  border-top-color: #727272;
+}
+.reveal .controls .navigate-down.enabled:hover,
+.reveal .controls .navigate-down.enabled.enabled:hover {
+  border-top-color: #dfdfdf;
+}
+.reveal .progress span {
+  background: #727272;
 }
 
-.jp-OutputPrompt {
-  display: table-cell;
-  vertical-align: top;
-  min-width: var(--jp-cell-prompt-width);
+/* Scrollbars */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
-
-body[data-format='mobile'] .jp-OutputPrompt {
-  display: table-row;
+::-webkit-scrollbar * {
+  background: transparent;
 }
-
-.jp-OutputArea-output {
-  display: table-cell;
-  width: 100%;
-}
-
-body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
-  display: table-row;
-}
-
-.jp-OutputArea-output.jp-OutputArea-executeResult {
-  width: 100%;
-}
-
-/* Hiding the collapser by default */
-.jp-Collapser {
-  display: none;
-}
-
-@page {
-    margin: 0.5in; /* Margin for each printed piece of paper */
-}
-
-@media print {
-  .jp-Cell-inputWrapper,
-  .jp-Cell-outputWrapper {
-    display: block;
-  }
-
-  .jp-OutputArea-child {
-    break-inside: avoid-page;
-  }
+::-webkit-scrollbar-thumb {
+  background: #727272 !important;
 }
 </style>
 
@@ -14588,9 +14644,15 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     }
     init_mathjax();
     </script>
-    <!-- End of mathjax configuration --></head>
+    <!-- End of mathjax configuration --><!-- Reveal Theme -->
+<link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/theme/simple.css" id="theme">
+
+</head>
+
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 
+<div class="reveal">
+<div class="slides"><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14602,7 +14664,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     // see https://github.com/jupyter/nbviewer/issues/533#issuecomment-464688139
     console.log("Hello. You'll see this printed in your browser's DevTools / Console. Feel free to delete this line.");
     //document.querySelector('head').innerHTML += '<style>.slides { zoom: 1.0 !important; }</style>';
-    document.querySelector('head').innerHTML += '<style>.reveal code { font-size: larger !important; }</style>';
+    document.querySelector('head').innerHTML += '<style>.reveal code { font-size: large !important; }</style>';
 </script>
 <!-- python -m nbconvert .\øvelser\data_analysis_with_python_summer_2021\basics.ipynb --to html -->
 
@@ -14620,7 +14682,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14681,7 +14743,7 @@ Hvis du læser dette i <code>JupyterNotebook</code>, Kan du køre programmet ved
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14710,7 +14772,7 @@ Her taster jeg:</p>
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14808,7 +14870,7 @@ Her taster jeg:</p>
 
 </div>
 
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14859,7 +14921,7 @@ Her taster jeg:</p>
 
 </div>
 
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14937,7 +14999,7 @@ Bye!
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -14952,30 +15014,34 @@ Kør koden igen med kontrol-enter.</p>
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="%C3%98velse-1-(hej-verden)"><div class="alert alert-info">&#216;velse 1 (hej verden)</div><a class="anchor-link" href="#%C3%98velse-1-(hej-verden)">&#182;</a></h4><p>Øvelsen har en skabelon-fil eller en &quot;stub&quot;. Den ligger i mappen <code>exercises/part01/e01_hello_world</code>
+<h4 id="%C3%98velse-1-(hej-verden)"><div class="alert alert-info" />&#216;velse 1 (hej verden)<a class="anchor-link" href="#%C3%98velse-1-(hej-verden)">&#182;</a></h4><p>Øvelsen har en skabelon-fil eller en &quot;stub&quot;. Den ligger i mappen <code>exercises/part01/e01_hello_world</code>
 Udfyld det manglende stykke i løsnings-stub-filen <code>hello_world.py</code> i undermappen <code>src</code> og få den til at udskrive følgende:</p>
 <p><code>Hello, world!</code></p>
-<p>Sørg for at bruge korrekt indrykning. Du kan køre det med kommando <code>python3 src/hello_world.py</code>. Hvis output ser godt ud, kan du teste det med kommando <code>python -m tmc</code>. <del>Hvis testene virker, skal du indsende din løsning til serveren med kommando  <code>tmc submit</code></del>.</p>
+<p>Sørg for at bruge korrekt indrykning.</p>
+<p>Du kan køre det med kommando</p>
+<p><code>python src/hello_world.py</code>.</p>
+<p>Hvis output ser godt ud, kan du teste det med kommandoen</p>
+<p><code>python -m tmc</code>.</p>
 <hr/>
 
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="%C3%98velse-2-(kompliment)"><div class="alert alert-info">&#216;velse 2 (kompliment)</div><a class="anchor-link" href="#%C3%98velse-2-(kompliment)">&#182;</a></h4><p>Udfyld stub-løsningen for at få programmet til at fungere som følger:<br />
+<h4 id="%C3%98velse-2-(kompliment)"><div class="alert alert-info" />&#216;velse 2 (kompliment)<a class="anchor-link" href="#%C3%98velse-2-(kompliment)">&#182;</a></h4><p>Udfyld stub-løsningen for at få programmet til at fungere som følger:<br />
 Programmet skal bede brugeren om et input, og udskrive et svar som eksemplerne herunder viser.</p>
 <pre><code>What country are you from? Sweden
 I have heard that Sweden is a beautiful country.
@@ -14988,14 +15054,14 @@ I have heard that Chile is a beautiful country.
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="%C3%98velse-3-(multiplikation)"><div class="alert alert-info">&#216;velse 3 (multiplikation)</div><a class="anchor-link" href="#%C3%98velse-3-(multiplikation)">&#182;</a></h4><p>Lav et program, der giver følgende output.<br />
+<h4 id="%C3%98velse-3-(multiplikation)"><div class="alert alert-info" />&#216;velse 3 (multiplikation)<a class="anchor-link" href="#%C3%98velse-3-(multiplikation)">&#182;</a></h4><p>Lav et program, der giver følgende output.<br />
 Du skal bruge et for-loop i din løsning.</p>
 <pre><code>4 multiplied by 0 is 0
 4 multiplied by 1 is 4
@@ -15014,7 +15080,7 @@ Du skal bruge et for-loop i din løsning.</p>
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15064,7 +15130,7 @@ Du skal bruge et for-loop i din løsning.</p>
 
 </div>
 
-</div>
+</div><div class="fragment" >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15167,7 +15233,7 @@ Du skal bruge et for-loop i din løsning.</p>
 
 </div>
 
-</div>
+</div></div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15186,7 +15252,7 @@ Du skal bruge et for-loop i din løsning.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><img src="typing.svg" alt="typing.svg" /></p>
+<p><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8IS0tIENyZWF0ZWQgd2l0aCBzdmdfc3RhY2sgKGh0dHA6Ly9naXRodWIuY29tL2FzdHJhdy9zdmdfc3RhY2spIC0tPg0KDQo8c3ZnDQogICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iDQogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIg0KICAgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIg0KICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyINCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyINCiAgIHhtbG5zOnNvZGlwb2RpPSJodHRwOi8vc29kaXBvZGkuc291cmNlZm9yZ2UubmV0L0RURC9zb2RpcG9kaS0wLmR0ZCINCiAgIHhtbG5zOmlua3NjYXBlPSJodHRwOi8vd3d3Lmlua3NjYXBlLm9yZy9uYW1lc3BhY2VzL2lua3NjYXBlIg0KICAgdmVyc2lvbj0iMS4xIg0KICAgd2lkdGg9IjkzNC4yNjExMSINCiAgIGhlaWdodD0iMjc2LjAzMzIzIg0KICAgaWQ9InN2Zzc2Ig0KICAgc29kaXBvZGk6ZG9jbmFtZT0idHlwaW5nLnN2ZyINCiAgIGlua3NjYXBlOnZlcnNpb249IjAuOTIuMyAoMjQwNTU0NiwgMjAxOC0wMy0xMSkiPg0KICA8bWV0YWRhdGENCiAgICAgaWQ9Im1ldGFkYXRhODAiPg0KICAgIDxyZGY6UkRGPg0KICAgICAgPGNjOldvcmsNCiAgICAgICAgIHJkZjphYm91dD0iIj4NCiAgICAgICAgPGRjOmZvcm1hdD5pbWFnZS9zdmcreG1sPC9kYzpmb3JtYXQ+DQogICAgICAgIDxkYzp0eXBlDQogICAgICAgICAgIHJkZjpyZXNvdXJjZT0iaHR0cDovL3B1cmwub3JnL2RjL2RjbWl0eXBlL1N0aWxsSW1hZ2UiIC8+DQogICAgICAgIDxkYzp0aXRsZT48L2RjOnRpdGxlPg0KICAgICAgPC9jYzpXb3JrPg0KICAgIDwvcmRmOlJERj4NCiAgPC9tZXRhZGF0YT4NCiAgPHNvZGlwb2RpOm5hbWVkdmlldw0KICAgICBwYWdlY29sb3I9IiNmZmZmZmYiDQogICAgIGJvcmRlcmNvbG9yPSIjNjY2NjY2Ig0KICAgICBib3JkZXJvcGFjaXR5PSIxIg0KICAgICBvYmplY3R0b2xlcmFuY2U9IjEwIg0KICAgICBncmlkdG9sZXJhbmNlPSIxMCINCiAgICAgZ3VpZGV0b2xlcmFuY2U9IjEwIg0KICAgICBpbmtzY2FwZTpwYWdlb3BhY2l0eT0iMCINCiAgICAgaW5rc2NhcGU6cGFnZXNoYWRvdz0iMiINCiAgICAgaW5rc2NhcGU6d2luZG93LXdpZHRoPSIxODc3Ig0KICAgICBpbmtzY2FwZTp3aW5kb3ctaGVpZ2h0PSI4MjEiDQogICAgIGlkPSJuYW1lZHZpZXc3OCINCiAgICAgc2hvd2dyaWQ9ImZhbHNlIg0KICAgICBmaXQtbWFyZ2luLXRvcD0iMCINCiAgICAgZml0LW1hcmdpbi1sZWZ0PSIwIg0KICAgICBmaXQtbWFyZ2luLXJpZ2h0PSIwIg0KICAgICBmaXQtbWFyZ2luLWJvdHRvbT0iMCINCiAgICAgaW5rc2NhcGU6em9vbT0iMC4zMTI1MzMzMyINCiAgICAgaW5rc2NhcGU6Y3g9IjUxMC43MTM2NyINCiAgICAgaW5rc2NhcGU6Y3k9Ii05Mi4wMzM4ODciDQogICAgIGlua3NjYXBlOndpbmRvdy14PSIwIg0KICAgICBpbmtzY2FwZTp3aW5kb3cteT0iMCINCiAgICAgaW5rc2NhcGU6d2luZG93LW1heGltaXplZD0iMCINCiAgICAgaW5rc2NhcGU6Y3VycmVudC1sYXllcj0ic3ZnNzYiIC8+DQogIDxkZWZzDQogICAgIGlkPSJkZWZzMiIgLz4NCiAgPGcNCiAgICAgaWQ9ImlkMDppZDAiDQogICAgIHRyYW5zZm9ybT0ibWF0cml4KDAuMDc4ODc0MzEsMCwwLDAuMDc4ODU3NjMsLTM5LjY3ODgyNCwtMTkuNjgyODY0KSI+DQogICAgPGcNCiAgICAgICBpZD0iZzM1Ig0KICAgICAgIHN0eWxlPSJmaWxsOm5vbmUiPg0KICAgICAgPCEtLSBMaW5lIC0tPg0KICAgICAgPHJlY3QNCiAgICAgICAgIHg9IjUzMTAiDQogICAgICAgICB5PSI1NDAiDQogICAgICAgICB3aWR0aD0iMTA4MCINCiAgICAgICAgIGhlaWdodD0iMzE5NSINCiAgICAgICAgIGlkPSJyZWN0NCINCiAgICAgICAgIHN0eWxlPSJzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MzBweCIgLz4NCiAgICAgIDwhLS0gTGluZSAtLT4NCiAgICAgIDxyZWN0DQogICAgICAgICB4PSI1NDkwIg0KICAgICAgICAgeT0iOTkwIg0KICAgICAgICAgd2lkdGg9Ijc2NSINCiAgICAgICAgIGhlaWdodD0iMTgwIg0KICAgICAgICAgaWQ9InJlY3Q2Ig0KICAgICAgICAgc3R5bGU9InN0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDozMHB4IiAvPg0KICAgICAgPCEtLSBMaW5lIC0tPg0KICAgICAgPHJlY3QNCiAgICAgICAgIHg9IjU0OTAiDQogICAgICAgICB5PSIyMDcwIg0KICAgICAgICAgd2lkdGg9Ijc2NSINCiAgICAgICAgIGhlaWdodD0iMTgwIg0KICAgICAgICAgaWQ9InJlY3Q4Ig0KICAgICAgICAgc3R5bGU9InN0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDozMHB4IiAvPg0KICAgICAgPCEtLSBMaW5lIC0tPg0KICAgICAgPHBvbHlsaW5lDQogICAgICAgICBwb2ludHM9IiA5NDUsMTk4MCAyMzQwLDE5ODAiDQogICAgICAgICBpZD0icG9seWxpbmUxMCINCiAgICAgICAgIHN0eWxlPSJzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6OHB4O3N0cm9rZS1kYXNoYXJyYXk6NDAsIDQwIiAvPg0KICAgICAgPCEtLSBMaW5lIC0tPg0KICAgICAgPHJlY3QNCiAgICAgICAgIHg9IjYzMCINCiAgICAgICAgIHk9IjE2NjUiDQogICAgICAgICB3aWR0aD0iMTkzNSINCiAgICAgICAgIGhlaWdodD0iNjMwIg0KICAgICAgICAgaWQ9InJlY3QxMiINCiAgICAgICAgIHN0eWxlPSJzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MzBweCIgLz4NCiAgICAgIDwhLS0gTGluZSAtLT4NCiAgICAgIDxwb2x5bGluZQ0KICAgICAgICAgcG9pbnRzPSIgMjU2NSwxODAwIDI1NjcsMTc5OSAyNTcwLDE3OTcgMjU3NywxNzk0IDI1ODgsMTc4OSAyNjAzLDE3ODIgMjYyMywxNzcyIDI2NDgsMTc2MCAgMjY3OSwxNzQ2IDI3MTMsMTczMCAyNzUzLDE3MTIgMjc5NSwxNjkyIDI4NDEsMTY3MSAyODg5LDE2NDkgMjkzOSwxNjI2IDI5OTAsMTYwMyAgMzA0MSwxNTgwIDMwOTIsMTU1OCAzMTQyLDE1MzYgMzE5MSwxNTE1IDMyMzksMTQ5NCAzMjg2LDE0NzUgMzMzMSwxNDU2IDMzNzUsMTQzOSAgMzQxNywxNDIyIDM0NTgsMTQwNyAzNDk4LDEzOTIgMzUzNywxMzc4IDM1NzUsMTM2NSAzNjEyLDEzNTMgMzY0OSwxMzQxIDM2ODYsMTMzMCAgMzcyMiwxMzE5IDM3NTksMTMwOSAzNzk1LDEyOTkgMzgzMywxMjkwIDM4NjYsMTI4MiAzOTAwLDEyNzQgMzkzNSwxMjY2IDM5NzAsMTI1OSAgNDAwNywxMjUyIDQwNDQsMTI0NSA0MDgyLDEyMzggNDEyMiwxMjMxIDQxNjMsMTIyNCA0MjA2LDEyMTggNDI1MCwxMjExIDQyOTcsMTIwNSAgNDM0NSwxMTk4IDQzOTYsMTE5MiA0NDQ4LDExODUgNDUwMywxMTc4IDQ1NjAsMTE3MiA0NjE5LDExNjUgNDY4MCwxMTU4IDQ3NDIsMTE1MiAgNDgwNSwxMTQ1IDQ4NjksMTEzOSA0OTMzLDExMzIgNDk5NywxMTI2IDUwNTksMTEyMCA1MTIwLDExMTQgNTE3NywxMTA4IDUyMzEsMTEwMyAgNTI4MSwxMDk5IDUzMjYsMTA5NSA1MzY1LDEwOTEgNTM5OSwxMDg4IDU0MjcsMTA4NiA1NDQ5LDEwODQgNTQ2NSwxMDgyIDU0OTAsMTA4MCAiDQogICAgICAgICBpZD0icG9seWxpbmUxNCINCiAgICAgICAgIHN0eWxlPSJzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MzBweDtzdHJva2UtbGluZWpvaW46YmV2ZWwiIC8+DQogICAgICA8IS0tIEZvcndhcmQgYXJyb3cgdG8gcG9pbnQgMCwwIC0tPg0KICAgICAgPHBvbHlnb24NCiAgICAgICAgIHBvaW50cz0iIg0KICAgICAgICAgc3Ryb2tlLW1pdGVybGltaXQ9IjgiDQogICAgICAgICBpZD0icG9seWdvbjE2Ig0KICAgICAgICAgc3R5bGU9ImZpbGw6IzAwMDAwMDtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6NjBweDtzdHJva2UtbWl0ZXJsaW1pdDo4IiAvPg0KICAgICAgPCEtLSBMaW5lIC0tPg0KICAgICAgPGRlZnMNCiAgICAgICAgIGlkPSJkZWZzMjEiPg0KICAgICAgICA8Y2xpcFBhdGgNCiAgICAgICAgICAgaWQ9ImlkMDpjcDAiPg0KICAgICAgICAgIDxwYXRoDQogICAgICAgICAgICAgZD0iTSA0ODAsMjQ5IEggNjQyMyBWIDM3NjggSCA0ODAgWiBtIDI4MDIsMTI2MCAtMjQsLTU1IC0yNDEsMTE3IDE1LDMzIHoiDQogICAgICAgICAgICAgaWQ9InBhdGgxOCINCiAgICAgICAgICAgICBpbmtzY2FwZTpjb25uZWN0b3ItY3VydmF0dXJlPSIwIg0KICAgICAgICAgICAgIHN0eWxlPSJjbGlwLXJ1bGU6ZXZlbm9kZCIgLz4NCiAgICAgICAgPC9jbGlwUGF0aD4NCiAgICAgIDwvZGVmcz4NCiAgICAgIDxwb2x5bGluZQ0KICAgICAgICAgcG9pbnRzPSIgMjU2NSwyMTYwIDI1NjcsMjE2MCAyNTcwLDIxNjEgMjU3OCwyMTYzIDI1ODksMjE2NSAyNjA1LDIxNjggMjYyNiwyMTcyIDI2NTIsMjE3OCAgMjY4NCwyMTg0IDI3MjEsMjE5MSAyNzYzLDIxOTkgMjgwOSwyMjA4IDI4NTksMjIxOCAyOTExLDIyMjggMjk2NiwyMjM4IDMwMjIsMjI0OCAgMzA3OSwyMjU5IDMxMzYsMjI2OSAzMTkzLDIyNzkgMzI0OCwyMjg5IDMzMDMsMjI5OCAzMzU1LDIzMDcgMzQwNywyMzE1IDM0NTYsMjMyMiAgMzUwNCwyMzI5IDM1NDksMjMzNiAzNTkzLDIzNDIgMzYzNiwyMzQ3IDM2NzcsMjM1MiAzNzE3LDIzNTYgMzc1NSwyMzU5IDM3OTIsMjM2MiAgMzgyOSwyMzY1IDM4NjUsMjM2NyAzOTAwLDIzNjggMzkzNSwyMzY5IDM5NzAsMjM3MCA0MDA1LDIzNzAgNDA0MCwyMzcwIDQwNzUsMjM2OSAgNDExMCwyMzY4IDQxNDUsMjM2NyA0MTgxLDIzNjUgNDIxOCwyMzYyIDQyNTUsMjM1OSA0MjkzLDIzNTYgNDMzMywyMzUyIDQzNzQsMjM0NyAgNDQxNywyMzQyIDQ0NjEsMjMzNiA0NTA2LDIzMjkgNDU1NCwyMzIyIDQ2MDMsMjMxNSA0NjU1LDIzMDcgNDcwNywyMjk4IDQ3NjIsMjI4OSAgNDgxNywyMjc5IDQ4NzQsMjI2OSA0OTMxLDIyNTkgNDk4OCwyMjQ4IDUwNDQsMjIzOCA1MDk5LDIyMjggNTE1MSwyMjE4IDUyMDEsMjIwOCAgNTI0NywyMTk5IDUyODksMjE5MSA1MzI2LDIxODQgNTM1OCwyMTc4IDUzODQsMjE3MiA1NDA1LDIxNjggNTQyMSwyMTY1IDU0NDUsMjE2MCAiDQogICAgICAgICBjbGlwLXBhdGg9InVybCgjaWQwOmNwMCkiDQogICAgICAgICBpZD0icG9seWxpbmUyMyINCiAgICAgICAgIHN0eWxlPSJzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MzBweDtzdHJva2UtbGluZWpvaW46YmV2ZWwiIC8+DQogICAgICA8IS0tIEZvcndhcmQgYXJyb3cgdG8gcG9pbnQgMzA0MSwxNTgwIC0tPg0KICAgICAgPHBvbHlnb24NCiAgICAgICAgIHBvaW50cz0iMzI4MiwxNTA5IDMyNTgsMTQ1NCAzMTYwLDE1MjkgIg0KICAgICAgICAgc3Ryb2tlLW1pdGVybGltaXQ9IjgiDQogICAgICAgICBpZD0icG9seWdvbjI1Ig0KICAgICAgICAgc3R5bGU9ImZpbGw6IzAwMDAwMDtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6NjBweDtzdHJva2UtbWl0ZXJsaW1pdDo4IiAvPg0KICAgICAgPCEtLSBUZXh0IC0tPg0KICAgICAgPHRleHQNCiAgICAgICAgIHhtbDpzcGFjZT0icHJlc2VydmUiDQogICAgICAgICB4PSIxMzA1Ig0KICAgICAgICAgeT0iMjIwNSINCiAgICAgICAgIGZvbnQtc3R5bGU9Im5vcm1hbCINCiAgICAgICAgIGZvbnQtd2VpZ2h0PSJub3JtYWwiDQogICAgICAgICBmb250LXNpemU9IjI0MCINCiAgICAgICAgIGlkPSJ0ZXh0MjciDQogICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZToyNDBweDtmb250LWZhbWlseTpUaW1lczt0ZXh0LWFuY2hvcjpzdGFydDtmaWxsOiMwMDAwMDAiPnR5cGU8L3RleHQ+DQogICAgICA8IS0tIFRleHQgLS0+DQogICAgICA8dGV4dA0KICAgICAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSINCiAgICAgICAgIHg9IjQ5NSINCiAgICAgICAgIHk9IjcyMCINCiAgICAgICAgIGZvbnQtc3R5bGU9Im5vcm1hbCINCiAgICAgICAgIGZvbnQtd2VpZ2h0PSJub3JtYWwiDQogICAgICAgICBmb250LXNpemU9IjI4OCINCiAgICAgICAgIGlkPSJ0ZXh0MjkiDQogICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZToyODhweDtmb250LWZhbWlseTpUaW1lczt0ZXh0LWFuY2hvcjpzdGFydDtmaWxsOiMwMDAwMDAiPkMgLSBzdGF0aWMgdHlwaW5nPC90ZXh0Pg0KICAgICAgPCEtLSBUZXh0IC0tPg0KICAgICAgPHRleHQNCiAgICAgICAgIHhtbDpzcGFjZT0icHJlc2VydmUiDQogICAgICAgICB4PSI1MjY1Ig0KICAgICAgICAgeT0iMzYwIg0KICAgICAgICAgZm9udC1zdHlsZT0ibm9ybWFsIg0KICAgICAgICAgZm9udC13ZWlnaHQ9Im5vcm1hbCINCiAgICAgICAgIGZvbnQtc2l6ZT0iMjQwIg0KICAgICAgICAgaWQ9InRleHQzMSINCiAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjI0MHB4O2ZvbnQtZmFtaWx5OlRpbWVzO3RleHQtYW5jaG9yOnN0YXJ0O2ZpbGw6IzAwMDAwMCI+bWVtb3J5PC90ZXh0Pg0KICAgICAgPCEtLSBUZXh0IC0tPg0KICAgICAgPHRleHQNCiAgICAgICAgIHhtbDpzcGFjZT0icHJlc2VydmUiDQogICAgICAgICB4PSI2MzAiDQogICAgICAgICB5PSIxODkwIg0KICAgICAgICAgZm9udC1zdHlsZT0ibm9ybWFsIg0KICAgICAgICAgZm9udC13ZWlnaHQ9Im5vcm1hbCINCiAgICAgICAgIGZvbnQtc2l6ZT0iMjQwIg0KICAgICAgICAgaWQ9InRleHQzMyINCiAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjI0MHB4O2ZvbnQtZmFtaWx5OlRpbWVzO3RleHQtYW5jaG9yOnN0YXJ0O2ZpbGw6IzAwMDAwMCI+dmFyaWFibGVfbmFtZTwvdGV4dD4NCiAgICA8L2c+DQogIDwvZz4NCiAgPGcNCiAgICAgaWQ9ImlkMTppZDEiDQogICAgIHRyYW5zZm9ybT0ibWF0cml4KDAuMDc4ODc0MzEsMCwwLDAuMDc4ODU3NjMsNDI5LjA3MTE4LC0xOS42ODI4NjQpIj4NCiAgICA8Zw0KICAgICAgIGlkPSJnNzMiDQogICAgICAgc3R5bGU9ImZpbGw6bm9uZSI+DQogICAgICA8IS0tIExpbmUgLS0+DQogICAgICA8cmVjdA0KICAgICAgICAgeD0iNTMxMCINCiAgICAgICAgIHk9IjU0MCINCiAgICAgICAgIHdpZHRoPSIxMDgwIg0KICAgICAgICAgaGVpZ2h0PSIzMTk1Ig0KICAgICAgICAgaWQ9InJlY3QzOCINCiAgICAgICAgIHN0eWxlPSJzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MzBweCIgLz4NCiAgICAgIDwhLS0gTGluZSAtLT4NCiAgICAgIDxyZWN0DQogICAgICAgICB4PSI1ODUiDQogICAgICAgICB5PSIxNjY1Ig0KICAgICAgICAgd2lkdGg9IjE5ODAiDQogICAgICAgICBoZWlnaHQ9IjYzMCINCiAgICAgICAgIGlkPSJyZWN0NDAiDQogICAgICAgICBzdHlsZT0ic3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjMwcHgiIC8+DQogICAgICA8IS0tIExpbmUgLS0+DQogICAgICA8cmVjdA0KICAgICAgICAgeD0iNTQ5MCINCiAgICAgICAgIHk9Ijk5MCINCiAgICAgICAgIHdpZHRoPSI3NjUiDQogICAgICAgICBoZWlnaHQ9IjU4NSINCiAgICAgICAgIGlkPSJyZWN0NDIiDQogICAgICAgICBzdHlsZT0ic3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjMwcHgiIC8+DQogICAgICA8IS0tIExpbmUgLS0+DQogICAgICA8cmVjdA0KICAgICAgICAgeD0iNTQ5MCINCiAgICAgICAgIHk9IjIwNzAiDQogICAgICAgICB3aWR0aD0iNzY1Ig0KICAgICAgICAgaGVpZ2h0PSI2NzUiDQogICAgICAgICBpZD0icmVjdDQ0Ig0KICAgICAgICAgc3R5bGU9InN0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDozMHB4IiAvPg0KICAgICAgPCEtLSBMaW5lIC0tPg0KICAgICAgPHBvbHlsaW5lDQogICAgICAgICBwb2ludHM9IiA1NjI1LDEzMDUgNjE2NSwxMzA1Ig0KICAgICAgICAgaWQ9InBvbHlsaW5lNDYiDQogICAgICAgICBzdHlsZT0ic3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjhweDtzdHJva2UtZGFzaGFycmF5OjQwLCA0MCIgLz4NCiAgICAgIDwhLS0gTGluZSAtLT4NCiAgICAgIDxwb2x5bGluZQ0KICAgICAgICAgcG9pbnRzPSIgNTYyNSwyNDMwIDYxNjUsMjQzMCINCiAgICAgICAgIGlkPSJwb2x5bGluZTQ4Ig0KICAgICAgICAgc3R5bGU9InN0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDo4cHg7c3Ryb2tlLWRhc2hhcnJheTo0MCwgNDAiIC8+DQogICAgICA8IS0tIExpbmUgLS0+DQogICAgICA8cG9seWxpbmUNCiAgICAgICAgIHBvaW50cz0iIDI1NjUsMTgwMCAyNTY3LDE3OTkgMjU3MCwxNzk3IDI1NzcsMTc5NCAyNTg4LDE3ODkgMjYwMywxNzgyIDI2MjMsMTc3MiAyNjQ4LDE3NjAgIDI2NzksMTc0NiAyNzEzLDE3MzAgMjc1MywxNzEyIDI3OTUsMTY5MiAyODQxLDE2NzEgMjg4OSwxNjQ5IDI5MzksMTYyNiAyOTkwLDE2MDMgIDMwNDEsMTU4MCAzMDkyLDE1NTggMzE0MiwxNTM2IDMxOTEsMTUxNSAzMjM5LDE0OTQgMzI4NiwxNDc1IDMzMzEsMTQ1NiAzMzc1LDE0MzkgIDM0MTcsMTQyMiAzNDU4LDE0MDcgMzQ5OCwxMzkyIDM1MzcsMTM3OCAzNTc1LDEzNjUgMzYxMiwxMzUzIDM2NDksMTM0MSAzNjg2LDEzMzAgIDM3MjIsMTMxOSAzNzU5LDEzMDkgMzc5NSwxMjk5IDM4MzMsMTI5MCAzODY2LDEyODIgMzkwMCwxMjc0IDM5MzUsMTI2NiAzOTcwLDEyNTkgIDQwMDcsMTI1MiA0MDQ0LDEyNDUgNDA4MiwxMjM4IDQxMjIsMTIzMSA0MTYzLDEyMjQgNDIwNiwxMjE4IDQyNTAsMTIxMSA0Mjk3LDEyMDUgIDQzNDUsMTE5OCA0Mzk2LDExOTIgNDQ0OCwxMTg1IDQ1MDMsMTE3OCA0NTYwLDExNzIgNDYxOSwxMTY1IDQ2ODAsMTE1OCA0NzQyLDExNTIgIDQ4MDUsMTE0NSA0ODY5LDExMzkgNDkzMywxMTMyIDQ5OTcsMTEyNiA1MDU5LDExMjAgNTEyMCwxMTE0IDUxNzcsMTEwOCA1MjMxLDExMDMgIDUyODEsMTA5OSA1MzI2LDEwOTUgNTM2NSwxMDkxIDUzOTksMTA4OCA1NDI3LDEwODYgNTQ0OSwxMDg0IDU0NjUsMTA4MiA1NDkwLDEwODAgIg0KICAgICAgICAgaWQ9InBvbHlsaW5lNTAiDQogICAgICAgICBzdHlsZT0ic3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjMwcHg7c3Ryb2tlLWxpbmVqb2luOmJldmVsIiAvPg0KICAgICAgPCEtLSBGb3J3YXJkIGFycm93IHRvIHBvaW50IDAsMCAtLT4NCiAgICAgIDxwb2x5Z29uDQogICAgICAgICBwb2ludHM9IiINCiAgICAgICAgIHN0cm9rZS1taXRlcmxpbWl0PSI4Ig0KICAgICAgICAgaWQ9InBvbHlnb241MiINCiAgICAgICAgIHN0eWxlPSJmaWxsOiMwMDAwMDA7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjYwcHg7c3Ryb2tlLW1pdGVybGltaXQ6OCIgLz4NCiAgICAgIDwhLS0gTGluZSAtLT4NCiAgICAgIDxkZWZzDQogICAgICAgICBpZD0iZGVmczU3Ij4NCiAgICAgICAgPGNsaXBQYXRoDQogICAgICAgICAgIGlkPSJpZDE6Y3AwIj4NCiAgICAgICAgICA8cGF0aA0KICAgICAgICAgICAgIGQ9Ik0gNDgwLDI0OSBIIDY0MjMgViAzNzY4IEggNDgwIFogbSAyODAyLDEyNjAgLTI0LC01NSAtMjQxLDExNyAxNSwzMyB6Ig0KICAgICAgICAgICAgIGlkPSJwYXRoNTQiDQogICAgICAgICAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCINCiAgICAgICAgICAgICBzdHlsZT0iY2xpcC1ydWxlOmV2ZW5vZGQiIC8+DQogICAgICAgIDwvY2xpcFBhdGg+DQogICAgICA8L2RlZnM+DQogICAgICA8cG9seWxpbmUNCiAgICAgICAgIHBvaW50cz0iIDI1NjUsMjE2MCAyNTY3LDIxNjAgMjU3MCwyMTYxIDI1NzgsMjE2MyAyNTg5LDIxNjUgMjYwNSwyMTY4IDI2MjYsMjE3MiAyNjUyLDIxNzggIDI2ODQsMjE4NCAyNzIxLDIxOTEgMjc2MywyMTk5IDI4MDksMjIwOCAyODU5LDIyMTggMjkxMSwyMjI4IDI5NjYsMjIzOCAzMDIyLDIyNDggIDMwNzksMjI1OSAzMTM2LDIyNjkgMzE5MywyMjc5IDMyNDgsMjI4OSAzMzAzLDIyOTggMzM1NSwyMzA3IDM0MDcsMjMxNSAzNDU2LDIzMjIgIDM1MDQsMjMyOSAzNTQ5LDIzMzYgMzU5MywyMzQyIDM2MzYsMjM0NyAzNjc3LDIzNTIgMzcxNywyMzU2IDM3NTUsMjM1OSAzNzkyLDIzNjIgIDM4MjksMjM2NSAzODY1LDIzNjcgMzkwMCwyMzY4IDM5MzUsMjM2OSAzOTcwLDIzNzAgNDAwNSwyMzcwIDQwNDAsMjM3MCA0MDc1LDIzNjkgIDQxMTAsMjM2OCA0MTQ1LDIzNjcgNDE4MSwyMzY1IDQyMTgsMjM2MiA0MjU1LDIzNTkgNDI5MywyMzU2IDQzMzMsMjM1MiA0Mzc0LDIzNDcgIDQ0MTcsMjM0MiA0NDYxLDIzMzYgNDUwNiwyMzI5IDQ1NTQsMjMyMiA0NjAzLDIzMTUgNDY1NSwyMzA3IDQ3MDcsMjI5OCA0NzYyLDIyODkgIDQ4MTcsMjI3OSA0ODc0LDIyNjkgNDkzMSwyMjU5IDQ5ODgsMjI0OCA1MDQ0LDIyMzggNTA5OSwyMjI4IDUxNTEsMjIxOCA1MjAxLDIyMDggIDUyNDcsMjE5OSA1Mjg5LDIxOTEgNTMyNiwyMTg0IDUzNTgsMjE3OCA1Mzg0LDIxNzIgNTQwNSwyMTY4IDU0MjEsMjE2NSA1NDQ1LDIxNjAgIg0KICAgICAgICAgY2xpcC1wYXRoPSJ1cmwoI2lkMTpjcDApIg0KICAgICAgICAgaWQ9InBvbHlsaW5lNTkiDQogICAgICAgICBzdHlsZT0ic3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjMwcHg7c3Ryb2tlLWxpbmVqb2luOmJldmVsIiAvPg0KICAgICAgPCEtLSBGb3J3YXJkIGFycm93IHRvIHBvaW50IDMwNDEsMTU4MCAtLT4NCiAgICAgIDxwb2x5Z29uDQogICAgICAgICBwb2ludHM9IjMyODIsMTUwOSAzMjU4LDE0NTQgMzE2MCwxNTI5ICINCiAgICAgICAgIHN0cm9rZS1taXRlcmxpbWl0PSI4Ig0KICAgICAgICAgaWQ9InBvbHlnb242MSINCiAgICAgICAgIHN0eWxlPSJmaWxsOiMwMDAwMDA7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjYwcHg7c3Ryb2tlLW1pdGVybGltaXQ6OCIgLz4NCiAgICAgIDwhLS0gVGV4dCAtLT4NCiAgICAgIDx0ZXh0DQogICAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIg0KICAgICAgICAgeD0iNDk1Ig0KICAgICAgICAgeT0iNzIwIg0KICAgICAgICAgZm9udC1zdHlsZT0ibm9ybWFsIg0KICAgICAgICAgZm9udC13ZWlnaHQ9Im5vcm1hbCINCiAgICAgICAgIGZvbnQtc2l6ZT0iMjg4Ig0KICAgICAgICAgaWQ9InRleHQ2MyINCiAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjI4OHB4O2ZvbnQtZmFtaWx5OlRpbWVzO3RleHQtYW5jaG9yOnN0YXJ0O2ZpbGw6IzAwMDAwMCI+UHl0aG9uIC0gZHluYW1pYyB0eXBpbmc8L3RleHQ+DQogICAgICA8IS0tIFRleHQgLS0+DQogICAgICA8dGV4dA0KICAgICAgICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSINCiAgICAgICAgIHg9IjYzMCINCiAgICAgICAgIHk9IjIwNzAiDQogICAgICAgICBmb250LXN0eWxlPSJub3JtYWwiDQogICAgICAgICBmb250LXdlaWdodD0ibm9ybWFsIg0KICAgICAgICAgZm9udC1zaXplPSIyNDAiDQogICAgICAgICBpZD0idGV4dDY1Ig0KICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXNpemU6MjQwcHg7Zm9udC1mYW1pbHk6VGltZXM7dGV4dC1hbmNob3I6c3RhcnQ7ZmlsbDojMDAwMDAwIj52YXJpYWJsZV9uYW1lPC90ZXh0Pg0KICAgICAgPCEtLSBUZXh0IC0tPg0KICAgICAgPHRleHQNCiAgICAgICAgIHhtbDpzcGFjZT0icHJlc2VydmUiDQogICAgICAgICB4PSI1MzEwIg0KICAgICAgICAgeT0iMzYwIg0KICAgICAgICAgZm9udC1zdHlsZT0ibm9ybWFsIg0KICAgICAgICAgZm9udC13ZWlnaHQ9Im5vcm1hbCINCiAgICAgICAgIGZvbnQtc2l6ZT0iMjQwIg0KICAgICAgICAgaWQ9InRleHQ2NyINCiAgICAgICAgIHN0eWxlPSJmb250LXN0eWxlOm5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjI0MHB4O2ZvbnQtZmFtaWx5OlRpbWVzO3RleHQtYW5jaG9yOnN0YXJ0O2ZpbGw6IzAwMDAwMCI+bWVtb3J5PC90ZXh0Pg0KICAgICAgPCEtLSBUZXh0IC0tPg0KICAgICAgPHRleHQNCiAgICAgICAgIHhtbDpzcGFjZT0icHJlc2VydmUiDQogICAgICAgICB4PSI1NzE1Ig0KICAgICAgICAgeT0iMjI5NSINCiAgICAgICAgIGZvbnQtc3R5bGU9Im5vcm1hbCINCiAgICAgICAgIGZvbnQtd2VpZ2h0PSJub3JtYWwiDQogICAgICAgICBmb250LXNpemU9IjIxNiINCiAgICAgICAgIGlkPSJ0ZXh0NjkiDQogICAgICAgICBzdHlsZT0iZm9udC1zdHlsZTpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZToyMTZweDtmb250LWZhbWlseTpUaW1lczt0ZXh0LWFuY2hvcjpzdGFydDtmaWxsOiMwMDAwMDAiPnN0cjwvdGV4dD4NCiAgICAgIDwhLS0gVGV4dCAtLT4NCiAgICAgIDx0ZXh0DQogICAgICAgICB4bWw6c3BhY2U9InByZXNlcnZlIg0KICAgICAgICAgeD0iNTc2MCINCiAgICAgICAgIHk9IjEyNjAiDQogICAgICAgICBmb250LXN0eWxlPSJub3JtYWwiDQogICAgICAgICBmb250LXdlaWdodD0ibm9ybWFsIg0KICAgICAgICAgZm9udC1zaXplPSIyMTYiDQogICAgICAgICBpZD0idGV4dDcxIg0KICAgICAgICAgc3R5bGU9ImZvbnQtc3R5bGU6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXNpemU6MjE2cHg7Zm9udC1mYW1pbHk6VGltZXM7dGV4dC1hbmNob3I6c3RhcnQ7ZmlsbDojMDAwMDAwIj5pbnQ8L3RleHQ+DQogICAgPC9nPg0KICA8L2c+DQo8L3N2Zz4NCg==" alt="typing.svg" /></p>
 
 </div>
 </div>
@@ -15203,7 +15269,7 @@ Du skal bruge et for-loop i din løsning.</p>
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15261,7 +15327,7 @@ concatenation
 
 </div>
 
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15318,7 +15384,7 @@ True False
 
 </div>
 
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15423,7 +15489,7 @@ Et eksempel på korrespondancen mellem de sædvanlige datatyper og bytes er tegn
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15504,7 +15570,7 @@ Three	Four
 </div>
 </div>
 
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15568,7 +15634,7 @@ first second second first
 
 </div>
 
-</div>
+</div><div class="fragment" >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15620,7 +15686,7 @@ first second second first
 
 </div>
 
-</div>
+</div></div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15693,7 +15759,7 @@ first second second first
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15748,7 +15814,7 @@ Når du bruger f-strenge eller formatmetoden, bruger heltal i <code>d</code> ste
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15801,7 +15867,7 @@ water concatenated with melon produces watermelon
 
 </div>
 
-</div>
+</div><div class="fragment" >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15814,7 +15880,7 @@ water concatenated with melon produces watermelon
 </div>
 </div>
 </div>
-</div>
+</div></div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15855,9 +15921,9 @@ obj.attr
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<div class="alert alert-warning">
+<div class="alert alert-warning"></div>
 <p>Bemærk, at i Python <code>//</code> udfører operatoren heltals-division og operator <code>/</code> udfører kommatals division (float).  <code>**</code>-operatoren er potensopløftning (<code>x**n</code> betyder $ x^n $ ). Disse operatorer kan opføre sig anderledes end på mange andre almindelige sprog.</p>
-</div>
+
 
 </div>
 </div>
@@ -15874,7 +15940,7 @@ obj.attr
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15941,7 +16007,7 @@ obj.attr
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -16016,7 +16082,7 @@ Finished printing all the squares below 100.
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -16082,7 +16148,7 @@ Besides lists and generators there are other iterables. We will talk about itera
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -16095,14 +16161,14 @@ to go through all Fibonacci numbers up till a given limit, then it is easier to 
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Exercise-4-(multiplication-table)"><div class="alert alert-info">Exercise 4 (multiplication table)</div><a class="anchor-link" href="#Exercise-4-(multiplication-table)">&#182;</a></h4><p>In the <code>main</code> function print a multiplication table, which is shown below:</p>
+<h4 id="Exercise-4-(multiplication-table)"><div class="alert alert-info" />Exercise 4 (multiplication table)<a class="anchor-link" href="#Exercise-4-(multiplication-table)">&#182;</a></h4><p>In the <code>main</code> function print a multiplication table, which is shown below:</p>
 <pre><code>   1   2   3   4   5   6   7   8   9  10
    2   4   6   8  10  12  14  16  18  20
    3   6   9  12  15  18  21  24  27  30
@@ -16171,7 +16237,7 @@ to go through all Fibonacci numbers up till a given limit, then it is easier to 
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -16253,7 +16319,7 @@ else:
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -16308,7 +16374,7 @@ else:
 
 </div>
 
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -16361,7 +16427,7 @@ else:
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -16425,14 +16491,14 @@ Natural logarithm of 56 is 4.0254
 
 </div>
 
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Exercise-5-(two-dice)"><div class="alert alert-info">Exercise 5 (two dice)</div><a class="anchor-link" href="#Exercise-5-(two-dice)">&#182;</a></h4><p>Let us consider throwing two dice. (A dice can give a value between 1 and 6.) Use two nested <code>for</code>
+<h4 id="Exercise-5-(two-dice)"><div class="alert alert-info" />Exercise 5 (two dice)<a class="anchor-link" href="#Exercise-5-(two-dice)">&#182;</a></h4><p>Let us consider throwing two dice. (A dice can give a value between 1 and 6.) Use two nested <code>for</code>
 loops in the <code>main</code> function to iterate through all possible combinations the pair of dice can give. 
 There are 36 possible combinations. Print all those combinations as (ordered) pairs that sum to 5. 
 For example, your printout should include the pair <code>(2,3)</code>. Print one pair per line.</p>
@@ -16441,7 +16507,7 @@ For example, your printout should include the pair <code>(2,3)</code>. Print one
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -16548,7 +16614,7 @@ double(x)
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -16610,7 +16676,7 @@ print(*args, sep=&#39; &#39;, end=&#39;\n&#39;, file=None, flush=False)
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -16675,7 +16741,7 @@ print(*args, sep=&#39; &#39;, end=&#39;\n&#39;, file=None, flush=False)
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -16732,7 +16798,7 @@ print(*args, sep=&#39; &#39;, end=&#39;\n&#39;, file=None, flush=False)
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -16812,7 +16878,7 @@ print(*args, sep=&#39; &#39;, end=&#39;\n&#39;, file=None, flush=False)
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -16876,7 +16942,7 @@ print(*args, sep=&#39; &#39;, end=&#39;\n&#39;, file=None, flush=False)
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -16940,7 +17006,7 @@ The named arguments must come after the positional arguments. For example, the f
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -16989,7 +17055,7 @@ The named arguments must come after the positional arguments. For example, the f
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -17076,7 +17142,7 @@ The named arguments must come after the positional arguments. For example, the f
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -17088,7 +17154,7 @@ The named arguments must come after the positional arguments. For example, the f
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -17144,7 +17210,7 @@ The named arguments must come after the positional arguments. For example, the f
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -17200,7 +17266,7 @@ The named arguments must come after the positional arguments. For example, the f
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -17270,14 +17336,14 @@ The named arguments must come after the positional arguments. For example, the f
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Exercise-6-(triple-square)"><div class="alert alert-info">Exercise 6 (triple square)</div><a class="anchor-link" href="#Exercise-6-(triple-square)">&#182;</a></h4><p>Write two functions: <code>triple</code> and <code>square</code>. Function <code>triple</code> multiplies its parameter by three. Function <code>square</code> raises its parameter to the power of two. For example, we have equalities <code>triple(5)==15</code>
+<h4 id="Exercise-6-(triple-square)"><div class="alert alert-info" />Exercise 6 (triple square)<a class="anchor-link" href="#Exercise-6-(triple-square)">&#182;</a></h4><p>Write two functions: <code>triple</code> and <code>square</code>. Function <code>triple</code> multiplies its parameter by three. Function <code>square</code> raises its parameter to the power of two. For example, we have equalities <code>triple(5)==15</code>
 and <code>square(5)==25</code>.</p>
 <p>Part 1.</p>
 <p>In the <code>main</code> function write a <code>for</code> loop that iterates through values 1 to 10, and for each value prints its triple and its square. The output should be as follows:</p>
@@ -17294,14 +17360,14 @@ triple of the value, without printing anything in the last iteration.</p>
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Exercise-7-(areas-of-shapes)"><div class="alert alert-info">Exercise 7 (areas of shapes)</div><a class="anchor-link" href="#Exercise-7-(areas-of-shapes)">&#182;</a></h4><p>Create a program that can compute the areas of three shapes, triangles, rectangles and circles, when
+<h4 id="Exercise-7-(areas-of-shapes)"><div class="alert alert-info" />Exercise 7 (areas of shapes)<a class="anchor-link" href="#Exercise-7-(areas-of-shapes)">&#182;</a></h4><p>Create a program that can compute the areas of three shapes, triangles, rectangles and circles, when
 their dimensions are given.</p>
 <p>An endless loop should ask for which shape you want the area be calculated. An empty string as input will exit the loop. 
 If the user gives a
@@ -17330,7 +17396,7 @@ Choose a shape (triangle, rectangle, circle):
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -17342,7 +17408,7 @@ Choose a shape (triangle, rectangle, circle):
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -17393,7 +17459,7 @@ Choose a shape (triangle, rectangle, circle):
 
 </div>
 
-</div>
+</div><div class="fragment" >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -17435,7 +17501,7 @@ Choose a shape (triangle, rectangle, circle):
 </div>
 </div>
 </div>
-</div>
+</div></div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -17456,7 +17522,7 @@ Choose a shape (triangle, rectangle, circle):
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -17508,7 +17574,7 @@ Choose a shape (triangle, rectangle, circle):
 
 </div>
 
-</div>
+</div><div class="fragment" >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -17558,14 +17624,14 @@ Choose a shape (triangle, rectangle, circle):
 
 </div>
 
-</div>
+</div></div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Exercise-8-(solve-quadratic)"><div class="alert alert-info">Exercise 8 (solve quadratic)</div><a class="anchor-link" href="#Exercise-8-(solve-quadratic)">&#182;</a></h4><p>In mathematics, the quadratic equation $ax^2+bx+c=0$ can be solved with the formula<br />
+<h4 id="Exercise-8-(solve-quadratic)"><div class="alert alert-info" />Exercise 8 (solve quadratic)<a class="anchor-link" href="#Exercise-8-(solve-quadratic)">&#182;</a></h4><p>In mathematics, the quadratic equation $ax^2+bx+c=0$ can be solved with the formula<br />
 $x=\frac{-b\pm \sqrt{b^2 -4ac}}{2a}$</p>
 <p>In code it might be usefull to declare a variable for a part of the formula, named <code>d</code>, defined by $\sqrt{b^2 -4ac}$. the formula then can be written as:<br />
 $x=\frac{-b\pm d}{2a}$</p>
@@ -17583,7 +17649,7 @@ Remember the order of precedence are important, especially when you implement ma
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -17697,7 +17763,7 @@ Remember the order of precedence are important, especially when you implement ma
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -17753,7 +17819,7 @@ range(0, 3)
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -17864,7 +17930,7 @@ range(0, 3)
 
 </div>
 
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -17970,14 +18036,14 @@ range(0, 3)
 
 </div>
 
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Exercise-9-(merge)"><div class="alert alert-info">Exercise 9 (merge)</div><a class="anchor-link" href="#Exercise-9-(merge)">&#182;</a></h4><p>Suppose we have two lists <code>L1</code> and <code>L2</code> that contain integers which are sorted in ascending order.
+<h4 id="Exercise-9-(merge)"><div class="alert alert-info" />Exercise 9 (merge)<a class="anchor-link" href="#Exercise-9-(merge)">&#182;</a></h4><p>Suppose we have two lists <code>L1</code> and <code>L2</code> that contain integers which are sorted in ascending order.
 Create a function <code>merge</code> that gets these lists as parameters and returns a new sorted list <code>L</code> that has
 all the elements of <code>L1</code> and <code>L2</code>. So, <code>len(L)</code> should equal to <code>len(L1)+len(L2)</code>. Do this using the
 fact that both lists are already sorted. You can’t use the <code>sorted</code> function or the <code>sort</code> method in implementing the <code>merge</code> method. You can however use these <code>sorted</code> in the main function for creating inputs to the <code>merge</code> function.
@@ -17988,14 +18054,14 @@ Test with a couple of examples in the <code>main</code> function that your solut
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Exercise-10-(detect-ranges)"><div class="alert alert-info">Exercise 10 (detect ranges)</div><a class="anchor-link" href="#Exercise-10-(detect-ranges)">&#182;</a></h4><p>Create a function named <code>detect_ranges</code> that gets a list of integers as a parameter. The function
+<h4 id="Exercise-10-(detect-ranges)"><div class="alert alert-info" />Exercise 10 (detect ranges)<a class="anchor-link" href="#Exercise-10-(detect-ranges)">&#182;</a></h4><p>Create a function named <code>detect_ranges</code> that gets a list of integers as a parameter. The function
 should then sort this list, and transform the list into another list where pairs are used for all the
 detected intervals. So <code>3,4,5,6</code> is replaced by the pair <code>(3,7)</code>. Numbers that are not part of any
 interval result just single numbers. The resulting list consists of these numbers and
@@ -18010,7 +18076,7 @@ An example of how this function works:</p>
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -18063,7 +18129,7 @@ An example of how this function works:</p>
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -18138,14 +18204,14 @@ On Sunday it was sunny and the temperature was 11 degrees celsius.
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Exercise-11-(interleave)"><div class="alert alert-info">Exercise 11 (interleave)</div><a class="anchor-link" href="#Exercise-11-(interleave)">&#182;</a></h4><p>Write function <code>interleave</code> that gets arbitrary number of lists as parameters. You may assume that all the lists have equal length. The function should return one list containing all the elements from the input lists interleaved.
+<h4 id="Exercise-11-(interleave)"><div class="alert alert-info" />Exercise 11 (interleave)<a class="anchor-link" href="#Exercise-11-(interleave)">&#182;</a></h4><p>Write function <code>interleave</code> that gets arbitrary number of lists as parameters. You may assume that all the lists have equal length. The function should return one list containing all the elements from the input lists interleaved.
 Test your function from the <code>main</code> function of the program.</p>
 <p>Example:
 <code>interleave([1,2,3], [20,30,40], ['a', 'b', 'c'])</code>
@@ -18157,7 +18223,7 @@ Use the <code>zip</code> function to implement <code>interleave</code>. Remember
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -18225,7 +18291,7 @@ Use the <code>zip</code> function to implement <code>interleave</code>. Remember
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -18291,7 +18357,7 @@ value2
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -18387,7 +18453,7 @@ value2
 </div>
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -18453,7 +18519,7 @@ d.popitem()
 
 </div>
 
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -18562,7 +18628,7 @@ set()
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -18655,7 +18721,7 @@ Symmetric difference {1, 7, 8, 9}
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -18674,14 +18740,14 @@ s.remove(x)
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Exercise-12-(distinct-characters)"><div class="alert alert-info">Exercise 12 (distinct characters)</div><a class="anchor-link" href="#Exercise-12-(distinct-characters)">&#182;</a></h4><p>Write function <code>distinct_characters</code> that gets a list of strings as a parameter. It should return a dictionary whose keys are the strings of the input list and the corresponding values are the numbers of distinct characters in the key.</p>
+<h4 id="Exercise-12-(distinct-characters)"><div class="alert alert-info" />Exercise 12 (distinct characters)<a class="anchor-link" href="#Exercise-12-(distinct-characters)">&#182;</a></h4><p>Write function <code>distinct_characters</code> that gets a list of strings as a parameter. It should return a dictionary whose keys are the strings of the input list and the corresponding values are the numbers of distinct characters in the key.</p>
 <p>Use the <code>set</code> container to temporarily store the distinct characters in a string.
 Example of usage:
 <code>distinct_characters([&quot;check&quot;, &quot;look&quot;, &quot;try&quot;, &quot;pop&quot;])</code>
@@ -18692,7 +18758,7 @@ should return
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -18800,7 +18866,7 @@ False
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -18855,7 +18921,7 @@ a b
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -18906,7 +18972,7 @@ For key &#39;b&#39; value 3 was stored
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -18999,14 +19065,14 @@ For key &#39;b&#39; value 3 was stored
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Exercise-13-(reverse-dictionary)"><div class="alert alert-info">Exercise 13 (reverse dictionary)</div><a class="anchor-link" href="#Exercise-13-(reverse-dictionary)">&#182;</a></h4><p>Let <code>d</code> be a dictionary that has English words as keys and a list of Finnish words as values. So, the
+<h4 id="Exercise-13-(reverse-dictionary)"><div class="alert alert-info" />Exercise 13 (reverse dictionary)<a class="anchor-link" href="#Exercise-13-(reverse-dictionary)">&#182;</a></h4><p>Let <code>d</code> be a dictionary that has English words as keys and a list of Finnish words as values. So, the
 dictionary can be used to find out the Finnish equivalents of an English word in the following way:</p>
 <pre><code>d[&quot;move&quot;]
 [&quot;liikuttaa&quot;]
@@ -19024,14 +19090,14 @@ reverse_dictionary(d)
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Exercise-14-(find-matching)"><div class="alert alert-info">Exercise 14 (find matching)</div><a class="anchor-link" href="#Exercise-14-(find-matching)">&#182;</a></h4><p>Write function <code>find_matching</code> that gets a list of strings and a search string as parameters. The function should return the indices to those elements in the input list that contain the search string. Use the function <code>enumerate</code>.</p>
+<h4 id="Exercise-14-(find-matching)"><div class="alert alert-info" />Exercise 14 (find matching)<a class="anchor-link" href="#Exercise-14-(find-matching)">&#182;</a></h4><p>Write function <code>find_matching</code> that gets a list of strings and a search string as parameters. The function should return the indices to those elements in the input list that contain the search string. Use the function <code>enumerate</code>.</p>
 <p>An example:
 <code>find_matching([&quot;sensitive&quot;, &quot;engine&quot;, &quot;rubbish&quot;, &quot;comment&quot;], &quot;en&quot;)</code>
 should return the list
@@ -19041,7 +19107,7 @@ should return the list
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -19167,7 +19233,7 @@ should return the list
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -19227,7 +19293,7 @@ Let's break this syntax into pieces. The iterable can be any sequence (or someth
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -19294,7 +19360,7 @@ Let's break this syntax into pieces. The iterable can be any sequence (or someth
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -19344,7 +19410,7 @@ Let's break this syntax into pieces. The iterable can be any sequence (or someth
 
 </div>
 
-</div>
+</div><div class="fragment" >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -19394,20 +19460,20 @@ Let's break this syntax into pieces. The iterable can be any sequence (or someth
 
 </div>
 
-</div>
+</div></div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Exercise-15-(two-dice-comprehension)"><div class="alert alert-info">Exercise 15 (two dice comprehension)</div><a class="anchor-link" href="#Exercise-15-(two-dice-comprehension)">&#182;</a></h4><p>Redo the earlier exercise which printed all the pairs of two dice results that sum to 5. But this time use a list comprehension. Print one pair per line.</p>
+<h4 id="Exercise-15-(two-dice-comprehension)"><div class="alert alert-info" />Exercise 15 (two dice comprehension)<a class="anchor-link" href="#Exercise-15-(two-dice-comprehension)">&#182;</a></h4><p>Redo the earlier exercise which printed all the pairs of two dice results that sum to 5. But this time use a list comprehension. Print one pair per line.</p>
 <hr/>
 
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -19425,7 +19491,7 @@ Let's break this syntax into pieces. The iterable can be any sequence (or someth
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -19527,7 +19593,7 @@ elements are elements of the original list transformed by the parameter function
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -19582,7 +19648,7 @@ A simple example will showcase this.</p>
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -19661,14 +19727,14 @@ A simple example will showcase this.</p>
 
 </div>
 
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Exercise-16-(transform)"><div class="alert alert-info">Exercise 16 (transform)</div><a class="anchor-link" href="#Exercise-16-(transform)">&#182;</a></h4><p>Write a function <code>transform</code> that gets two strings as parameters and returns a list of integers. The function should split the strings into words, and convert these words to integers. This should give two lists of integers. Then the function should return a list whose elements are multiplication of two integers in the respective positions in the lists.
+<h4 id="Exercise-16-(transform)"><div class="alert alert-info" />Exercise 16 (transform)<a class="anchor-link" href="#Exercise-16-(transform)">&#182;</a></h4><p>Write a function <code>transform</code> that gets two strings as parameters and returns a list of integers. The function should split the strings into words, and convert these words to integers. This should give two lists of integers. Then the function should return a list whose elements are multiplication of two integers in the respective positions in the lists.
 For example
 <code>transform(&quot;1 5 3&quot;, &quot;2 6 -1&quot;)</code>
 should return the list of integers
@@ -19679,7 +19745,7 @@ should return the list of integers
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -19755,7 +19821,7 @@ should return the list of integers
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -19818,21 +19884,21 @@ should return the list of integers
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Exercise-17-(positive-list)"><div class="alert alert-info">Exercise 17 (positive list)</div><a class="anchor-link" href="#Exercise-17-(positive-list)">&#182;</a></h4><p>Write a function <code>positive_list</code> that gets a list of numbers as a parameter, and returns a list with the negative numbers and zero filtered out using the <code>filter</code> function.</p>
+<h4 id="Exercise-17-(positive-list)"><div class="alert alert-info" />Exercise 17 (positive list)<a class="anchor-link" href="#Exercise-17-(positive-list)">&#182;</a></h4><p>Write a function <code>positive_list</code> that gets a list of numbers as a parameter, and returns a list with the negative numbers and zero filtered out using the <code>filter</code> function.</p>
 <p>The function call <code>positive_list([2,-2,0,1,-7])</code> should return the list <code>[2,1]</code>. Test your function in the <code>main</code> function.</p>
 <hr/>
 
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -19864,7 +19930,7 @@ should return the list of integers
 </div>
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -19919,7 +19985,7 @@ should return the list of integers
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -19994,7 +20060,7 @@ should return the list of integers
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20035,7 +20101,7 @@ should return the list of integers
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20056,7 +20122,7 @@ should return the list of integers
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20075,7 +20141,7 @@ should return the list of integers
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20101,7 +20167,7 @@ replacing string as a parameter</p>
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20182,7 +20248,7 @@ replacing string as a parameter</p>
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20276,7 +20342,7 @@ replacing string as a parameter</p>
 
 </div>
 
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20391,7 +20457,7 @@ first put the small strings into a list, and then use the `join` method to caten
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20454,14 +20520,14 @@ first put the small strings into a list, and then use the `join` method to caten
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Exercise-18-(acronyms)"><div class="alert alert-info">Exercise 18 (acronyms)</div><a class="anchor-link" href="#Exercise-18-(acronyms)">&#182;</a></h4><p>Write function <code>acronyms</code> which takes a string as a parameter and returns a list of acronyms. A word is an acronym if it has length at least two, and all its characters are in uppercase. Before acronym detection, delete punctuation with the <code>strip</code> method.</p>
+<h4 id="Exercise-18-(acronyms)"><div class="alert alert-info" />Exercise 18 (acronyms)<a class="anchor-link" href="#Exercise-18-(acronyms)">&#182;</a></h4><p>Write function <code>acronyms</code> which takes a string as a parameter and returns a list of acronyms. A word is an acronym if it has length at least two, and all its characters are in uppercase. Before acronym detection, delete punctuation with the <code>strip</code> method.</p>
 <p>Test this function in the <code>main</code> function with the following call:</p>
 <div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">acronyms</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;For the purposes of the EU General Data Protection Regulation (GDPR), the controller of your personal information is International Business Machines Corporation (IBM Corp.), 1 New Orchard Road, Armonk, New York, United States, unless indicated otherwise. Where IBM Corp. or a subsidiary it controls (not established in the European Economic Area (EEA)) is required to appoint a legal representative in the EEA, the representative for all such cases is IBM United Kingdom Limited, PO Box 41, North Harbour, Portsmouth, Hampshire, United Kingdom PO6 3AU.&quot;&quot;&quot;</span><span class="p">))</span>
 </pre></div>
@@ -20472,14 +20538,14 @@ first put the small strings into a list, and then use the `join` method to caten
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Exercise-19-(sum-equation)"><div class="alert alert-info">Exercise 19 (sum equation)</div><a class="anchor-link" href="#Exercise-19-(sum-equation)">&#182;</a></h4><p>Write a function <code>sum_equation</code> which takes a list of positive integers as parameters and returns a string with an equation of the sum of the elements.</p>
+<h4 id="Exercise-19-(sum-equation)"><div class="alert alert-info" />Exercise 19 (sum equation)<a class="anchor-link" href="#Exercise-19-(sum-equation)">&#182;</a></h4><p>Write a function <code>sum_equation</code> which takes a list of positive integers as parameters and returns a string with an equation of the sum of the elements.</p>
 <p>Example:
 <code>sum_equation([1,5,7])</code>
 returns
@@ -20490,7 +20556,7 @@ Observe, the spaces should be exactly as shown above. For an empty list the func
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20531,7 +20597,7 @@ is a module. So, no special notation is needed to create a module.</p>
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20559,7 +20625,7 @@ with the builtin <code>open</code> function.</p>
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20583,7 +20649,7 @@ will be imported.</p>
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20604,7 +20670,7 @@ the contents of the <code>PYTHONPATH</code> environment variable</p>
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20627,7 +20693,7 @@ And package <code>numpy.linalg</code> in turn contains modules <code>linalg</cod
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20652,7 +20718,7 @@ use the form</p>
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20676,7 +20742,7 @@ linalg   module
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20697,12 +20763,12 @@ The folder may contain also further folders
         d.py
         e.py
 </code></pre>
-<p><img src="package.svg" alt="package.svg" /></p>
+<p><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8c3ZnDQogICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iDQogICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIg0KICAgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIg0KICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyINCiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyINCiAgIHZpZXdCb3g9IjAgMCAzMjIuNjY2NjYgMzg0Ig0KICAgaGVpZ2h0PSIzODQiDQogICB3aWR0aD0iMzIyLjY2NjY2Ig0KICAgeG1sOnNwYWNlPSJwcmVzZXJ2ZSINCiAgIGlkPSJzdmcyIg0KICAgdmVyc2lvbj0iMS4xIj48bWV0YWRhdGENCiAgICAgaWQ9Im1ldGFkYXRhOCI+PHJkZjpSREY+PGNjOldvcmsNCiAgICAgICAgIHJkZjphYm91dD0iIj48ZGM6Zm9ybWF0PmltYWdlL3N2Zyt4bWw8L2RjOmZvcm1hdD48ZGM6dHlwZQ0KICAgICAgICAgICByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIiAvPjxkYzp0aXRsZT48L2RjOnRpdGxlPjwvY2M6V29yaz48L3JkZjpSREY+PC9tZXRhZGF0YT48ZGVmcw0KICAgICBpZD0iZGVmczYiPjxjbGlwUGF0aA0KICAgICAgIGlkPSJjbGlwUGF0aDIwIg0KICAgICAgIGNsaXBQYXRoVW5pdHM9InVzZXJTcGFjZU9uVXNlIj48cGF0aA0KICAgICAgICAgaWQ9InBhdGgxOCINCiAgICAgICAgIGQ9Ik0gMzYsMzYgSCAyMDYgViAyNTIgSCAzNiBaIiAvPjwvY2xpcFBhdGg+PC9kZWZzPjxnDQogICAgIHRyYW5zZm9ybT0ibWF0cml4KDEuMzMzMzMzMywwLDAsLTEuMzMzMzMzMywwLDM4NCkiDQogICAgIGlkPSJnMTAiPjxnDQogICAgICAgaWQ9ImcxMiIgLz48Zw0KICAgICAgIGlkPSJnMTQiPjxnDQogICAgICAgICBjbGlwLXBhdGg9InVybCgjY2xpcFBhdGgyMCkiDQogICAgICAgICBpZD0iZzE2Ij48cGF0aA0KICAgICAgICAgICBpZD0icGF0aDIyIg0KICAgICAgICAgICBzdHlsZT0iZmlsbDojZmZmZmZmO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTojZmZmZmZmO3N0cm9rZS13aWR0aDoxO3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1taXRlcmxpbWl0OjEwO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIg0KICAgICAgICAgICBkPSJNIDM2LDM2IFYgMjUyIEggMjA2IFYgMzYgWiIgLz48cGF0aA0KICAgICAgICAgICBpZD0icGF0aDI0Ig0KICAgICAgICAgICBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxO3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1taXRlcmxpbWl0OjEwO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIg0KICAgICAgICAgICBkPSJNIDEzMCwyNDggSCA3NiB2IC0zNiBoIDU0IHoiIC8+PHRleHQNCiAgICAgICAgICAgaWQ9InRleHQyOCINCiAgICAgICAgICAgc3R5bGU9ImZvbnQtdmFyaWFudDpub3JtYWw7Zm9udC13ZWlnaHQ6bm9ybWFsO2ZvbnQtc2l6ZToyNHB4O2ZvbnQtZmFtaWx5OidUaW1lcyBOZXcgUm9tYW4nOy1pbmtzY2FwZS1mb250LXNwZWNpZmljYXRpb246VGltZXNOZXdSb21hbjt3cml0aW5nLW1vZGU6bHItdGI7ZmlsbDojMDAwMDAwO2ZpbGwtb3BhY2l0eToxO2ZpbGwtcnVsZTpub256ZXJvO3N0cm9rZTpub25lIg0KICAgICAgICAgICB0cmFuc2Zvcm09Im1hdHJpeCgxLDAsMCwtMSw5Ny41LDIyMS44OTg0NCkiPjx0c3Bhbg0KICAgICAgICAgICAgIGlkPSJ0c3BhbjI2Ig0KICAgICAgICAgICAgIHk9IjAiDQogICAgICAgICAgICAgeD0iMCI+YTwvdHNwYW4+PC90ZXh0Pg0KPHBhdGgNCiAgICAgICAgICAgaWQ9InBhdGgzMCINCiAgICAgICAgICAgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MTtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2UtbWl0ZXJsaW1pdDoxMDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSINCiAgICAgICAgICAgZD0ibSA5NCwxNTEgYyAwLC0xMy42NjggLTEyLjA5LC0yNC43NSAtMjcsLTI0Ljc1IC0xNC45MSwwIC0yNywxMS4wODIgLTI3LDI0Ljc1IDAsMTMuNjY4IDEyLjA5LDI0Ljc1IDI3LDI0Ljc1IDE0LjkxLDAgMjcsLTExLjA4MiAyNywtMjQuNzUgeiIgLz48dGV4dA0KICAgICAgICAgICBpZD0idGV4dDM0Ig0KICAgICAgICAgICBzdHlsZT0iZm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjI0cHg7Zm9udC1mYW1pbHk6J1RpbWVzIE5ldyBSb21hbic7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpUaW1lc05ld1JvbWFuO3dyaXRpbmctbW9kZTpsci10YjtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiDQogICAgICAgICAgIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDYxLDE0Mi44OTg0NCkiPjx0c3Bhbg0KICAgICAgICAgICAgIGlkPSJ0c3BhbjMyIg0KICAgICAgICAgICAgIHk9IjAiDQogICAgICAgICAgICAgeD0iMCI+YjwvdHNwYW4+PC90ZXh0Pg0KPHBhdGgNCiAgICAgICAgICAgaWQ9InBhdGgzNiINCiAgICAgICAgICAgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MTtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2UtbWl0ZXJsaW1pdDoxMDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSINCiAgICAgICAgICAgZD0iTSA5NSwyMTIgQyA5MCwyMDAgODMsMTg2IDc3LDE3NCIgLz48cGF0aA0KICAgICAgICAgICBpZD0icGF0aDM4Ig0KICAgICAgICAgICBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxO3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1taXRlcmxpbWl0OjEwO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIg0KICAgICAgICAgICBkPSJtIDE2NiwxNjkgaCAtNTQgdiAtMzYgaCA1NCB6IiAvPjx0ZXh0DQogICAgICAgICAgIGlkPSJ0ZXh0NDIiDQogICAgICAgICAgIHN0eWxlPSJmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXNpemU6MjRweDtmb250LWZhbWlseTonVGltZXMgTmV3IFJvbWFuJzstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOlRpbWVzTmV3Um9tYW47d3JpdGluZy1tb2RlOmxyLXRiO2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSINCiAgICAgICAgICAgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTMzLjUsMTQyLjg5ODQ0KSI+PHRzcGFuDQogICAgICAgICAgICAgaWQ9InRzcGFuNDAiDQogICAgICAgICAgICAgeT0iMCINCiAgICAgICAgICAgICB4PSIwIj5jPC90c3Bhbj48L3RleHQ+DQo8cGF0aA0KICAgICAgICAgICBpZD0icGF0aDQ0Ig0KICAgICAgICAgICBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxO3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1taXRlcmxpbWl0OjEwO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIg0KICAgICAgICAgICBkPSJtIDExMSwyMTIgYyA2LC0xMyAxNCwtMzAgMjAsLTQzIiAvPjxwYXRoDQogICAgICAgICAgIGlkPSJwYXRoNDYiDQogICAgICAgICAgIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMwMDAwMDA7c3Ryb2tlLXdpZHRoOjE7c3Ryb2tlLWxpbmVjYXA6YnV0dDtzdHJva2UtbGluZWpvaW46bWl0ZXI7c3Ryb2tlLW1pdGVybGltaXQ6MTA7c3Ryb2tlLWRhc2hhcnJheTpub25lO3N0cm9rZS1vcGFjaXR5OjEiDQogICAgICAgICAgIGQ9Ik0gMTMwLDY1IEMgMTMwLDUxLjMzMiAxMTcuOTEsNDAuMjUgMTAzLDQwLjI1IDg4LjA5LDQwLjI1IDc2LDUxLjMzMiA3Niw2NSBjIDAsMTMuNjY4IDEyLjA5LDI0Ljc1IDI3LDI0Ljc1IDE0LjkxLDAgMjcsLTExLjA4MiAyNywtMjQuNzUgeiIgLz48dGV4dA0KICAgICAgICAgICBpZD0idGV4dDUwIg0KICAgICAgICAgICBzdHlsZT0iZm9udC12YXJpYW50Om5vcm1hbDtmb250LXdlaWdodDpub3JtYWw7Zm9udC1zaXplOjI0cHg7Zm9udC1mYW1pbHk6J1RpbWVzIE5ldyBSb21hbic7LWlua3NjYXBlLWZvbnQtc3BlY2lmaWNhdGlvbjpUaW1lc05ld1JvbWFuO3dyaXRpbmctbW9kZTpsci10YjtmaWxsOiMwMDAwMDA7ZmlsbC1vcGFjaXR5OjE7ZmlsbC1ydWxlOm5vbnplcm87c3Ryb2tlOm5vbmUiDQogICAgICAgICAgIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLC0xLDk3LDU2Ljg5ODQzOCkiPjx0c3Bhbg0KICAgICAgICAgICAgIGlkPSJ0c3BhbjQ4Ig0KICAgICAgICAgICAgIHk9IjAiDQogICAgICAgICAgICAgeD0iMCI+ZDwvdHNwYW4+PC90ZXh0Pg0KPHBhdGgNCiAgICAgICAgICAgaWQ9InBhdGg1MiINCiAgICAgICAgICAgc3R5bGU9ImZpbGw6bm9uZTtzdHJva2U6IzAwMDAwMDtzdHJva2Utd2lkdGg6MTtzdHJva2UtbGluZWNhcDpidXR0O3N0cm9rZS1saW5lam9pbjptaXRlcjtzdHJva2UtbWl0ZXJsaW1pdDoxMDtzdHJva2UtZGFzaGFycmF5Om5vbmU7c3Ryb2tlLW9wYWNpdHk6MSINCiAgICAgICAgICAgZD0iTSAxMzEsMTMzIEMgMTI2LDEyMCAxMTgsMTAyIDExMyw4OCIgLz48cGF0aA0KICAgICAgICAgICBpZD0icGF0aDU0Ig0KICAgICAgICAgICBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxO3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1taXRlcmxpbWl0OjEwO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIg0KICAgICAgICAgICBkPSJtIDIwMiw2NSBjIDAsLTEzLjY2OCAtMTIuMDksLTI0Ljc1IC0yNywtMjQuNzUgLTE0LjkxLDAgLTI3LDExLjA4MiAtMjcsMjQuNzUgMCwxMy42NjggMTIuMDksMjQuNzUgMjcsMjQuNzUgMTQuOTEsMCAyNywtMTEuMDgyIDI3LC0yNC43NSB6IiAvPjx0ZXh0DQogICAgICAgICAgIGlkPSJ0ZXh0NTgiDQogICAgICAgICAgIHN0eWxlPSJmb250LXZhcmlhbnQ6bm9ybWFsO2ZvbnQtd2VpZ2h0Om5vcm1hbDtmb250LXNpemU6MjRweDtmb250LWZhbWlseTonVGltZXMgTmV3IFJvbWFuJzstaW5rc2NhcGUtZm9udC1zcGVjaWZpY2F0aW9uOlRpbWVzTmV3Um9tYW47d3JpdGluZy1tb2RlOmxyLXRiO2ZpbGw6IzAwMDAwMDtmaWxsLW9wYWNpdHk6MTtmaWxsLXJ1bGU6bm9uemVybztzdHJva2U6bm9uZSINCiAgICAgICAgICAgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsLTEsMTY5LjUsNTYuODk4NDM4KSI+PHRzcGFuDQogICAgICAgICAgICAgaWQ9InRzcGFuNTYiDQogICAgICAgICAgICAgeT0iMCINCiAgICAgICAgICAgICB4PSIwIj5lPC90c3Bhbj48L3RleHQ+DQo8cGF0aA0KICAgICAgICAgICBpZD0icGF0aDYwIg0KICAgICAgICAgICBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoxO3N0cm9rZS1saW5lY2FwOmJ1dHQ7c3Ryb2tlLWxpbmVqb2luOm1pdGVyO3N0cm9rZS1taXRlcmxpbWl0OjEwO3N0cm9rZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIg0KICAgICAgICAgICBkPSJtIDE0NywxMzMgYyA1LC0xMyAxMywtMzEgMTgsLTQ1IiAvPjwvZz48L2c+PGcNCiAgICAgICBpZD0iZzYyIiAvPjwvZz48L3N2Zz4=" alt="package.svg" /></p>
 
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20729,7 +20795,7 @@ Now if somebody imports <code>mod</code>, the <code>for</code> loop won't be aut
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20762,7 +20828,7 @@ We will talk more about attributes next week when we will talk about objects.</p
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20799,14 +20865,14 @@ equals <code>__file__</code>.</p>
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="Exercise-20-(usemodule)"><div class="alert alert-info">Exercise 20 (usemodule)</div><a class="anchor-link" href="#Exercise-20-(usemodule)">&#182;</a></h4><p>Create your own module as file <code>triangle.py</code> in the <code>src</code> folder. The module should contain two functions:</p>
+<h4 id="Exercise-20-(usemodule)"><div class="alert alert-info" />Exercise 20 (usemodule)<a class="anchor-link" href="#Exercise-20-(usemodule)">&#182;</a></h4><p>Create your own module as file <code>triangle.py</code> in the <code>src</code> folder. The module should contain two functions:</p>
 <ul>
 <li><code>hypothenuse</code> which returns the length of the hypothenuse when given the lengths of two other sides of a right-angled triangle</li>
 <li><code>area</code> which returns the area of the right-angled triangle, when two sides, perpendicular to each other, are given as parameters.</li>
@@ -20816,7 +20882,7 @@ equals <code>__file__</code>.</p>
 </div>
 </div>
 </div>
-</div>
+</div></section></section><section ><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20834,7 +20900,7 @@ equals <code>__file__</code>.</p>
 </div>
 </div>
 </div>
-</div>
+</div></section><section >
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -20849,6 +20915,8 @@ equals <code>__file__</code>.</p>
 </div>
 </div>
 </div>
+</div></section></section>
+</div>
 </div>
 </body>
 
@@ -20857,5 +20925,56 @@ equals <code>__file__</code>.</p>
 
 
 
+
+<script>
+require(
+    {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+      "https://unpkg.com/reveal.js@4.0.2/dist/reveal.js",
+      "https://unpkg.com/reveal.js@4.0.2/plugin/notes/notes.js"
+    ],
+
+    function(Reveal, RevealNotes){
+        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            transition: "slide",
+            slideNumber: "",
+            plugins: [RevealNotes]
+        });
+
+        var update = function(event){
+          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+          }
+        };
+
+        Reveal.addEventListener('slidechanged', update);
+
+        function setScrollingSlide() {
+            var scroll = false
+            if (scroll === true) {
+              var h = $('.reveal').height() * 0.95;
+              $('section.present').find('section')
+                .filter(function() {
+                  return $(this).height() > h;
+                })
+                .css('height', 'calc(95vh)')
+                .css('overflow-y', 'scroll')
+                .css('margin-top', '20px');
+            }
+        }
+
+        // check and set the scrolling slide every time the slide change
+        Reveal.addEventListener('slidechanged', setScrollingSlide);
+    }
+);
+</script>
 
 </html>
