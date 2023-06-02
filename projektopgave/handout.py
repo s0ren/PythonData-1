@@ -25,6 +25,8 @@ print(punkter[300])
 
 ## -----------------------------------------------------------------
 
+from geopy.distance import distance 
+
 # afstand mellem punkter
 
 # Ved at bruge enumarate får jeg både hvert element (`p`), og et index for hvert element (`i`), altid startende med 0 
@@ -38,7 +40,10 @@ for i, p in enumerate(punkter[1:]):
     pp = punkter[i]
 
     dt = (p['timestamp'] - pp['timestamp']).seconds
-
+    dd = distance( (pp['latitude'], pp['longitude']), (p['latitude'], p['longitude'])).meters
+    v = dd/dt
     print(f"p: {p}")
     print(f"pp: {pp}")
     print(f"dt: {dt}")
+    print(f"dd: {dd}")
+
